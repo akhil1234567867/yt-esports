@@ -1,0 +1,17 @@
+{
+  "name": "yt-esports-achievement-functions",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check index.js && node --check validation.js && node --check scripts/set-reviewer.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.0",
+    "firebase-functions": "^7.4.0",
+    "sharp": "^0.35.5"
+  }
+}

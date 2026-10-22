@@ -57,6 +57,7 @@ dialog::backdrop{background:rgba(10,12,20,.6)}
 form{display:grid;gap:10px;max-width:460px}
 form input,form select,form textarea{font:16px 'DM Sans',sans-serif;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .ok{color:var(--blue);font-weight:700;min-height:24px}
+.achievement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}.achievement-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}.achievement-card h3{margin:0 0 8px;font-family:'Rajdhani',sans-serif;text-transform:uppercase}.achievement-card p{margin:5px 0;font-size:14px}.achievement-status{display:inline-block;padding:3px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px;font-weight:700;text-transform:uppercase}.achievement-status.pending{color:#facc15}.achievement-status.verified{color:#34d399}.achievement-status.rejected{color:#fb7185}.achievement-evidence{display:inline-block;margin-top:8px;color:var(--yel)}.review-controls{display:grid;gap:8px;margin-top:12px}.review-controls textarea{width:100%;min-height:68px;padding:9px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font:inherit}
 footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mut);font-size:13px;margin-top:56px}
 .st{display:flex;gap:14px;overflow-x:auto;padding:4px 0 16px}.sb{background:none;border:0;cursor:pointer;color:var(--ink);font:12px 'DM Sans',sans-serif;text-align:center;flex:none;width:68px}.ring{width:62px;height:62px;border-radius:50%;padding:3px;background:conic-gradient(var(--yel),var(--blue),var(--yel));margin:0 auto 4px}.ring .av{width:100%;height:100%;border-radius:50%;border:3px solid var(--bg)}.post{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;max-width:560px}.ph{display:flex;gap:10px;align-items:center;padding:12px 14px}.ph .av{width:38px;height:38px;border-radius:50%;font-size:13px}.clip{height:200px;display:grid;place-items:center;color:#fff;font-family:'Unbounded',sans-serif;font-size:15px;text-align:center;padding:16px}.act{padding:10px 14px 4px}.act button{background:none;border:0;cursor:pointer;color:var(--ink);font:700 15px 'DM Sans',sans-serif;padding:0}.act .liked{color:#e0245e}.cm{padding:4px 14px 10px;font-size:14px}.cm p{margin:2px 0}.ci{display:flex;gap:8px;padding:0 14px 14px}.ci input{flex:1;min-width:0;font:16px 'DM Sans',sans-serif;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}.ci .btn{padding:9px 16px}.fr{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}.fr .btn.alt{margin:0}.fr .btn.on{background:transparent;color:var(--ink);border:2px solid var(--ink)}
 .logo,h1,h2,.stats b,.av,.clip{font-family:'Rajdhani',sans-serif}h1{font-size:clamp(42px,10vw,92px);letter-spacing:-.01em;line-height:.98}h2{font-weight:700;font-size:30px;letter-spacing:0}.stats b{color:var(--yel);font-weight:700;font-size:30px}.btn,.bar input,.bar select,form input,form select,form textarea,.ci input,.sb,.act button{font-family:'Exo 2',system-ui,sans-serif}.btn{transition:box-shadow .15s}.btn:hover{box-shadow:0 0 0 4px rgba(108,92,255,.4)}.p{transition:transform .15s,border-color .15s}.p:hover{border-color:var(--yel);transform:translateY(-3px)}.gold{background:var(--yel)}.hero p{color:var(--ink);opacity:.8}
@@ -94,122 +95,7 @@ body{padding-bottom:104px}section{scroll-margin-top:84px}.tabs{position:fixed;le
 <canvas id="bg" aria-hidden="true"></canvas>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ymark" viewBox="330 280 595 690"><path fill="currentColor" d="M335 285H468L627 428L786 285H919L670 507V598H583V507Z M368 595H886L800 670H454Z M583 667H670V891L627 963L583 891Z"/></symbol><symbol id="iph" viewBox="0 0 24 24"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M10.5 4.5h3M10.5 19.5h3"/><circle cx="12" cy="12" r="3"/><path d="M12 8v1.5M12 14.5V16M8 12h1.5M14.5 12H16"/></symbol><symbol id="iem" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M3 9l9 6.5L21 9"/><path d="M18.5 1.5l-2.2 3h2.2l-1.6 2.7"/></symbol></svg>
 <div class="w">
-<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><button class="btn lg" id="au">Login</button></div></nav>
-<div class="tk" aria-hidden="true"><span><b>● LIVE</b> &nbsp;/&nbsp; 25 GAMES &nbsp;/&nbsp; PLAYER PROFILES &nbsp;/&nbsp; TOURNAMENTS &nbsp;/&nbsp; SPONSORS &nbsp;/&nbsp; SHORTS &nbsp;/&nbsp; FIND TEAMMATES &nbsp;/&nbsp; <b>● LIVE</b> &nbsp;/&nbsp; SEASON 2026 &nbsp;/&nbsp; GET SCOUTED &nbsp;/&nbsp; BUILD YOUR SQUAD &nbsp;/&nbsp;</span></div>
-
-<header class="hero"><div>
-<h1>Where gamers become <span class="hl">pros.</span></h1>
-<p>Yke brings eSports players' tournaments, achievements and stats together in one place, so big organizations can find the right talent fast.</p>
-<a class="btn" href="#players">View players</a><a class="btn alt" href="#join">Create profile</a>
-</div><aside class="feat" id="ft"></aside></header>
-
-<div class="stats" id="stats"></div>
-
-<section class="sec" id="ai"><h2>AI Gaming Assistant</h2><p class="sub">Analyze player performance, get recruitment picks for your team, plan a tournament, or get a personal improvement plan.</p><div class="chips" id="aim" role="tablist" aria-label="AI assistant modes"></div><div class="aif" id="aif"></div><div class="ao" id="ao" aria-live="polite" hidden></div><div class="up" id="afu" hidden><input id="afi" placeholder="Ask a follow-up question" aria-label="Follow-up question"><button class="btn" id="afb">Ask</button></div><p class="tag" style="margin-top:14px">AI guidance is not a guarantee. It uses the data on Yke (currently sample data) and never receives phone numbers, emails, real names, gender or age.</p></section>
-
-<section class="sec" id="games"><h2>All eSports games</h2><p class="sub">Tap any game to see its players.</p><div class="chips" id="gc"></div></section>
-
-<section class="sec" id="shorts"><h2>Shorts</h2><p class="sub">Short eSports clips: clutches, aces and highlight moments.</p><div class="sh" id="sh"></div><div class="up"><label class="btn alt" id="ul" style="margin:0;cursor:pointer">Upload a short<input class="sr" id="uf" type="file" accept="video/*"></label><span class="tag" id="um" role="status"></span></div></section>
-
-<section class="sec" id="videos"><h2>Videos</h2><p class="sub">Match highlights, tournament finals and player interviews.</p><div class="vg" id="vg"></div></section>
-
-<section class="sec" id="feed"><h2>Feed</h2><p class="sub">Clips, wins and updates from players. Like, comment and follow.</p><div class="st" id="st"></div><div id="pf"></div></section>
-
-<section class="sec" id="players">
-    <div class="w">
-<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><button class="btn lg" id="au">Login</button></div></nav>
-<div class="tk" aria-hidden="true"><span><b>● LIVE</b> &nbsp;/&nbsp; 25 GAMES &nbsp;/&nbsp; PLAYER PROFILES &nbsp;/&nbsp; TOURNAMENTS &nbsp;/&nbsp; SPONSORS &nbsp;/&nbsp; SHORTS &nbsp;/&nbsp; FIND TEAMMATES &nbsp;/&nbsp; <b>● LIVE</b> &nbsp;/&nbsp; SEASON 2026 &nbsp;/&nbsp; GET SCOUTED &nbsp;/&nbsp; BUILD YOUR SQUAD &nbsp;/&nbsp;</span></div>
-
-<header class="hero"><div>
-<h1>Where gamers become <span class="hl">pros.</span></h1>
-<p>Yke brings eSports players' tournaments, achievements and stats together in one place, so big organizations can find the right talent fast.</p>
-<a class="btn" href="#players">View players</a><a class="btn alt" href="#join">Create profile</a>
-</div><aside class="feat" id="ft"></aside></header>
-
-<div class="stats" id="stats"></div>
-
-<section class="sec" id="ai"><h2>AI Gaming Assistant</h2><p class="sub">Analyze player performance, get recruitment picks for your team, plan a tournament, or get a personal improvement plan.</p><div class="chips" id="aim" role="tablist" aria-label="AI assistant modes"></div><div class="aif" id="aif"></div><div class="ao" id="ao" aria-live="polite" hidden></div><div class="up" id="afu" hidden><input id="afi" placeholder="Ask a follow-up question" aria-label="Follow-up question"><button class="btn" id="afb">Ask</button></div><p class="tag" style="margin-top:14px">AI guidance is not a guarantee. It uses the data on Yke (currently sample data) and never receives phone numbers, emails, real names, gender or age.</p></section>
-
-<section class="sec" id="games"><h2>All eSports games</h2><p class="sub">Tap any game to see its players.</p><div class="chips" id="gc"></div></section>
-
-<section class="sec" id="shorts"><h2>Shorts</h2><p class="sub">Short eSports clips: clutches, aces and highlight moments.</p><div class="sh" id="sh"></div><div class="up"><label class="btn alt" id="ul" style="margin:0;cursor:pointer">Upload a short<input class="sr" id="uf" type="file" accept="video/*"></label><span class="tag" id="um" role="status"></span></div></section>
-
-<section class="sec" id="videos"><h2>Videos</h2><p class="sub">Match highlights, tournament finals and player interviews.</p><div class="vg" id="vg"></div></section>
-
-<section class="sec" id="feed"><h2>Feed</h2><p class="sub">Clips, wins and updates from players. Like, comment and follow.</p><div class="st" id="st"></div><div id="pf"></div></section>
-
-<section class="sec" id="players">
-    <div class="w">
-<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><button class="btn lg" id="au">Login</button></div></nav>
-<div class="tk" aria-hidden="true"><span><b>● LIVE</b> &nbsp;/&nbsp; 25 GAMES &nbsp;/&nbsp; PLAYER PROFILES &nbsp;/&nbsp; TOURNAMENTS &nbsp;/&nbsp; SPONSORS &nbsp;/&nbsp; SHORTS &nbsp;/&nbsp; FIND TEAMMATES &nbsp;/&nbsp; <b>● LIVE</b> &nbsp;/&nbsp; SEASON 2026 &nbsp;/&nbsp; GET SCOUTED &nbsp;/&nbsp; BUILD YOUR SQUAD &nbsp;/&nbsp;</span></div>
-
-<header class="hero"><div>
-<h1>Where gamers become <span class="hl">pros.</span></h1>
-<p>Yke brings eSports players' tournaments, achievements and stats together in one place, so big organizations can find the right talent fast.</p>
-<a class="btn" href="#players">View players</a><a class="btn alt" href="#join">Create profile</a>
-</div><aside class="feat" id="ft"></aside></header>
-
-<div class="stats" id="stats"></div>
-
-<section class="sec" id="ai"><h2>AI Gaming Assistant</h2><p class="sub">Analyze player performance, get recruitment picks for your team, plan a tournament, or get a personal improvement plan.</p><div class="chips" id="aim" role="tablist" aria-label="AI assistant modes"></div><div class="aif" id="aif"></div><div class="ao" id="ao" aria-live="polite" hidden></div><div class="up" id="afu" hidden><input id="afi" placeholder="Ask a follow-up question" aria-label="Follow-up question"><button class="btn" id="afb">Ask</button></div><p class="tag" style="margin-top:14px">AI guidance is not a guarantee. It uses the data on Yke (currently sample data) and never receives phone numbers, emails, real names, gender or age.</p></section>
-
-<section class="sec" id="games"><h2>All eSports games</h2><p class="sub">Tap any game to see its players.</p><div class="chips" id="gc"></div></section>
-
-<section class="sec" id="shorts"><h2>Shorts</h2><p class="sub">Short eSports clips: clutches, aces and highlight moments.</p><div class="sh" id="sh"></div><div class="up"><label class="btn alt" id="ul" style="margin:0;cursor:pointer">Upload a short<input class="sr" id="uf" type="file" accept="video/*"></label><span class="tag" id="um" role="status"></span></div></section>
-
-<section class="sec" id="videos"><h2>Videos</h2><p class="sub">Match highlights, tournament finals and player interviews.</p><div class="vg" id="vg"></div></section>
-
-<section class="sec" id="feed"><h2>Feed</h2><p class="sub">Clips, wins and updates from players. Like, comment and follow.</p><div class="st" id="st"></div><div id="pf"></div></section>
-
-<section class="sec" id="players">
-    <div class="w">
-<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><button class="btn lg" id="au">Login</button></div></nav>
-<div class="tk" aria-hidden="true"><span><b>● LIVE</b> &nbsp;/&nbsp; 25 GAMES &nbsp;/&nbsp; PLAYER PROFILES &nbsp;/&nbsp; TOURNAMENTS &nbsp;/&nbsp; SPONSORS &nbsp;/&nbsp; SHORTS &nbsp;/&nbsp; FIND TEAMMATES &nbsp;/&nbsp; <b>● LIVE</b> &nbsp;/&nbsp; SEASON 2026 &nbsp;/&nbsp; GET SCOUTED &nbsp;/&nbsp; BUILD YOUR SQUAD &nbsp;/&nbsp;</span></div>
-
-<header class="hero"><div>
-<h1>Where gamers become <span class="hl">pros.</span></h1>
-<p>Yke brings eSports players' tournaments, achievements and stats together in one place, so big organizations can find the right talent fast.</p>
-<a class="btn" href="#players">View players</a><a class="btn alt" href="#join">Create profile</a>
-</div><aside class="feat" id="ft"></aside></header>
-
-<div class="stats" id="stats"></div>
-
-<section class="sec" id="ai"><h2>AI Gaming Assistant</h2><p class="sub">Analyze player performance, get recruitment picks for your team, plan a tournament, or get a personal improvement plan.</p><div class="chips" id="aim" role="tablist" aria-label="AI assistant modes"></div><div class="aif" id="aif"></div><div class="ao" id="ao" aria-live="polite" hidden></div><div class="up" id="afu" hidden><input id="afi" placeholder="Ask a follow-up question" aria-label="Follow-up question"><button class="btn" id="afb">Ask</button></div><p class="tag" style="margin-top:14px">AI guidance is not a guarantee. It uses the data on Yke (currently sample data) and never receives phone numbers, emails, real names, gender or age.</p></section>
-
-<section class="sec" id="games"><h2>All eSports games</h2><p class="sub">Tap any game to see its players.</p><div class="chips" id="gc"></div></section>
-
-<section class="sec" id="shorts"><h2>Shorts</h2><p class="sub">Short eSports clips: clutches, aces and highlight moments.</p><div class="sh" id="sh"></div><div class="up"><label class="btn alt" id="ul" style="margin:0;cursor:pointer">Upload a short<input class="sr" id="uf" type="file" accept="video/*"></label><span class="tag" id="um" role="status"></span></div></section>
-
-<section class="sec" id="videos"><h2>Videos</h2><p class="sub">Match highlights, tournament finals and player interviews.</p><div class="vg" id="vg"></div></section>
-
-<section class="sec" id="feed"><h2>Feed</h2><p class="sub">Clips, wins and updates from players. Like, comment and follow.</p><div class="st" id="st"></div><div id="pf"></div></section>
-
-<section class="sec" id="players">
-    <div class="w">
-<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><button class="btn lg" id="au">Login</button></div></nav>
-<div class="tk" aria-hidden="true"><span><b>● LIVE</b> &nbsp;/&nbsp; 25 GAMES &nbsp;/&nbsp; PLAYER PROFILES &nbsp;/&nbsp; TOURNAMENTS &nbsp;/&nbsp; SPONSORS &nbsp;/&nbsp; SHORTS &nbsp;/&nbsp; FIND TEAMMATES &nbsp;/&nbsp; <b>● LIVE</b> &nbsp;/&nbsp; SEASON 2026 &nbsp;/&nbsp; GET SCOUTED &nbsp;/&nbsp; BUILD YOUR SQUAD &nbsp;/&nbsp;</span></div>
-
-<header class="hero"><div>
-<h1>Where gamers become <span class="hl">pros.</span></h1>
-<p>Yke brings eSports players' tournaments, achievements and stats together in one place, so big organizations can find the right talent fast.</p>
-<a class="btn" href="#players">View players</a><a class="btn alt" href="#join">Create profile</a>
-</div><aside class="feat" id="ft"></aside></header>
-
-<div class="stats" id="stats"></div>
-
-<section class="sec" id="ai"><h2>AI Gaming Assistant</h2><p class="sub">Analyze player performance, get recruitment picks for your team, plan a tournament, or get a personal improvement plan.</p><div class="chips" id="aim" role="tablist" aria-label="AI assistant modes"></div><div class="aif" id="aif"></div><div class="ao" id="ao" aria-live="polite" hidden></div><div class="up" id="afu" hidden><input id="afi" placeholder="Ask a follow-up question" aria-label="Follow-up question"><button class="btn" id="afb">Ask</button></div><p class="tag" style="margin-top:14px">AI guidance is not a guarantee. It uses the data on Yke (currently sample data) and never receives phone numbers, emails, real names, gender or age.</p></section>
-
-<section class="sec" id="games"><h2>All eSports games</h2><p class="sub">Tap any game to see its players.</p><div class="chips" id="gc"></div></section>
-
-<section class="sec" id="shorts"><h2>Shorts</h2><p class="sub">Short eSports clips: clutches, aces and highlight moments.</p><div class="sh" id="sh"></div><div class="up"><label class="btn alt" id="ul" style="margin:0;cursor:pointer">Upload a short<input class="sr" id="uf" type="file" accept="video/*"></label><span class="tag" id="um" role="status"></span></div></section>
-
-<section class="sec" id="videos"><h2>Videos</h2><p class="sub">Match highlights, tournament finals and player interviews.</p><div class="vg" id="vg"></div></section>
-
-<section class="sec" id="feed"><h2>Feed</h2><p class="sub">Clips, wins and updates from players. Like, comment and follow.</p><div class="st" id="st"></div><div id="pf"></div></section>
-
-<section class="sec" id="players"> 
-    <h2>players<div class="w">
-<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><button class="btn lg" id="au">Login</button></div></nav>
+<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><a href="#achievementProof">Achievements</a><button class="btn lg" id="au">Login</button></div></nav>
 <div class="tk" aria-hidden="true"><span><b>● LIVE</b> &nbsp;/&nbsp; 25 GAMES &nbsp;/&nbsp; PLAYER PROFILES &nbsp;/&nbsp; TOURNAMENTS &nbsp;/&nbsp; SPONSORS &nbsp;/&nbsp; SHORTS &nbsp;/&nbsp; FIND TEAMMATES &nbsp;/&nbsp; <b>● LIVE</b> &nbsp;/&nbsp; SEASON 2026 &nbsp;/&nbsp; GET SCOUTED &nbsp;/&nbsp; BUILD YOUR SQUAD &nbsp;/&nbsp;</span></div>
 
 <header class="hero"><div>
@@ -232,13 +118,14 @@ body{padding-bottom:104px}section{scroll-margin-top:84px}.tabs{position:fixed;le
 
 <section class="sec" id="players">
     <h2>Players</h2>
-<p class="sub">Filter by game or sort by rating. Tap any card to open the full profile.</p>
-<div class="bar">
-<input id="q" type="search" placeholder="Player or team name" aria-label="Search player">
-<select id="g" aria-label="Game"><option value="">All games</option></select>
-<select id="gf" aria-label="Gender"><option value="">All genders</option><option>Male</option><option>Female</option><option>Other</option></select><select id="s" aria-label="Sort"><option value="rank">Top rated</option><option value="win">Win rate</option><option value="earn">Prize money</option></select>
-</div>
-<div class="grid" id="grid"></div>
+    <p class="sub">Filter by game or sort by rating. Tap any card to open the full profile.</p>
+    <div class="bar">
+        <input id="q" type="search" placeholder="Player or team name" aria-label="Search player">
+        <select id="g" aria-label="Game"><option value="">All games</option></select>
+        <select id="gf" aria-label="Gender"><option value="">All genders</option><option>Male</option><option>Female</option><option>Other</option></select>
+        <select id="s" aria-label="Sort"><option value="rank">Top rated</option><option value="win">Win rate</option><option value="earn">Prize money</option></select>
+    </div>
+    <div class="grid" id="grid"></div>
 </section>
 <section class="sec" id="teammates"><h2>Find teammates and teams</h2><p class="sub">Set your state and city to see players near you first. Invite them, or join a team that is looking for members.</p><div class="fr" style="margin:0 0 14px"><button class="btn" id="nbt">Turn on Nearby</button><label class="tag" style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="vis"> Show me to nearby players</label></div><div class="ok" id="nbl" role="status"></div><p class="tag" style="margin:0 0 14px">Your exact location is never shown to others. Players only see an approximate distance, and only if you choose to be visible.</p><div class="bar"><select id="nbs" aria-label="Your state"><option value="">Your state</option></select><input id="nbc" placeholder="Your city" aria-label="Your city"><select id="nbg" aria-label="Game"><option value="">All games</option></select></div><div class="grid" id="nb"></div><h3 class="th">Teams looking for players</h3><div class="grid" id="tm"></div><div class="ok" id="nbm" role="status"></div><h3 class="th">Create a team</h3><form id="tf"><input required id="tfn" placeholder="Team name" aria-label="Team name"><select required id="tfg" aria-label="Game"><option value="">Choose game</option></select><select required id="tfs" aria-label="State"><option value="">Choose state</option></select><input required id="tfc" placeholder="City" aria-label="City"><input id="tfr" placeholder="Roles you need (e.g. Sniper, IGL)" aria-label="Roles needed"><button class="btn" type="submit">Create team</button></form></section>
 
@@ -267,6 +154,27 @@ body{padding-bottom:104px}section{scroll-margin-top:84px}.tabs{position:fixed;le
 <p class="tag">Your gamer tag is shown publicly. Your real name is shown only to logged-in users.</p><p class="tag">You must be 16 or older to join Yke. Phone and Gmail are not public; only logged-in users can see them.</p><div class="ok" id="ok" role="status"></div>
 </form>
 </section>
+<section class="sec" id="achievementProof">
+<h2>Achievement proof &amp; verification</h2>
+<p class="sub">Submit tournament details and an evidence image. This flow requires the Firebase Functions, Storage, and Firestore rules in the repository to be deployed; status changes are server-only.</p>
+<p class="tag" id="achievementLoginHint">Log in to submit evidence and track your review status. <button class="btn alt" id="achievementLogin" type="button">Log in</button></p>
+<form id="achievementForm" hidden>
+<input id="achievementTournament" required maxlength="120" minlength="3" placeholder="Tournament name" aria-label="Tournament name">
+<input id="achievementGame" required maxlength="60" placeholder="Game" aria-label="Game">
+<input id="achievementPlacement" required maxlength="80" placeholder="Placement or award (e.g. 1st place, MVP)" aria-label="Placement or award">
+<input id="achievementOrganizer" maxlength="120" placeholder="Organizer (optional)" aria-label="Organizer">
+<label class="tag" for="achievementDate">Tournament date</label><input id="achievementDate" type="date" required aria-label="Tournament date">
+<textarea id="achievementDetails" rows="3" maxlength="1200" placeholder="Additional details (optional)" aria-label="Additional details"></textarea>
+<label class="tag" for="achievementEvidence">Evidence image (JPEG, PNG, or WebP; maximum 10 MB)</label><input id="achievementEvidence" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Evidence image">
+<button class="btn" id="achievementSubmit" type="submit">Upload evidence and submit</button>
+<div class="ok" id="achievementMessage" role="status"></div>
+</form>
+<h3>Your submissions</h3><div id="achievementList" class="achievement-grid" aria-live="polite"></div>
+<section id="achievementReviewer" hidden>
+<h3>Reviewer queue</h3><p class="tag">Reviewer permission is loaded from a Firebase custom claim and enforced again by the server.</p>
+<div id="achievementReviewList" class="achievement-grid" aria-live="polite"></div>
+</section>
+</section>
 <footer><div class="fg"><div><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><p>The talent hub connecting eSports players and organizations.</p></div><div><b>Explore</b><a href="#games">Games</a><a href="#players">Players</a><a href="#feed">Feed</a></div><div><b>Organizations</b><a href="#orgs">Scouting</a><a href="#join">For players</a></div></div><p class="cp">© 2026 Yke. All player and tournament data is sample (demo) data.</p></footer>
 </div>
 
@@ -274,6 +182,126 @@ body{padding-bottom:104px}section{scroll-margin-top:84px}.tabs{position:fixed;le
 <dialog id="d"><div class="m" id="m"></div></dialog>
 
 <script>
+// Firebase integration (Email/Password auth + Firestore profiles)
+const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyCazRn1gHk4BXnunu81eaVcFzIZrLh70bI",
+    authDomain: "yt-esports-ad314.firebaseapp.com",
+    projectId: "yt-esports-ad314",
+    storageBucket: "yt-esports-ad314.firebasestorage.app",
+    messagingSenderId: "474893136415",
+    appId: "1:474893136415:web:caea032b09e97ef890db2a",
+    measurementId: "G-EDJ18CP3W8"
+};
+
+var fbAuth=null,fbDB=null,firebaseInitError=null;
+var firebaseReady=(async function(){
+    var sdk=await Promise.all([
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js')
+    ]);
+    var appSdk=sdk[0],authSdk=sdk[1],firestoreSdk=sdk[2],storageSdk=sdk[3],functionsSdk=sdk[4];
+    var app=appSdk.getApps().find(function(existing){return existing.name==='[DEFAULT]'});
+    if(!app)app=appSdk.initializeApp(FIREBASE_CONFIG);
+    else if(app.options.projectId!==FIREBASE_CONFIG.projectId)throw new Error('The existing Firebase app is not configured for yt-esports-ad314.');
+    fbAuth=authSdk.getAuth(app);
+    fbDB=firestoreSdk.getFirestore(app);
+    var fbStorage=storageSdk.getStorage(app);
+    var fbFunctions=functionsSdk.getFunctions(app,'us-central1');
+    window.fbAuth=fbAuth;
+    window.fbDB=fbDB;
+    authSdk.onAuthStateChanged(fbAuth,async function(user){
+        if(!user){U=null;au();syncAchievementAccess(null);return}
+        try{
+            var snapshot=await firestoreSdk.getDoc(firestoreSdk.doc(fbDB,'users',user.uid));
+            var profile=snapshot.exists()?profileFromFirestore(snapshot.data()):{};
+            profile.uid=user.uid;
+            profile.email=user.email;
+            profile.verified=user.emailVerified;
+            ROLE=profile.role||ROLE||'Player';
+            setU(Object.assign({},profile,{via:'Firebase'}),false);
+        }catch(error){
+            console.error('Failed to load the Firebase user profile',error);
+            setU({uid:user.uid,email:user.email,role:ROLE||'Player',via:'Firebase'},false);
+            if($('lx'))$('lx').textContent='Signed in, but your Firestore profile could not be loaded: '+firebaseErrorMessage(error);
+        }
+    });
+    return {auth:authSdk,firestore:firestoreSdk,storage:storageSdk,storageInstance:fbStorage,functions:functionsSdk,functionsInstance:fbFunctions};
+})().catch(function(error){
+    firebaseInitError=error;
+    console.error('Firebase initialization failed',error);
+    return null;
+});
+
+async function requireFirebase(){
+    var sdk=await firebaseReady;
+    if(!sdk)throw firebaseInitError||new Error('Firebase initialization failed.');
+    return sdk;
+}
+function firebaseErrorMessage(error){
+    var messages={
+        'auth/email-already-in-use':'An account already exists for this email. Try logging in.',
+        'auth/invalid-email':'Enter a valid email address.',
+        'auth/invalid-credential':'Email or password is incorrect.',
+        'auth/user-disabled':'This account has been disabled.',
+        'auth/weak-password':'Choose a stronger password (at least 6 characters).',
+        'auth/network-request-failed':'Network error. Check your connection and try again.',
+        'permission-denied':'Firestore denied access. Check the users collection security rules.'
+    };
+    return messages[error&&error.code]||(error&&error.message)||'An unexpected Firebase error occurred.';
+}
+function profileForFirestore(profile){
+    var firestoreProfile=Object.assign({},profile);
+    if(Array.isArray(firestoreProfile.ach)){
+        firestoreProfile.ach=firestoreProfile.ach.map(function(achievement){
+            if(!Array.isArray(achievement))return achievement;
+            return {event:achievement[0],result:achievement[1],reward:achievement[2]};
+        });
+    }
+    return firestoreProfile;
+}
+function profileFromFirestore(profile){
+    if(Array.isArray(profile.ach)){
+        profile.ach=profile.ach.map(function(achievement){
+            if(Array.isArray(achievement))return achievement;
+            return [achievement.event,achievement.result,achievement.reward];
+        });
+    }
+    return profile;
+}
+async function fbCreateAccount(email,password,role){
+    var sdk=await requireFirebase();
+    var credential=await sdk.auth.createUserWithEmailAndPassword(fbAuth,email,password);
+    try{
+        await sdk.firestore.setDoc(sdk.firestore.doc(fbDB,'users',credential.user.uid),{
+            uid:credential.user.uid,
+            email:credential.user.email,
+            role:role,
+            createdAt:sdk.firestore.serverTimestamp()
+        });
+    }catch(error){
+        var profileError=new Error(firebaseErrorMessage(error));
+        profileError.code=error.code;
+        profileError.accountCreated=true;
+        throw profileError;
+    }
+    var verificationSent=true;
+    try{await sdk.auth.sendEmailVerification(credential.user)}
+    catch(error){verificationSent=false;console.error('Account created, but verification email could not be sent',error)}
+    return {user:credential.user,verificationSent:verificationSent};
+}
+async function fbSignIn(email,password){
+    var sdk=await requireFirebase();
+    var credential=await sdk.auth.signInWithEmailAndPassword(fbAuth,email,password);
+    return credential.user;
+}
+async function fbSignOut(){
+    var sdk=await requireFirebase();
+    await sdk.auth.signOut(fbAuth);
+}
+
 var P=[
 {n:"NightFury",t:"Team Nova",g:"BGMI",r:"Entry Fragger",c:"Delhi",a:19,rt:94,w:68,e:850000,col:"#5a4ff3",ach:[["BGMI Pro Series 2026","Champion","₹5,00,000"],["Regional Masters 2025","Runner-up","₹2,00,000"],["Campus Cup 2025","MVP","₹50,000"]],k:"7.8 K/D"},
 {n:"Vyra",t:"Solo",g:"Valorant",r:"Duelist",c:"Mumbai",a:21,rt:91,w:64,e:620000,col:"#a23cf0",ach:[["Valorant Challengers India 2026","Top 4","₹2,50,000"],["Open Qualifier 2026","Winner","₹1,20,000"]],k:"1.42 ACS ratio"},
@@ -324,17 +352,203 @@ $('st').addEventListener('click',function(e){var b=e.target.closest('.sb');if(!b
 $('gc').innerHTML=games.map(function(g){return '<button class="chip" data-g="'+esc(g)+'">'+esc(g)+'</button>'}).join('');
 $('gc').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;$('g').value=b.dataset.g;render();$('players').scrollIntoView()});
 games.forEach(function(g){var o=document.createElement('option');o.textContent=g;$('jg').appendChild(o)});
-var U=null;try{U=JSON.parse(localStorage.getItem('yke_user'))}catch(e){}
+var U=null;
 function au(){$('au').innerHTML=IC.s+'<span>'+(U?esc(U.role||'Player')+' · Logout':'Login')+'</span>'}
-function setU(u){u.role=ROLE;U=u;try{localStorage.setItem('yke_user',JSON.stringify(u))}catch(e){}au();d.close()}
-$('au').addEventListener('click',function(){if(U){U=null;try{localStorage.removeItem('yke_user')}catch(e){}au()}else openLogin()});
+function setU(u,closeDialog){u.role=u.role||ROLE||'Player';U=u;au();syncAchievementAccess(fbAuth&&fbAuth.currentUser);if(closeDialog!==false)d.close()}
+$('au').addEventListener('click',async function(){if(U){try{await fbSignOut()}catch(error){openLogin();$('lx').textContent='Sign out failed: '+firebaseErrorMessage(error)}}else openLogin()});
+function achievementDateLabel(value){
+    if(value&&typeof value.toDate==='function')return value.toDate().toLocaleDateString();
+    return value||'Date unavailable';
+}
+async function achievementEvidenceUrl(sdk,path){
+    if(achievementObjectUrls[path])return achievementObjectUrls[path];
+    try{
+        var blob=await sdk.storage.getBlob(sdk.storage.ref(sdk.storageInstance,path));
+        var url=URL.createObjectURL(blob);
+        achievementObjectUrls[path]=url;
+        return url;
+    }
+    catch(error){console.error('Could not load achievement evidence',error);return ''}
+}
+var achievementObjectUrls={};
+window.addEventListener('beforeunload',function(){Object.keys(achievementObjectUrls).forEach(function(path){URL.revokeObjectURL(achievementObjectUrls[path])})});
+async function refreshOwnAchievements(sdk,user){
+    var list=$('achievementList');
+    list.textContent='Loading your submissions...';
+    try{
+        var query=sdk.firestore.query(
+            sdk.firestore.collection(fbDB,'achievementSubmissions'),
+            sdk.firestore.where('ownerUid','==',user.uid)
+        );
+        var snapshot=await sdk.firestore.getDocs(query);
+        var submissions=snapshot.docs.map(function(item){return Object.assign({id:item.id},item.data())});
+        submissions.sort(function(a,b){return (b.createdAt&&b.createdAt.seconds||0)-(a.createdAt&&a.createdAt.seconds||0)});
+        if(!submissions.length){list.innerHTML='<p class="tag">No achievement submissions yet.</p>';return}
+        var cards=await Promise.all(submissions.map(async function(item){
+            var url=await achievementEvidenceUrl(sdk,item.evidencePath);
+            return '<article class="achievement-card"><span class="achievement-status '+esc(item.status)+'">'+esc(item.status)+'</span><h3>'+esc(item.tournamentName)+'</h3><p>'+esc(item.game)+' · '+esc(item.placement)+'</p><p>'+esc(achievementDateLabel(item.eventDate))+(item.organizer?' · '+esc(item.organizer):'')+'</p>'+(item.details?'<p>'+esc(item.details)+'</p>':'')+(item.reviewNote?'<p><b>Reviewer note:</b> '+esc(item.reviewNote)+'</p>':'')+(url?'<a class="achievement-evidence" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">View evidence image</a>':'<p class="tag">Evidence preview unavailable.</p>')+'</article>';
+        }));
+        list.innerHTML=cards.join('');
+    }catch(error){
+        console.error('Could not load achievement submissions',error);
+        list.textContent='Could not load submissions: '+firebaseErrorMessage(error);
+    }
+}
+async function refreshReviewerQueue(sdk){
+    var list=$('achievementReviewList');
+    list.textContent='Loading pending submissions...';
+    try{
+        var query=sdk.firestore.query(
+            sdk.firestore.collection(fbDB,'achievementSubmissions'),
+            sdk.firestore.where('status','==','pending'),
+            sdk.firestore.limit(50)
+        );
+        var snapshot=await sdk.firestore.getDocs(query);
+        var submissions=snapshot.docs.map(function(item){return Object.assign({id:item.id},item.data())});
+        submissions.sort(function(a,b){return (a.createdAt&&a.createdAt.seconds||0)-(b.createdAt&&b.createdAt.seconds||0)});
+        if(!submissions.length){list.innerHTML='<p class="tag">No pending submissions.</p>';return}
+        var cards=await Promise.all(submissions.map(async function(item){
+            var url=await achievementEvidenceUrl(sdk,item.evidencePath);
+            return '<article class="achievement-card" data-submission-id="'+esc(item.id)+'"><span class="achievement-status pending">pending</span><h3>'+esc(item.tournamentName)+'</h3><p>'+esc(item.game)+' · '+esc(item.placement)+'</p><p>Player: '+esc(item.ownerUid)+'</p><p>'+esc(achievementDateLabel(item.eventDate))+(item.organizer?' · '+esc(item.organizer):'')+'</p>'+(item.details?'<p>'+esc(item.details)+'</p>':'')+(url?'<a class="achievement-evidence" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Review evidence image</a>':'<p class="tag">Evidence image unavailable.</p>')+'<div class="review-controls"><textarea maxlength="1000" aria-label="Reviewer note" placeholder="Reviewer note (required when rejecting)"></textarea><div class="fr"><button class="btn" type="button" data-decision="verified">Verify</button><button class="btn alt" type="button" data-decision="rejected">Reject</button></div></div></article>';
+        }));
+        list.innerHTML=cards.join('');
+    }catch(error){
+        console.error('Could not load reviewer queue',error);
+        list.textContent='Could not load the reviewer queue: '+firebaseErrorMessage(error);
+    }
+}
+async function syncAchievementAccess(user){
+    var form=$('achievementForm'),hint=$('achievementLoginHint'),reviewer=$('achievementReviewer');
+    if(!user){
+        form.hidden=true;hint.hidden=false;reviewer.hidden=true;
+        $('achievementList').textContent='Log in to view your submissions.';
+        $('achievementReviewList').textContent='';
+        return;
+    }
+    form.hidden=false;hint.hidden=true;
+    try{
+        var sdk=await requireFirebase();
+        await refreshOwnAchievements(sdk,user);
+        var token=await sdk.auth.getIdTokenResult(user,true);
+        reviewer.hidden=token.claims.achievementReviewer!==true;
+        if(!reviewer.hidden)await refreshReviewerQueue(sdk);
+    }catch(error){
+        reviewer.hidden=true;
+        console.error('Could not load achievement permissions',error);
+        $('achievementMessage').textContent='Achievement access could not be loaded: '+firebaseErrorMessage(error);
+    }
+}
+async function validateAchievementEvidence(file){
+    var maxBytes=10*1024*1024,allowed=['image/jpeg','image/png','image/webp'];
+    if(!file||!allowed.includes(file.type)||file.size===0||file.size>maxBytes)throw new Error('Choose a non-empty JPEG, PNG, or WebP image no larger than 10 MB.');
+    if(typeof createImageBitmap!=='function')throw new Error('This browser cannot validate image files. Please use a current browser.');
+    var bitmap;
+    try{bitmap=await createImageBitmap(file)}
+    catch(error){throw new Error('The selected file is not a readable image.')}
+    try{
+        if(!bitmap.width||!bitmap.height||bitmap.width>12000||bitmap.height>12000||bitmap.width*bitmap.height>50000000)throw new Error('Image dimensions must be within 12,000 × 12,000 pixels and 50 megapixels.');
+    }finally{bitmap.close()}
+}
+function validateAchievementForm(){
+    var tournament=$('achievementTournament').value.trim(),game=$('achievementGame').value.trim(),placement=$('achievementPlacement').value.trim();
+    var organizer=$('achievementOrganizer').value.trim(),eventDate=$('achievementDate').value,details=$('achievementDetails').value.trim();
+    if(tournament.length<3||tournament.length>120)throw new Error('Tournament name must be between 3 and 120 characters.');
+    if(!game||game.length>60)throw new Error('Enter a game name of at most 60 characters.');
+    if(!placement||placement.length>80)throw new Error('Placement or award must be at most 80 characters.');
+    if(organizer.length>120||details.length>1200)throw new Error('Organizer or details exceed the allowed length.');
+    var dateValue=new Date(eventDate+'T00:00:00.000Z');
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(eventDate)||Number.isNaN(dateValue.getTime())||dateValue.toISOString().slice(0,10)!==eventDate||eventDate>new Date().toISOString().slice(0,10))throw new Error('Enter a valid tournament date that is not in the future.');
+    return {tournamentName:tournament,game:game,placement:placement,organizer:organizer,eventDate:eventDate,details:details};
+}
+async function submitAchievement(event){
+    event.preventDefault();
+    var message=$('achievementMessage'),button=$('achievementSubmit'),file=$('achievementEvidence').files[0],uploadedRef=null;
+    var sdk=null,user=null,submissionId=null;
+    message.textContent='';
+    if(!fbAuth||!fbAuth.currentUser){message.textContent='Log in before submitting achievement evidence.';return}
+    button.disabled=true;
+    try{
+        var details=validateAchievementForm();
+        await validateAchievementEvidence(file);
+        sdk=await requireFirebase();user=fbAuth.currentUser;
+        if(!user)throw new Error('Your session expired. Please log in again.');
+        submissionId=sdk.firestore.doc(sdk.firestore.collection(fbDB,'achievementSubmissions')).id;
+        var uploadPath='achievement-proof-uploads/'+user.uid+'/'+submissionId+'/evidence';
+        uploadedRef=sdk.storage.ref(sdk.storageInstance,uploadPath);
+        message.textContent='Uploading and validating evidence...';
+        await sdk.storage.uploadBytes(uploadedRef,file,{
+            contentType:file.type,
+            customMetadata:{ownerUid:user.uid,submissionId:submissionId}
+        });
+        var submitCall=sdk.functions.httpsCallable(sdk.functionsInstance,'submitAchievement');
+        await submitCall(Object.assign({},details,{submissionId:submissionId}));
+        message.textContent='Evidence submitted. Status: pending review.';
+        $('achievementForm').reset();
+        await refreshOwnAchievements(sdk,user);
+    }catch(error){
+        console.error('Achievement submission failed',error);
+        if(submissionId&&sdk&&fbAuth.currentUser){
+            try{
+                var saved=await sdk.firestore.getDoc(sdk.firestore.doc(fbDB,'achievementSubmissions',submissionId));
+                if(saved.exists()&&saved.data().ownerUid===fbAuth.currentUser.uid){
+                    message.textContent='Evidence submitted. Status: '+saved.data().status+'.';
+                    await refreshOwnAchievements(sdk,fbAuth.currentUser);
+                    return;
+                }
+            }catch(reconcileError){console.error('Could not confirm whether the achievement submission was saved',reconcileError)}
+        }
+        if(uploadedRef){
+            try{await (await requireFirebase()).storage.deleteObject(uploadedRef)}
+            catch(cleanupError){console.error('Could not clean up a failed achievement upload',cleanupError)}
+        }
+        message.textContent='Submission failed: '+firebaseErrorMessage(error);
+    }finally{button.disabled=false}
+}
+$('achievementLogin').addEventListener('click',openLogin);
+$('achievementForm').addEventListener('submit',submitAchievement);
+$('achievementReviewer').addEventListener('click',async function(event){
+    var button=event.target.closest('button[data-decision]');
+    if(!button)return;
+    var card=button.closest('[data-submission-id]'),decision=button.dataset.decision,note=card.querySelector('textarea').value.trim();
+    if(decision==='rejected'&&!note){card.querySelector('textarea').focus();$('achievementMessage').textContent='Add a reviewer note before rejecting a submission.';return}
+    card.querySelectorAll('button').forEach(function(item){item.disabled=true});
+    try{
+        var sdk=await requireFirebase();
+        await sdk.functions.httpsCallable(sdk.functionsInstance,'reviewAchievement')({submissionId:card.dataset.submissionId,decision:decision,reviewNote:note});
+        $('achievementMessage').textContent='Submission marked '+decision+'.';
+        await refreshOwnAchievements(sdk,fbAuth.currentUser);
+        await refreshReviewerQueue(sdk);
+    }catch(error){
+        console.error('Achievement review failed',error);
+        $('achievementMessage').textContent='Review failed: '+firebaseErrorMessage(error);
+        card.querySelectorAll('button').forEach(function(item){item.disabled=false});
+    }
+});
 function openLogin(){ROLE='Player';
-$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="lgi">'+IC.s+'</div><h3 style="margin:0 0 4px;font-size:22px">Log in to Yke</h3><p class="tag">Log in with phone, email or Google. You need to be logged in to like, follow and message.</p><p class="tag" style="margin:14px 0 0">I am joining as</p><div class="roles" role="radiogroup" aria-label="Joining as"><button type="button" class="rl on" data-r="Player" role="radio" aria-checked="true">'+IC.c+'<span>Player</span></button><button type="button" class="rl" data-r="Teammate" role="radio" aria-checked="false">'+IC.q+'<span>Teammate</span></button><button type="button" class="rl" data-r="Sponsor" role="radio" aria-checked="false">'+IC.t+'<span>Sponsor</span></button><button type="button" class="rl" data-r="Organizer" role="radio" aria-checked="false">'+IC.o+'<span>Organizer</span></button></div><button class="btn alt gb" id="lg">Continue with Google</button><h4>Phone number</h4><div class="lf"><div class="ig">'+IC.ph+'<input id="lp" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" aria-label="Phone"></div><button class="btn" id="lo">Send OTP</button></div><div class="lf" id="lv" hidden><input id="lc" inputmode="numeric" maxlength="6" placeholder="6-digit OTP" aria-label="OTP"><button class="btn" id="lq">Verify</button></div><h4>Email</h4><div class="lf2"><div class="ig">'+IC.em+'<input id="le" type="email" placeholder="Email" aria-label="Email"></div><input id="lw" type="password" placeholder="Password (at least 6 characters)" aria-label="Password"><button class="btn" id="lm">Log in / Create account</button></div><div class="ok" id="lx" role="status"></div><p class="tag">Demo: real Google, OTP and email login need a backend. For now any correctly formatted data works.</p>';
+$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="lgi">'+IC.s+'</div><h3 style="margin:0 0 4px;font-size:22px">Log in to Yke</h3><p class="tag">Use your email and password to log in or create an account.</p><p class="tag" style="margin:14px 0 0">I am joining as</p><div class="roles" role="radiogroup" aria-label="Joining as"><button type="button" class="rl on" data-r="Player" role="radio" aria-checked="true">'+IC.c+'<span>Player</span></button><button type="button" class="rl" data-r="Teammate" role="radio" aria-checked="false">'+IC.q+'<span>Teammate</span></button><button type="button" class="rl" data-r="Sponsor" role="radio" aria-checked="false">'+IC.t+'<span>Sponsor</span></button><button type="button" class="rl" data-r="Organizer" role="radio" aria-checked="false">'+IC.o+'<span>Organizer</span></button></div><p class="tag">Google sign-in and phone OTP are unavailable and are not enabled.</p><h4>Email and password</h4><div class="lf2"><div class="ig">'+IC.em+'<input id="le" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></div><input id="lw" type="password" required minlength="6" autocomplete="current-password" placeholder="Password (at least 6 characters)" aria-label="Password"><div class="fr"><button class="btn" id="loginButton" type="button">Log in</button><button class="btn alt" id="createButton" type="button">Create account</button></div></div><div class="ok" id="lx" role="status"></div>';
 function msg(t){$('lx').textContent=t}
-$('lg').onclick=function(){setU({via:'Google'})};
-$('lo').onclick=function(){if(!/^[6-9]\d{9}$/.test($('lp').value)){msg('Enter a valid 10-digit mobile number.');return}$('lv').hidden=false;msg('OTP sent (demo). Enter any 6 digits.')};
-$('lq').onclick=function(){if(!/^\d{6}$/.test($('lc').value)){msg('Enter the 6-digit OTP.');return}setU({via:'Phone'})};
-$('lm').onclick=function(){if(!/^\S+@\S+\.\S+$/.test($('le').value.trim())){msg('Enter a valid email.');return}if($('lw').value.length<6){msg('Password must be at least 6 characters.');return}setU({via:'Email'})};
+firebaseReady.then(function(sdk){if(sdk)msg('Firebase is ready. Google sign-in and phone OTP are unavailable.');else msg('Firebase could not be initialized. Check the connection and Firebase setup, then reload.')});
+async function authenticate(createAccount){
+    var email=$('le').value.trim(), pw=$('lw').value;
+    if(!/^\S+@\S+\.\S+$/.test(email)){msg('Enter a valid email.');return}
+    if(pw.length<6){msg('Password must be at least 6 characters.');return}
+    var loginButton=$('loginButton'),createButton=$('createButton');
+    loginButton.disabled=true;createButton.disabled=true;msg('Connecting to Firebase...');
+    try{
+        if(createAccount){
+            var result=await fbCreateAccount(email,pw,ROLE);
+            msg(result.verificationSent?'Account created and profile saved. A verification email was sent.':'Account created and profile saved, but the verification email could not be sent.');
+        }else{
+            await fbSignIn(email,pw);
+            msg('Signed in successfully.');
+        }
+    }catch(error){
+        console.error(createAccount?'Firebase account creation failed':'Firebase sign-in failed',error);
+        msg(error.accountCreated?'Your account was created, but its Firestore profile could not be saved: '+firebaseErrorMessage(error):(createAccount?'Account creation failed: ':'Login failed: ')+firebaseErrorMessage(error));
+    }finally{loginButton.disabled=false;createButton.disabled=false}
+};
+loginButton.addEventListener('click',function(){authenticate(false)});
+createButton.addEventListener('click',function(){authenticate(true)});
 if(!d.open)d.showModal()}
 document.addEventListener('click',function(e){if(!U&&e.target.closest('.lk,.cb')){e.stopPropagation();e.preventDefault();openLogin()}},true);
 ['follow','dm','scout'].forEach(function(n){var f=window[n];window[n]=function(){if(!U){openLogin();return}f.apply(null,arguments)}});
@@ -365,7 +579,37 @@ function rtx(p){return p.rt?p.rt+'/100<i class="pw"><u style="width:'+p.rt+'%"><
 function wx(p){return p.rt?p.w+'%':'-'}
 function avh(p){return p.img?'<div class="av" style="background:url('+"'"+p.img+"'"+') center/cover"></div>':'<div class="av" style="background:'+p.col+'">'+init(p.n)+'</div>'}
 $('pf2').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement('canvas');c.width=c.height=160;var s=Math.min(im.width,im.height);c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,160,160);IMG=c.toDataURL('image/jpeg',.8);$('pv').style.background='url('+IMG+') center/cover';$('pv').textContent=''};im.src=r.result};r.readAsDataURL(f)});
-function submitProfile(e){e.preventDefault();if(!U){openLogin();return}var v=function(i){return $(i).value.trim()};if(!/^[A-Za-z0-9_.\- ]{2,20}$/.test(v('gtg'))){$('ok').textContent='Gamer tag: 2-20 characters, using letters, numbers, _ . or - only.';return}var ag=+v('jag');if(!(ag>=16)){$('ok').textContent='Yke is for players aged 16 and above.';return}if(!/^[6-9]\d{9}$/.test(v('jp'))){$('ok').textContent='Enter a valid 10-digit phone number.';return}if(!/^\S+@\S+\.\S+$/.test(v('je'))){$('ok').textContent='Enter a valid Gmail address.';return}var gt=v('gtg'),gid=v('fg');P.push({n:gt,gid:gid,fn:v('fn'),t:v('jt')||'Solo',g:v('jg'),r:v('jr')||'Player',lv:v('jl'),c:v('jc'),st:v('js'),a:ag,rt:0,w:0,e:0,col:'#5a4ff3',img:IMG,ph:v('jp'),em:v('je'),k:'New player',mine:true,gd:v('jgn'),nb:$('vis').checked,ach:[['Joined Yke','New','Pending verification']]});EXP.push({s:+v('jy')||new Date().getFullYear(),tm:v('jt')||'Solo',x:v('jb')||'New profile.',sk:[]});$('g').value='';$('gf').value='';$('q').value=gt;render();if(typeof rsel==='function')rsel();$('ok').textContent='Profile created! See it under Players (demo, it resets on refresh).';e.target.reset();IMG=null;$('pv').style.background='';$('pv').textContent='+';$('players').scrollIntoView()}
+async function submitProfile(e){
+    e.preventDefault();
+    if(!U){openLogin();return}
+    $('ok').textContent='';
+    var v=function(i){return $(i).value.trim()};
+    if(!/^[A-Za-z0-9_.\- ]{2,20}$/.test(v('gtg'))){$('ok').textContent='Gamer tag: 2-20 characters, using letters, numbers, _ . or - only.';return}
+    var ag=+v('jag');if(!(ag>=16)){$('ok').textContent='Yke is for players aged 16 and above.';return}
+    if(!/^[6-9]\d{9}$/.test(v('jp'))){$('ok').textContent='Enter a valid 10-digit phone number.';return}
+    if(!/^\S+@\S+\.\S+$/.test(v('je'))){$('ok').textContent='Enter a valid Gmail address.';return}
+    var gt=v('gtg'),gid=v('fg');
+    var newProfile = {n:gt,gid:gid,fn:v('fn'),t:v('jt')||'Solo',g:v('jg'),r:v('jr')||'Player',lv:v('jl'),c:v('jc'),st:v('js'),a:ag,rt:0,w:0,e:0,col:'#5a4ff3',img:IMG,ph:v('jp'),em:v('je'),k:'New player',mine:true,gd:v('jgn'),nb:$('vis').checked,ach:[['Joined Yke','New','Pending verification']]};
+    try{
+        var sdk=await requireFirebase();
+        if(!fbAuth.currentUser){$('ok').textContent='Your session expired. Please log in again.';openLogin();return}
+        await sdk.firestore.setDoc(sdk.firestore.doc(fbDB,'users',fbAuth.currentUser.uid),Object.assign(profileForFirestore(newProfile),{
+            uid:fbAuth.currentUser.uid,
+            email:fbAuth.currentUser.email,
+            updatedAt:sdk.firestore.serverTimestamp()
+        }),{merge:true});
+    }catch(error){
+        console.error('Firestore profile save failed',error);
+        $('ok').textContent='Profile could not be saved: '+firebaseErrorMessage(error);
+        return;
+    }
+    $('ok').textContent='Profile saved to your Firebase account.';
+    P.push(newProfile);
+    EXP.push({s:+v('jy')||new Date().getFullYear(),tm:v('jt')||'Solo',x:v('jb')||'New profile.',sk:[]});
+    $('g').value='';$('gf').value='';$('q').value=gt;render();if(typeof rsel==='function')rsel();
+    if(!$('ok').textContent) $('ok').textContent='Profile created! See it under Players (sample display data resets on refresh).';
+    e.target.reset();IMG=null;$('pv').style.background='';$('pv').textContent='+';$('players').scrollIntoView()
+}
 ['nbs','tfs'].forEach(function(i){STL.forEach(function(s){var o=document.createElement('option');o.textContent=s;$(i).appendChild(o)})});
 ['nbg','tfg'].forEach(function(i){games.forEach(function(g){var o=document.createElement('option');o.textContent=g;$(i).appendChild(o)})});
 var T=[{n:'Team Nova',g:'BGMI',c:'Delhi',st:'Delhi',need:'Sniper, Support',slots:2},{n:'Alpha Esports',g:'Free Fire',c:'Jaipur',st:'Rajasthan',need:'Rusher',slots:1},{n:'Venom Queens',g:'Valorant',c:'Pune',st:'Maharashtra',need:'Controller, Initiator',slots:2},{n:'Delta CS',g:'CS2',c:'Bengaluru',st:'Karnataka',need:'AWPer, IGL',slots:2},{n:'Rise Squad',g:'BGMI',c:'Lucknow',st:'Uttar Pradesh',need:'Entry fragger',slots:1}];
@@ -414,7 +658,11 @@ var CI=[['pf',IC.c,'Player profile','Show your stats, level and experience'],['s
 function openCreate(){$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><h3 style="margin:0;font-size:22px">Create</h3><p class="tag">What do you want to make?</p>'+CI.map(function(c){return '<button type="button" class="cs" data-k="'+c[0]+'">'+c[1]+'<span><b>'+c[2]+'</b><small>'+c[3]+'</small></span></button>'}).join('');$('d').showModal()}
 function openProfile(){if(!U){openLogin();return}var me=P.filter(function(p){return p.mine}).pop();$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="top"><div class="av" style="background:#5a4ff3">'+esc((U.role||'Player').slice(0,2))+'</div><div><h3 style="font-size:22px;margin:0">My profile</h3><div class="tag">'+esc(U.role||'Player')+' · logged in with '+esc(U.via)+'</div></div></div>'+(me?'<div class="row"><span>Gamer tag</span><b>'+esc(me.n)+'</b></div><div class="row"><span>Game</span><b>'+esc(me.g)+'</b></div><div class="fr"><button class="btn" id="mv">View my profile</button></div>':'<p class="tag" style="margin-top:14px">You have not created a player profile yet.</p><div class="fr"><button class="btn" id="mc">Create player profile</button></div>')+'<div class="fr"><button class="btn alt" id="mo">Log out</button></div>';
 if(me)$('mv').onclick=function(){d.close();$('g').value='';$('gf').value='';$('q').value=me.n;render();$('players').scrollIntoView({behavior:'smooth'})};else $('mc').onclick=function(){go('join','gtg')};
-$('mo').onclick=function(){U=null;try{localStorage.removeItem('yke_user')}catch(e){}au();d.close()};$('d').showModal()}
+$('mo').onclick=async function(){
+    try{await fbSignOut();d.close()}
+    catch(error){console.error('Firebase sign-out failed',error);openLogin();$('lx').textContent='Sign out failed: '+firebaseErrorMessage(error)}
+};
+$('d').showModal()}
 $('m').addEventListener('click',function(e){var b=e.target.closest('.cs');if(!b)return;var k=b.dataset.k;if(k==='pf')go('join','gtg');else if(k==='tm')go('tf','tfn');else if(k==='sp')go('sf',null);else if(k==='sh'){if(!U){openLogin();return}d.close();$('uf').click()}});
 $('tb').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=b.dataset.t;if(t==='home')window.scrollTo({top:0,behavior:'smooth'});else if(t==='discover'){$('players').scrollIntoView({behavior:'smooth'});setTimeout(function(){$('q').focus({preventScroll:true})},500)}else if(t==='esports')$('games').scrollIntoView({behavior:'smooth'});else if(t==='create')openCreate();else openProfile()});
 var SYS="You are the Yke AI Gaming Assistant on an eSports talent platform. Use only the data given. Do not invent stats, matches or results; if data is missing, say so. Ratings and stats may be sample data, so say that when it matters. Never rank or judge people by gender, age or personal background. Be practical, encouraging and concise: short headings that start with ## and bullet points. Reply in English.";
