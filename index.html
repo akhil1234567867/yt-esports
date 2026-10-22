@@ -15,6 +15,13 @@
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f4ff;--ink:#14163a;--mut:#575b86;--card:#fff;--line:#dcdef5;--blue:#4338ca;--yel:#0e7490;--on:#fff}}
 :root[data-theme="light"]{--bg:#f3f4ff;--ink:#14163a;--mut:#575b86;--card:#fff;--line:#dcdef5;--blue:#4338ca;--yel:#0e7490;--on:#fff}
 *{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+/* Double Scrollbars Hatane Ke Liye */
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden}
+/* Mobile Bottom Navigation Control */
+.bottom-nav{display:none}
+@media (max-width:768px){
+  .bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:1000}
+}
 body{margin:0;background-color:var(--bg);background-image:radial-gradient(900px 420px at 90% -60px,rgba(108,92,255,.30),transparent 65%),radial-gradient(640px 320px at -5% 160px,rgba(108,92,255,.10),transparent 65%);background-repeat:no-repeat;color:var(--ink);font-family:'Exo 2',system-ui,sans-serif;line-height:1.55}
 .w{max-width:1040px;margin:0 auto;padding:0 20px}
 nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
