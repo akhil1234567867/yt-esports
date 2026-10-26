@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yke – eSports Talent Hub</title>
+<meta name="description" content="Yke is the eSports talent hub where players showcase tournaments, achievements and stats so organizations, teams and sponsors can find them.">
+<meta name="theme-color" content="#0e0f1f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230e0f1f'/%3E%3Cpath fill='white' transform='translate%28-7.3 -7.05%29 scale%28.0914%29' d='M335 285H468L627 428L786 285H919L670 507V598H583V507Z M368 595H886L800 670H454Z M583 667H670V891L627 963L583 891Z'/%3E%3C/svg%3E">
+<meta property="og:title" content="Yke – eSports Talent Hub">
+<meta property="og:description" content="Where gamers become pros. Player profiles, tournaments, sponsors and shorts.">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&family=Exo+2:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+    :root{--bg:#0e0f1f;--ink:#f2f3ff;--mut:#a0a5cc;--card:#171830;--line:#2a2c52;--blue:#5a4ff3;--yel:#3de8ff;--on:#04141c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f4ff;--ink:#14163a;--mut:#575b86;--card:#fff;--line:#dcdef5;--blue:#4338ca;--yel:#0e7490;--on:#fff}}
+:root[data-theme="light"]{--bg:#f3f4ff;--ink:#14163a;--mut:#575b86;--card:#fff;--line:#dcdef5;--blue:#4338ca;--yel:#0e7490;--on:#fff}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+.hero-container{max-width:1200px;margin:0 auto;padding:40px 20px;box-sizing:border-box}
+/* Main Navigation Header Adjustment */
+header,.navbar,nav{display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 20px;box-sizing:border-box}
+/* Menu Links Container Fix */
+.nav-links,nav>div:last-child{display:flex;align-items:center;gap:15px;flex-wrap:wrap;overflow:hidden}
+/* Link Text Styling Fix */
+.nav-links a,nav>div:last-child a{font-size:14px;white-space:nowrap;text-transform:uppercase}
+/* Double Scrollbars Hatane Ke Liye */
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden}
+/* Mobile Bottom Navigation Control */
+.bottom-nav{display:none}
+@media (max-width:768px){
+  .bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:1000}
+}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(900px 420px at 90% -60px,rgba(108,92,255,.30),transparent 65%),radial-gradient(640px 320px at -5% 160px,rgba(108,92,255,.10),transparent 65%);background-repeat:no-repeat;color:var(--ink);font-family:'Exo 2',system-ui,sans-serif;line-height:1.55}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em}
+.logo i{font-style:normal;background:var(--yel);color:#14161f;padding:0 6px;border-radius:4px;margin-left:2px}
+nav a{color:var(--mut);text-decoration:none;margin-left:18px;font-size:14px}
+nav a:hover,nav a:focus-visible{color:var(--ink)}
+.hero{padding:44px 0 36px}
+h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(34px,8vw,76px);line-height:1.02;letter-spacing:-.03em;margin:0 0 18px;max-width:14ch}
+.hero p{font-size:18px;color:var(--mut);max-width:52ch;margin:0 0 24px}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 15px 'DM Sans',sans-serif;padding:13px 22px;border-radius:10px;background:var(--blue);color:#fff;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink);margin-left:8px}
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;padding:20px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:44px}
+.stats b{font-family:'Unbounded',sans-serif;font-size:26px;display:block}.stats span{color:var(--mut);font-size:13px}
+h2{font-family:'Unbounded',sans-serif;font-weight:500;font-size:26px;margin:0 0 6px;letter-spacing:-.02em}
+.sub{color:var(--mut);margin:0 0 20px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.bar input,.bar select{font:16px 'DM Sans',sans-serif;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-width:0}
+.bar input{flex:1 1 200px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.p:hover{border-color:var(--blue)}
+top{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+.av{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;color:#fff;flex:none}
+.p h3{margin:0;font-size:18px}.tag{font-size:13px;color:var(--mut)}
+.row{display:flex;justify-content:space-between;gap:8px;font-size:14px;padding:6px 0;border-top:1px solid var(--line)}
+.row b{font-weight:700}
+.gold{background:var(--yel);color:#14161f;font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;display:inline-block;margin-top:10px}
+dialog{border:0;border-radius:16px;padding:0;max-width:560px;width:calc(100% - 28px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(10,12,20,.6)}
+.m{padding:24px;max-height:85vh;overflow:auto}
+.m h4{margin:20px 0 8px;font-size:15px}
+.tl{list-style:none;margin:0;padding:0 0 0 16px;border-left:3px solid var(--blue)}
+.tl li{margin-bottom:12px;font-size:14px}.tl b{display:block}
+.x{float:right;background:none;border:0;color:var(--ink);font-size:26px;cursor:pointer;line-height:1}
+.orgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:12px 0 56px}
+.orgs div{border-left:4px solid var(--yel);padding:4px 0 4px 14px}.orgs p{margin:4px 0 0;color:var(--mut);font-size:14px}
+.sec{margin:56px 0 0}
+form{display:grid;gap:10px;max-width:460px}
+form input,form select,form textarea{font:16px 'DM Sans',sans-serif;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.ok{color:var(--blue);font-weight:700;min-height:24px}
+.achievement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}.achievement-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}.achievement-card h3{margin:0 0 8px;font-family:'Rajdhani',sans-serif;text-transform:uppercase}.achievement-card p{margin:5px 0;font-size:14px}.achievement-status{display:inline-block;padding:3px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px;font-weight:700;text-transform:uppercase}.achievement-status.pending{color:#facc15}.achievement-status.verified{color:#34d399}.achievement-status.rejected{color:#fb7185}.achievement-evidence{display:inline-block;margin-top:8px;color:var(--yel)}.review-controls{display:grid;gap:8px;margin-top:12px}.review-controls textarea{width:100%;min-height:68px;padding:9px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font:inherit}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mut);font-size:13px;margin-top:56px}
+.st{display:flex;gap:14px;overflow-x:auto;padding:4px 0 16px}.sb{background:none;border:0;cursor:pointer;color:var(--ink);font:12px 'DM Sans',sans-serif;text-align:center;flex:none;width:68px}.ring{width:62px;height:62px;border-radius:50%;padding:3px;background:conic-gradient(var(--yel),var(--blue),var(--yel));margin:0 auto 4px}.ring .av{width:100%;height:100%;border-radius:50%;border:3px solid var(--bg)}.post{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;max-width:560px}.ph{display:flex;gap:10px;align-items:center;padding:12px 14px}.ph .av{width:38px;height:38px;border-radius:50%;font-size:13px}.clip{height:200px;display:grid;place-items:center;color:#fff;font-family:'Unbounded',sans-serif;font-size:15px;text-align:center;padding:16px}.act{padding:10px 14px 4px}.act button{background:none;border:0;cursor:pointer;color:var(--ink);font:700 15px 'DM Sans',sans-serif;padding:0}.act .liked{color:#e0245e}.cm{padding:4px 14px 10px;font-size:14px}.cm p{margin:2px 0}.ci{display:flex;gap:8px;padding:0 14px 14px}.ci input{flex:1;min-width:0;font:16px 'DM Sans',sans-serif;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}.ci .btn{padding:9px 16px}.fr{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}.fr .btn.alt{margin:0}.fr .btn.on{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.logo,h1,h2,.stats b,.av,.clip{font-family:'Rajdhani',sans-serif}h1{font-size:clamp(42px,10vw,92px);letter-spacing:-.01em;line-height:.98}h2{font-weight:700;font-size:30px;letter-spacing:0}.stats b{color:var(--yel);font-weight:700;font-size:30px}.btn,.bar input,.bar select,form input,form select,form textarea,.ci input,.sb,.act button{font-family:'Exo 2',system-ui,sans-serif}.btn{transition:box-shadow .15s}.btn:hover{box-shadow:0 0 0 4px rgba(108,92,255,.4)}.p{transition:transform .15s,border-color .15s}.p:hover{border-color:var(--yel);transform:translateY(-3px)}.gold{background:var(--yel)}.hero p{color:var(--ink);opacity:.8}
+[hidden]{display:none!important}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{font:500 14px 'Exo 2',sans-serif;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}.chip:hover{border-color:var(--yel)}.lg{padding:8px 16px;margin-left:16px}.btn.gb{width:100%;margin:14px 0 0}.lf{display:flex;gap:8px;margin-bottom:8px}.lf2{display:grid;gap:8px}.lf input,.lf2 input{flex:1;min-width:0;font:16px 'Exo 2',sans-serif;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.w{max-width:1120px}nav{position:sticky;top:calc(10px + env(safe-area-inset-top,0px));z-index:20;margin-top:12px;padding:12px 18px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}nav a{font-weight:500}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:center;padding:72px 0 56px}h1{font-size:clamp(40px,6.6vw,78px);max-width:none}.hero p{max-width:46ch}.btn{border-radius:10px;letter-spacing:.01em;padding:13px 24px}.btn:hover{filter:brightness(1.1)}.feat{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:16px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.35)}.feat h3{margin:0 0 10px;font:700 16px 'Rajdhani',sans-serif;color:var(--mut)}.fi{display:flex;align-items:center;gap:12px;width:100%;padding:12px 0;background:none;border:0;border-top:1px solid var(--line);color:var(--ink);cursor:pointer;text-align:left;font-family:'Exo 2',sans-serif}.fi .av{width:40px;height:40px;border-radius:10px;font-size:14px}.rk{width:18px;color:var(--mut);font-family:'Rajdhani',sans-serif}.fn{flex:1;display:flex;flex-direction:column;line-height:1.3}.fn small{color:var(--mut);font-size:13px}.fs{font:700 22px 'Rajdhani',sans-serif;color:var(--yel)}.fi:hover .fn b{color:var(--yel)}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;border:0;padding:0;margin:8px 0 24px}.stats>div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}h2{display:flex;align-items:center;gap:12px}h2:before{content:"";width:5px;height:26px;background:var(--blue);border-radius:2px}.sub{max-width:60ch}.sec{margin-top:84px}.p{padding:20px;border-top:3px solid var(--blue)}.chip:hover{background:var(--blue);border-color:var(--blue);color:#fff}.orgs div{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:18px}dialog{border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5)}footer .fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;margin-bottom:24px}footer b{color:var(--ink);display:block;margin-bottom:8px}footer a{display:block;color:var(--mut);text-decoration:none;padding:3px 0}footer a:hover{color:var(--yel)}footer p{margin:8px 0 0;max-width:34ch}footer .cp{max-width:none;border-top:1px solid var(--line);padding-top:16px}
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.sc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:left;cursor:pointer;color:var(--ink);font-family:'Exo 2',sans-serif}.sc:hover{border-color:var(--yel)}.sl{width:46px;height:46px;border-radius:10px;display:grid;place-items:center;font:700 16px 'Rajdhani',sans-serif;background:var(--blue);color:#fff;margin-bottom:10px}.sc b{display:block}.sc small{color:var(--mut)}.sh{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}.sv{flex:none;width:170px;height:300px;border-radius:14px;color:#fff;border:0;cursor:pointer;scroll-snap-align:start;position:relative;overflow:hidden;text-align:left;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;font-family:'Exo 2',sans-serif}.sv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.sv span{position:relative;font-size:13px;line-height:1.3;text-shadow:0 1px 6px rgba(0,0,0,.6)}.sv .pl{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);border-radius:999px;padding:3px 9px;font-size:12px}.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}.vc{border:0;background:none;padding:0;text-align:left;cursor:pointer;color:var(--ink);font-family:'Exo 2',sans-serif}.vt{height:140px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:30px;position:relative;margin-bottom:8px}.vt em{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.7);font-style:normal;font-size:12px;padding:2px 7px;border-radius:6px}.vc b{display:block;font-size:15px}.vc small{color:var(--mut)}.vp{width:100%;max-height:70vh;border-radius:12px;background:#000;display:block}.sr{position:absolute;opacity:0;width:1px;height:1px}.btn:focus-within{outline:3px solid var(--yel);outline-offset:2px}.up{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.ph2{display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--mut)}.ph2:focus-within{outline:3px solid var(--yel);outline-offset:2px;border-radius:12px}.pv{width:64px;height:64px;border-radius:50%;font-size:26px;background:var(--card);border:1px dashed var(--mut);color:var(--mut)}
+.logo{display:flex;align-items:center;gap:8px}nav .logo{font-size:26px}.logo:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--blue);animation:lv 1.8s infinite}@keyframes lv{0%{box-shadow:0 0 0 0 rgba(108,92,255,.7)}70%,100%{box-shadow:0 0 0 11px rgba(108,92,255,0)}}.logo i{position:relative;overflow:hidden;display:inline-block}.logo i:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.75) 50%,transparent 70%);transform:translateX(-130%);animation:sh 3.6s infinite}@keyframes sh{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}@media (prefers-reduced-motion:reduce){.logo:before,.logo i:after{animation:none}}
+.nc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.nc .top{margin-bottom:8px}.nc .gold{margin:8px 0 0}.th{font:700 20px 'Rajdhani',sans-serif;margin:32px 0 14px}
+.msgs{min-height:140px;max-height:240px;overflow:auto;display:flex;flex-direction:column;gap:6px;margin:12px 0}.bb{align-self:flex-end;background:var(--blue);color:#fff;padding:8px 12px;border-radius:12px;max-width:80%;font-size:14px;overflow-wrap:anywhere}
+.act{display:flex;gap:22px;align-items:center}.act button{display:inline-flex;align-items:center;gap:7px}.act svg{width:26px;height:26px}.act button:hover{color:var(--yel)}.act .liked svg{fill:rgba(108,92,255,.3)}
+body{background-image:linear-gradient(rgba(128,128,128,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(128,128,128,.08) 1px,transparent 1px),radial-gradient(900px 420px at 90% -60px,rgba(108,92,255,.30),transparent 65%),radial-gradient(640px 320px at -5% 160px,rgba(108,92,255,.10),transparent 65%);background-size:48px 48px,48px 48px,auto,auto;background-repeat:repeat,repeat,no-repeat,no-repeat}.hl{color:var(--blue)}h1{text-transform:uppercase;font-style:italic;font-weight:700;letter-spacing:0;text-shadow:0 0 30px rgba(108,92,255,.4)}h2{text-transform:uppercase;letter-spacing:.05em;font-size:26px;font-style:italic}h2:before{box-shadow:0 0 12px var(--blue);transform:skewX(-14deg)}nav{border-radius:0;border-left:3px solid var(--blue)}nav a{text-transform:uppercase;font-size:12.5px;letter-spacing:.12em;font-weight:700}.btn{border-radius:0;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);text-transform:uppercase;letter-spacing:.09em;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px}.btn:hover{box-shadow:none;filter:brightness(1.18)}.btn:focus-visible,.btn:focus-within,.p:focus-visible,.chip:focus-visible{clip-path:none}.p,.nc,.sc,.feat{border-radius:4px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}.p:hover{box-shadow:none}.stats>div,.orgs div,.post{border-radius:4px}.stats b{font-size:34px;font-style:italic;text-shadow:0 0 18px rgba(61,232,255,.45)}.stats span{text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;font-weight:700}.gold{border-radius:0;text-transform:uppercase;letter-spacing:.05em;padding:3px 12px 3px 8px;clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}.chip{border-radius:0;clip-path:polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%);padding:9px 20px;text-transform:uppercase;font-size:12px;letter-spacing:.09em;font-weight:700}.pw{display:block;height:5px;background:var(--line);margin-top:5px;min-width:90px}.pw u{display:block;height:100%;background:linear-gradient(90deg,#1f9bd7,#3de8ff);box-shadow:0 0 8px rgba(61,232,255,.7)}dialog{border-top:3px solid var(--blue);border-radius:6px}.bar input,.bar select,form input,form select,form textarea,.ci input,.lf input,.lf2 input{border-radius:2px}input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 2px rgba(108,92,255,.4)}.tk{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:14px 0 0;font:700 12px 'Rajdhani',sans-serif;letter-spacing:.2em;color:var(--mut);padding:7px 0}.tk span{display:inline-block;padding-left:100%;animation:tk 30s linear infinite}.tk b{color:var(--blue)}@keyframes tk{to{transform:translateX(-100%)}}@media (prefers-reduced-motion:reduce){.tk span{animation:none;padding-left:0}}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding:44px 0 36px}footer .fg{grid-template-columns:1fr}}
+@media (max-width:520px){nav a{display:none}.btn.alt{margin:10px 0 0}nav a{margin-left:12px}}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.btn:not(.alt){background:linear-gradient(135deg,var(--blue),#7c3aed)}
+.hl{background:linear-gradient(90deg,var(--yel),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.ok,.tk b{color:var(--yel)}
+.logo i,.gold{color:var(--on)}
+.act button{position:relative}.act button.pop.lk svg{animation:lkA .55s cubic-bezier(.3,1.6,.5,1)}.act button.pop.cmt svg{animation:cmA .55s ease-out;filter:drop-shadow(0 0 6px var(--yel))}.act button.pop.shr svg{animation:shA .5s ease-out}@keyframes lkA{0%{transform:scale(1)}25%{transform:scale(1.55) rotate(-16deg) translateY(-7px)}45%{transform:scale(1.2) rotate(12deg)}65%{transform:scale(1.3) rotate(-8deg)}100%{transform:scale(1) rotate(0)}}@keyframes cmA{0%{transform:scale(1)}25%{transform:scale(1.35) translateY(-5px)}50%{transform:scale(1.15) rotate(-7deg)}75%{transform:scale(1.25) rotate(7deg)}100%{transform:scale(1)}}@keyframes shA{0%{transform:translateY(0) scale(1)}20%{transform:translateY(3px) scale(.85)}45%{transform:translateY(-8px) scale(1.25) rotate(-12deg)}75%{transform:translateY(0) rotate(8deg)}100%{transform:none}}.bp{position:absolute;left:13px;top:13px;width:6px;height:6px;margin:-3px;border-radius:1px;pointer-events:none;animation:bp .6s ease-out forwards}@keyframes bp{from{transform:translate(0,0) scale(1) rotate(0);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(.2) rotate(180deg);opacity:0}}.rp{position:absolute;left:13px;top:13px;width:26px;height:26px;margin:-13px;border:2px solid var(--yel);border-radius:50%;pointer-events:none;animation:rp .5s ease-out forwards}@keyframes rp{from{transform:scale(.4);opacity:.9}to{transform:scale(1.9);opacity:0}}@media (prefers-reduced-motion:reduce){.act button.pop svg{animation:none!important}.bp,.rp{display:none}}
+.p,.nc,.sc,.feat,.post,.stats>div,.orgs div{background:color-mix(in srgb,var(--card) 86%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.logo:before{content:none}.logo{gap:10px}.logo span{font-family:'Rajdhani',sans-serif;letter-spacing:.18em;font-weight:700;font-size:.8em}.lm{width:28px;height:32px;color:var(--ink);flex:none;filter:drop-shadow(0 0 8px rgba(61,232,255,.5));animation:lg 3s ease-in-out infinite}footer .lm{width:24px;height:28px}@keyframes lg{50%{filter:drop-shadow(0 0 15px rgba(108,92,255,.95))}}@media (prefers-reduced-motion:reduce){.lm{animation:none}}
+nav .lm{width:34px;height:40px}
+h1{font-family:'Orbitron',sans-serif;font-weight:800;font-size:clamp(28px,5.2vw,58px);line-height:1.12;letter-spacing:.01em}h2{font-family:'Orbitron',sans-serif;font-weight:700;font-size:21px;letter-spacing:.07em}h2:before{height:22px}.stats b{font-family:'Orbitron',sans-serif;font-weight:800;font-size:26px}.stats span{font-family:'Rajdhani',sans-serif;font-size:13px}.fs{font-family:'Orbitron',sans-serif;font-size:19px}.btn{font-size:15px}nav a{font-size:14px}.chip{font-size:13px}.tk{font-size:13px}.p h3,.nc b,.fn b,dialog h3{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:21px}.row span{font-family:'Rajdhani',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--mut)}.row b{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:16px}.gold{font-family:'Rajdhani',sans-serif;font-size:13px}
+.fw{display:inline-flex;align-items:center;gap:8px}.fw svg{width:22px;height:22px;transition:filter .2s}.fw .cd,.fw .pl{transition:opacity .2s}.fr .btn.fw.on{color:var(--yel);border:2px solid var(--yel);background:rgba(61,232,255,.1)}.fw.on .cd{opacity:1}.fw.on .pl{opacity:0}.fw.on svg{filter:drop-shadow(0 0 6px var(--yel))}.fw.fx svg{animation:lock .7s cubic-bezier(.3,1.4,.5,1)}@keyframes lock{0%{transform:rotate(0) scale(1)}35%{transform:rotate(200deg) scale(1.7)}70%{transform:rotate(360deg) scale(.7)}100%{transform:rotate(360deg) scale(1)}}@media (prefers-reduced-motion:reduce){.fw.fx svg{animation:none}}
+.mg{display:inline-flex;align-items:center;gap:8px}.mg svg{width:24px;height:24px;overflow:visible}.mg .d1,.mg .d2,.mg .d3{fill:currentColor;stroke:none;animation:td 1.4s infinite}.mg .d2{animation-delay:.2s}.mg .d3{animation-delay:.4s}.mg .on{fill:#34d399;stroke:none;transform-box:fill-box;transform-origin:center;animation:ol 1.6s infinite}.mg.fx svg{animation:mp .6s cubic-bezier(.3,1.5,.5,1)}@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-2.5px);opacity:1}}@keyframes ol{50%{transform:scale(1.6);opacity:.55}}@keyframes mp{0%{transform:scale(1)}30%{transform:scale(1.45) rotate(-12deg) translateY(-3px)}60%{transform:scale(1.2) rotate(8deg)}100%{transform:scale(1)}}@media (prefers-reduced-motion:reduce){.mg .d1,.mg .d2,.mg .d3,.mg .on,.mg.fx svg{animation:none}.mg .d1,.mg .d2,.mg .d3{opacity:1}}
+.lg{display:inline-flex;align-items:center;gap:8px}.lg svg{width:22px;height:22px}.roles{display:flex;gap:8px;margin:8px 0 4px}.rl{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;background:var(--card);border:1px solid var(--line);color:var(--ink);cursor:pointer;font:700 14px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;border-radius:4px}.rl svg{width:26px;height:26px}.rl.on{border-color:var(--yel);color:var(--yel);background:rgba(61,232,255,.1)}.lgi{width:44px;height:44px;color:var(--yel);margin-bottom:6px;filter:drop-shadow(0 0 8px var(--yel))}.lgi svg{width:100%;height:100%}.lg .pt,.lgi .pt{animation:pst 1.6s steps(2,end) infinite}@keyframes pst{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.pt{animation:none!important}}
+.ig{position:relative;flex:1;min-width:0;display:flex}.ig svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;color:var(--yel);pointer-events:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:filter .2s}.ig input{padding-left:44px;width:100%}.ig:focus-within svg{filter:drop-shadow(0 0 6px var(--yel))}
+body{padding-bottom:104px}section{scroll-margin-top:84px}.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));width:min(560px,calc(100% - 20px));z-index:30;display:flex;align-items:flex-end;justify-content:space-around;padding:8px 6px 6px;background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-top:2px solid var(--blue);box-shadow:0 12px 40px rgba(0,0,0,.45);border-radius:6px}.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;color:var(--mut);cursor:pointer;font:700 12px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;padding:4px 2px;position:relative}.tabs svg{width:25px;height:25px;transition:transform .2s,filter .2s}.tabs button.on{color:var(--yel)}.tabs button.on svg{filter:drop-shadow(0 0 6px var(--yel))}.tabs button.on:after{content:"";position:absolute;top:-10px;left:25%;right:25%;height:3px;background:var(--yel);box-shadow:0 0 10px var(--yel)}.tabs button:active svg{transform:scale(.85)}.tabs button:focus-visible{outline:2px solid var(--yel);outline-offset:2px}.tabs .mk{flex:none;width:64px;margin-top:-28px;color:#fff;filter:drop-shadow(0 4px 12px rgba(90,79,243,.65))}.tabs .mk i{display:grid;place-items:center;width:54px;height:48px;background:linear-gradient(135deg,var(--blue),#7c3aed);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}.tabs .mk svg{width:28px;height:28px;stroke-width:2.2}.tabs .mk span{color:var(--mut)}.tabs .mk:hover i{filter:brightness(1.15)}.cs{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px;margin-top:10px;background:var(--card);border:1px solid var(--line);color:var(--ink);cursor:pointer;border-radius:4px;font-family:'Exo 2',sans-serif}.cs svg{width:30px;height:30px;color:var(--yel);flex:none}.cs b{display:block;font:700 18px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.06em}.cs small{color:var(--mut)}.cs:hover{border-color:var(--yel)}
+.chip svg{width:18px;height:18px;vertical-align:-4px;margin-right:6px}.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}.aif{display:grid;gap:10px;max-width:560px;margin-top:18px}.aif input,.aif select,.aif textarea,.up input{font:16px 'Exo 2',sans-serif;padding:11px 14px;border-radius:2px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-width:0}.up input{flex:1 1 220px}.ao{background:color-mix(in srgb,var(--card) 88%,transparent);border:1px solid var(--line);border-left:3px solid var(--yel);padding:16px 18px;margin-top:18px;font-size:15px;line-height:1.6;max-width:760px}.ao h4{font:700 17px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.07em;color:var(--yel);margin:16px 0 6px}.ao h4:first-child{margin-top:0}.ao p{margin:6px 0}.ao ul{margin:4px 0 8px 20px;padding:0}.ao li{margin:3px 0}.ao .q{color:var(--mut);border-top:1px solid var(--line);padding-top:12px;margin-top:16px}
+.stp{display:flex;gap:6px;margin:14px 0}.stp span{flex:1;padding:6px 2px;text-align:center;font:700 12px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.06em;border-top:3px solid var(--line);color:var(--mut)}.stp .on{border-color:var(--yel);color:var(--yel)}.stp .done{border-color:var(--blue);color:var(--ink)}.br{display:flex;gap:16px;overflow-x:auto;padding:8px 0}.rd{min-width:150px;display:flex;flex-direction:column;justify-content:space-around;gap:10px}.mt{border:1px solid var(--line);border-radius:4px;background:var(--card)}.mt button{display:block;width:100%;text-align:left;padding:8px 10px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:14px 'Exo 2',sans-serif;cursor:default}.mt button:disabled{color:var(--ink);opacity:1}.mt button:last-child{border-bottom:0}.mt .w{color:var(--yel);font-weight:700}.mt button.cl{cursor:pointer}.mt button.cl:hover{background:rgba(61,232,255,.12)}.tb2{width:100%;border-collapse:collapse;font-size:14px}.tb2 th,.tb2 td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line)}.tb2 th:first-child,.tb2 td:first-child{text-align:left}.tb2 th{font:700 12px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}.tb2 tbody tr:first-child td{color:var(--yel);font-weight:700}.rm{border:1px dashed var(--yel);padding:12px;margin:10px 0;font:600 18px 'Rajdhani',sans-serif;letter-spacing:.08em}.sm{font-size:14px;color:var(--mut);margin:6px 0}.ti{width:100%;margin-bottom:8px;font:16px 'Exo 2',sans-serif;padding:11px 14px;border-radius:2px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}details{margin:12px 0}summary{cursor:pointer;font:700 14px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em}dialog h4{font:700 15px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--yel);margin:18px 0 8px}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ymark" viewBox="330 280 595 690"><path fill="currentColor" d="M335 285H468L627 428L786 285H919L670 507V598H583V507Z M368 595H886L800 670H454Z M583 667H670V891L627 963L583 891Z"/></symbol><symbol id="iph" viewBox="0 0 24 24"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M10.5 4.5h3M10.5 19.5h3"/><circle cx="12" cy="12" r="3"/><path d="M12 8v1.5M12 14.5V16M8 12h1.5M14.5 12H16"/></symbol><symbol id="iem" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M3 9l9 6.5L21 9"/><path d="M18.5 1.5l-2.2 3h2.2l-1.6 2.7"/></symbol></svg>
+<div class="w">
+<nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><a href="#achievementProof">Achievements</a><button class="btn lg" id="au">Login</button></div></nav>
+<div class="tk" aria-hidden="true"><span><b>● LIVE</b> &nbsp;/&nbsp; 25 GAMES &nbsp;/&nbsp; PLAYER PROFILES &nbsp;/&nbsp; TOURNAMENTS &nbsp;/&nbsp; SPONSORS &nbsp;/&nbsp; SHORTS &nbsp;/&nbsp; FIND TEAMMATES &nbsp;/&nbsp; <b>● LIVE</b> &nbsp;/&nbsp; SEASON 2026 &nbsp;/&nbsp; GET SCOUTED &nbsp;/&nbsp; BUILD YOUR SQUAD &nbsp;/&nbsp;</span></div>
+
+<header class="hero"><div>
+<h1>Where gamers become <span class="hl">pros.</span></h1>
+<p>Yke brings eSports players' tournaments, achievements and stats together in one place, so big organizations can find the right talent fast.</p>
+<a class="btn" href="#players">View players</a><a class="btn alt" href="#join">Create profile</a>
+</div><aside class="feat" id="ft"></aside></header>
+
+<div class="stats" id="stats"></div>
+
+<section class="sec" id="ai"><h2>AI Gaming Assistant</h2><p class="sub">Analyze player performance, get recruitment picks for your team, plan a tournament, or get a personal improvement plan.</p><div class="chips" id="aim" role="tablist" aria-label="AI assistant modes"></div><div class="aif" id="aif"></div><div class="ao" id="ao" aria-live="polite" hidden></div><div class="up" id="afu" hidden><input id="afi" placeholder="Ask a follow-up question" aria-label="Follow-up question"><button class="btn" id="afb">Ask</button></div><p class="tag" style="margin-top:14px">AI guidance is not a guarantee. It uses the data on Yke (currently sample data) and never receives phone numbers, emails, real names, gender or age.</p></section>
+
+<section class="sec" id="games"><h2>All eSports games</h2><p class="sub">Tap any game to see its players.</p><div class="chips" id="gc"></div></section>
+
+<section class="sec" id="shorts"><h2>Shorts</h2><p class="sub">Short eSports clips: clutches, aces and highlight moments.</p><div class="sh" id="sh"></div><div class="up"><label class="btn alt" id="ul" style="margin:0;cursor:pointer">Upload a short<input class="sr" id="uf" type="file" accept="video/*"></label><span class="tag" id="um" role="status"></span></div></section>
+
+<section class="sec" id="videos"><h2>Videos</h2><p class="sub">Match highlights, tournament finals and player interviews.</p><div class="vg" id="vg"></div></section>
+
+<section class="sec" id="feed"><h2>Feed</h2><p class="sub">Clips, wins and updates from players. Like, comment and follow.</p><div class="st" id="st"></div><div id="pf"></div></section>
+
+<section class="sec" id="players">
+    <h2>Players</h2>
+    <p class="sub">Filter by game or sort by rating. Tap any card to open the full profile.</p>
+    <div class="bar">
+        <input id="q" type="search" placeholder="Player or team name" aria-label="Search player">
+        <select id="g" aria-label="Game"><option value="">All games</option></select>
+        <select id="gf" aria-label="Gender"><option value="">All genders</option><option>Male</option><option>Female</option><option>Other</option></select>
+        <select id="s" aria-label="Sort"><option value="rank">Top rated</option><option value="win">Win rate</option><option value="earn">Prize money</option></select>
+    </div>
+    <div class="grid" id="grid"></div>
+</section>
+<section class="sec" id="teammates"><h2>Find teammates and teams</h2><p class="sub">Set your state and city to see players near you first. Invite them, or join a team that is looking for members.</p><div class="fr" style="margin:0 0 14px"><button class="btn" id="nbt">Turn on Nearby</button><label class="tag" style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="vis"> Show me to nearby players</label></div><div class="ok" id="nbl" role="status"></div><p class="tag" style="margin:0 0 14px">Your exact location is never shown to others. Players only see an approximate distance, and only if you choose to be visible.</p><div class="bar"><select id="nbs" aria-label="Your state"><option value="">Your state</option></select><input id="nbc" placeholder="Your city" aria-label="Your city"><select id="nbg" aria-label="Game"><option value="">All games</option></select></div><div class="grid" id="nb"></div><h3 class="th">Teams looking for players</h3><div class="grid" id="tm"></div><div class="ok" id="nbm" role="status"></div><h3 class="th">Create a team</h3><form id="tf"><input required id="tfn" placeholder="Team name" aria-label="Team name"><select required id="tfg" aria-label="Game"><option value="">Choose game</option></select><select required id="tfs" aria-label="State"><option value="">Choose state</option></select><input required id="tfc" placeholder="City" aria-label="City"><input id="tfr" placeholder="Roles you need (e.g. Sniper, IGL)" aria-label="Roles needed"><button class="btn" type="submit">Create team</button></form></section>
+
+<section class="sec" id="tournaments"><h2>Tournaments</h2><p class="sub">Register, check in, get your room details, follow brackets and live standings, and report issues. Organizers can run the whole event.</p><div class="grid" id="tg"></div></section>
+
+<section class="sec" id="sponsors"><h2>Sponsors</h2><p class="sub">Brands that back eSports players. Are you a brand? Become a sponsor.</p><div class="sp" id="sp"></div><form id="sf" style="margin-top:20px"><input required placeholder="Brand name" aria-label="Brand"><input type="email" required placeholder="Contact email" aria-label="Brand email"><select required aria-label="Sponsorship type"><option value="">What will you offer?</option><option>Gear / equipment</option><option>Cash sponsorship</option><option>Team jersey branding</option><option>Content collaboration</option></select><button class="btn" type="submit">Become a sponsor</button><div class="ok" id="sk" role="status"></div></form></section>
+
+<section class="sec" id="orgs">
+<h2>For organizations</h2>
+<p class="sub">Scouting made simple and direct.</p>
+<div class="orgs">
+<div><b>Verified record</b><p>Every tournament result and placement is listed on the profile.</p></div>
+<div><b>Stats at a glance</b><p>Build a shortlist by rating, win rate and role.</p></div>
+<div><b>Direct contact</b><p>Send a trial or an offer to a player right from the profile.</p></div>
+</div>
+</section>
+<section id="join">
+<h2>Are you a player? Create your profile</h2>
+<p class="sub">Add your tournaments and achievements. Organizations will find you.</p>
+<form id="f">
+<label class="ph2"><span id="pv" class="av pv">+</span><span>Choose your photo (face)</span><input class="sr" id="pf2" type="file" accept="image/*"></label><input required id="gtg" maxlength="20" autocapitalize="characters" placeholder="Gamer tag (your eSports name, e.g. AKHIL_X)" aria-label="Gamer tag"><input required id="fn" placeholder="Real name (e.g. Akhil Thakur)" aria-label="Real name"><input required id="fg" placeholder="Game ID (in-game)" aria-label="Game ID"><select required id="jgn" aria-label="Gender"><option value="">Choose gender</option><option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option></select><input type="number" required id="jag" min="16" max="60" placeholder="Age (16+ only)" aria-label="Age">
+<select required id="jg" aria-label="Game"><option value="">Choose game</option></select>
+<select required id="jl" aria-label="Level"><option value="">Choose level</option><option>Beginner</option><option>Amateur</option><option>Semi-pro</option><option>Pro</option></select><input id="jr" placeholder="Role (e.g. Duelist, Sniper, IGL)" aria-label="Role"><div class="ig"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iph"/></svg><input type="tel" required id="jp" inputmode="numeric" maxlength="10" placeholder="Phone number (10 digits)" aria-label="Phone"></div><div class="ig"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iem"/></svg><input type="email" required id="je" placeholder="Gmail" aria-label="Gmail"></div><select required id="js" aria-label="State"><option value="">Choose state</option></select><input required id="jc" placeholder="City" aria-label="City"><input id="jt" placeholder="Team name (if any)" aria-label="Team">
+<input type="number" min="2000" max="2026" placeholder="Which year did you start playing? (e.g. 2020)" id="jy" aria-label="Start year"><textarea rows="3" placeholder="Experience, skills, tournaments and achievements" id="jb" aria-label="Achievements"></textarea>
+<button class="btn" type="submit">Submit profile</button>
+<p class="tag">Your gamer tag is shown publicly. Your real name is shown only to logged-in users.</p><p class="tag">You must be 16 or older to join Yke. Phone and Gmail are not public; only logged-in users can see them.</p><div class="ok" id="ok" role="status"></div>
+</form>
+</section>
+<section class="sec" id="achievementProof">
+<h2>Achievement proof &amp; verification</h2>
+<p class="sub">Submit tournament details and an evidence image. This flow requires the Firebase Functions, Storage, and Firestore rules in the repository to be deployed; status changes are server-only.</p>
+<p class="tag" id="achievementLoginHint">Log in to submit evidence and track your review status. <button class="btn alt" id="achievementLogin" type="button">Log in</button></p>
+<form id="achievementForm" hidden>
+<input id="achievementTournament" required maxlength="120" minlength="3" placeholder="Tournament name" aria-label="Tournament name">
+<input id="achievementGame" required maxlength="60" placeholder="Game" aria-label="Game">
+<input id="achievementPlacement" required maxlength="80" placeholder="Placement or award (e.g. 1st place, MVP)" aria-label="Placement or award">
+<input id="achievementOrganizer" maxlength="120" placeholder="Organizer (optional)" aria-label="Organizer">
+<label class="tag" for="achievementDate">Tournament date</label><input id="achievementDate" type="date" required aria-label="Tournament date">
+<textarea id="achievementDetails" rows="3" maxlength="1200" placeholder="Additional details (optional)" aria-label="Additional details"></textarea>
+<label class="tag" for="achievementEvidence">Evidence image (JPEG, PNG, or WebP; maximum 10 MB)</label><input id="achievementEvidence" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Evidence image">
+<button class="btn" id="achievementSubmit" type="submit">Upload evidence and submit</button>
+<div class="ok" id="achievementMessage" role="status"></div>
+</form>
+<h3>Your submissions</h3><div id="achievementList" class="achievement-grid" aria-live="polite"></div>
+<section id="achievementReviewer" hidden>
+<h3>Reviewer queue</h3><p class="tag">Reviewer permission is loaded from a Firebase custom claim and enforced again by the server.</p>
+<div id="achievementReviewList" class="achievement-grid" aria-live="polite"></div>
+</section>
+</section>
+<footer><div class="fg"><div><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><p>The talent hub connecting eSports players and organizations.</p></div><div><b>Explore</b><a href="#games">Games</a><a href="#players">Players</a><a href="#feed">Feed</a></div><div><b>Organizations</b><a href="#orgs">Scouting</a><a href="#join">For players</a></div></div><p class="cp">© 2026 Yke. All player and tournament data is sample (demo) data.</p></footer>
+</div>
+
+<div class="tabs" id="tb" role="navigation" aria-label="App"></div>
+<dialog id="d"><div class="m" id="m"></div></dialog>
+
+<script>
+// Firebase integration (Email/Password auth + Firestore profiles)
+const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyCazRn1gHk4BXnunu81eaVcFzIZrLh70bI",
+    authDomain: "yt-esports-ad314.firebaseapp.com",
+    projectId: "yt-esports-ad314",
+    storageBucket: "yt-esports-ad314.firebasestorage.app",
+    messagingSenderId: "474893136415",
+    appId: "1:474893136415:web:caea032b09e97ef890db2a",
+    measurementId: "G-EDJ18CP3W8"
+};
+
+var fbAuth=null,fbDB=null,firebaseInitError=null;
+var firebaseReady=(async function(){
+    var sdk=await Promise.all([
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js'),
+        import('https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js')
+    ]);
+    var appSdk=sdk[0],authSdk=sdk[1],firestoreSdk=sdk[2],storageSdk=sdk[3],functionsSdk=sdk[4];
+    var app=appSdk.getApps().find(function(existing){return existing.name==='[DEFAULT]'});
+    if(!app)app=appSdk.initializeApp(FIREBASE_CONFIG);
+    else if(app.options.projectId!==FIREBASE_CONFIG.projectId)throw new Error('The existing Firebase app is not configured for yt-esports-ad314.');
+    fbAuth=authSdk.getAuth(app);
+    fbDB=firestoreSdk.getFirestore(app);
+    var fbStorage=storageSdk.getStorage(app);
+    var fbFunctions=functionsSdk.getFunctions(app,'us-central1');
+    window.fbAuth=fbAuth;
+    window.fbDB=fbDB;
+    authSdk.onAuthStateChanged(fbAuth,async function(user){
+        if(!user){U=null;au();syncAchievementAccess(null);return}
+        try{
+            var snapshot=await firestoreSdk.getDoc(firestoreSdk.doc(fbDB,'users',user.uid));
+            var profile=snapshot.exists()?profileFromFirestore(snapshot.data()):{};
+            profile.uid=user.uid;
+            profile.email=user.email;
+            profile.verified=user.emailVerified;
+            ROLE=profile.role||ROLE||'Player';
+            setU(Object.assign({},profile,{via:'Firebase'}),false);
+        }catch(error){
+            console.error('Failed to load the Firebase user profile',error);
+            setU({uid:user.uid,email:user.email,role:ROLE||'Player',via:'Firebase'},false);
+            if($('lx'))$('lx').textContent='Signed in, but your Firestore profile could not be loaded: '+firebaseErrorMessage(error);
+        }
+    });
+    return {auth:authSdk,firestore:firestoreSdk,storage:storageSdk,storageInstance:fbStorage,functions:functionsSdk,functionsInstance:fbFunctions};
+})().catch(function(error){
+    firebaseInitError=error;
+    console.error('Firebase initialization failed',error);
+    return null;
+});
+
+async function requireFirebase(){
+    var sdk=await firebaseReady;
+    if(!sdk)throw firebaseInitError||new Error('Firebase initialization failed.');
+    return sdk;
+}
+function firebaseErrorMessage(error){
+    var messages={
+        'auth/email-already-in-use':'An account already exists for this email. Try logging in.',
+        'auth/invalid-email':'Enter a valid email address.',
+        'auth/invalid-credential':'Email or password is incorrect.',
+        'auth/user-disabled':'This account has been disabled.',
+        'auth/weak-password':'Choose a stronger password (at least 6 characters).',
+        'auth/network-request-failed':'Network error. Check your connection and try again.',
+        'permission-denied':'Firestore denied access. Check the users collection security rules.'
+    };
+    return messages[error&&error.code]||(error&&error.message)||'An unexpected Firebase error occurred.';
+}
+function profileForFirestore(profile){
+    var firestoreProfile=Object.assign({},profile);
+    if(Array.isArray(firestoreProfile.ach)){
+        firestoreProfile.ach=firestoreProfile.ach.map(function(achievement){
+            if(!Array.isArray(achievement))return achievement;
+            return {event:achievement[0],result:achievement[1],reward:achievement[2]};
+        });
+    }
+    return firestoreProfile;
+}
+function profileFromFirestore(profile){
+    if(Array.isArray(profile.ach)){
+        profile.ach=profile.ach.map(function(achievement){
+            if(Array.isArray(achievement))return achievement;
+            return [achievement.event,achievement.result,achievement.reward];
+        });
+    }
+    return profile;
+}
+async function fbCreateAccount(email,password,role){
+    var sdk=await requireFirebase();
+    var credential=await sdk.auth.createUserWithEmailAndPassword(fbAuth,email,password);
+    try{
+        await sdk.firestore.setDoc(sdk.firestore.doc(fbDB,'users',credential.user.uid),{
+            uid:credential.user.uid,
+            email:credential.user.email,
+            role:role,
+            createdAt:sdk.firestore.serverTimestamp()
+        });
+    }catch(error){
+        var profileError=new Error(firebaseErrorMessage(error));
+        profileError.code=error.code;
+        profileError.accountCreated=true;
+        throw profileError;
+    }
+    var verificationSent=true;
+    try{await sdk.auth.sendEmailVerification(credential.user)}
+    catch(error){verificationSent=false;console.error('Account created, but verification email could not be sent',error)}
+    return {user:credential.user,verificationSent:verificationSent};
+}
+async function fbSignIn(email,password){
+    var sdk=await requireFirebase();
+    var credential=await sdk.auth.signInWithEmailAndPassword(fbAuth,email,password);
+    return credential.user;
+}
+async function fbSignOut(){
+    var sdk=await requireFirebase();
+    await sdk.auth.signOut(fbAuth);
+}
+
+var P=[
+{n:"NightFury",t:"Team Nova",g:"BGMI",r:"Entry Fragger",c:"Delhi",a:19,rt:94,w:68,e:850000,col:"#5a4ff3",ach:[["BGMI Pro Series 2026","Champion","₹5,00,000"],["Regional Masters 2025","Runner-up","₹2,00,000"],["Campus Cup 2025","MVP","₹50,000"]],k:"7.8 K/D"},
+{n:"Vyra",t:"Solo",g:"Valorant",r:"Duelist",c:"Mumbai",a:21,rt:91,w:64,e:620000,col:"#a23cf0",ach:[["Valorant Challengers India 2026","Top 4","₹2,50,000"],["Open Qualifier 2026","Winner","₹1,20,000"]],k:"1.42 ACS ratio"},
+{n:"Rudra",t:"Alpha Esports",g:"Free Fire",r:"Rusher",c:"Jaipur",a:18,rt:88,w:61,e:410000,col:"#1f9bd7",ach:[["FF Premier League 2026","Champion","₹3,00,000"],["City Clash 2025","Winner","₹60,000"]],k:"6.1 K/D"},
+{n:"Zoya",t:"Team Nova",g:"Valorant",r:"Controller",c:"Pune",a:20,rt:90,w:66,e:530000,col:"#d946ef",ach:[["Women's Valorant Series 2026","MVP","₹1,50,000"],["Challengers India 2026","Top 4","₹2,50,000"]],k:"0.89 assist ratio"},
+{n:"Kaal",t:"Solo",g:"CS2",r:"AWPer",c:"Bengaluru",a:22,rt:86,w:58,e:300000,col:"#0f766e",ach:[["CS2 South Asia Open 2026","Runner-up","₹1,80,000"],["LAN Qualifier 2025","Winner","₹70,000"]],k:"1.18 rating"},
+{n:"Sniper_X",t:"Alpha Esports",g:"BGMI",r:"Sniper",c:"Lucknow",a:17,rt:84,w:57,e:220000,col:"#3b4cca",ach:[["Rising Stars Cup 2026","Champion","₹1,00,000"],["Campus Cup 2025","Top 3","₹40,000"]],k:"5.2 K/D"}];
+var $=function(i){return document.getElementById(i)};
+function fm(n){return "₹"+n.toLocaleString("en-IN")}
+function init(a){return a.slice(0,2).toUpperCase()}
+var games=['BGMI','Free Fire','Valorant','CS2','Call of Duty Mobile','Call of Duty: Warzone','PUBG','Apex Legends','Fortnite','Rainbow Six Siege','Overwatch 2','Marvel Rivals','Halo','Dota 2','League of Legends','Wild Rift','Mobile Legends','Pokémon Unite','Clash Royale','Brawl Stars','Rocket League','EA FC','Street Fighter 6','Tekken 8','Chess'];
+games.forEach(function(g){var o=document.createElement("option");o.textContent=g;$("g").appendChild(o)});
+var tot=P.reduce(function(s,p){return s+p.e},0),tc=P.reduce(function(s,p){return s+p.ach.length},0);
+$("stats").innerHTML='<div><b>'+P.length+'</b><span>Players</span></div><div><b>'+games.length+'</b><span>Games</span></div><div><b>'+tc+'</b><span>Tournament results</span></div><div><b>'+fm(tot)+'</b><span>Total prize money</span></div>';
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function render(){
+ var q=$("q").value.toLowerCase(),g=$("g").value,s=$("s").value,gf=$("gf").value;
+ var L=P.filter(function(p){return (!g||p.g===g)&&(!gf||p.gd===gf)&&(p.n+p.t).toLowerCase().indexOf(q)>-1});
+ var key={rank:"rt",win:"w",earn:"e"}[s];
+ L.sort(function(a,b){return b[key]-a[key]});
+ $("grid").innerHTML=L.length?L.map(function(p){var i=P.indexOf(p);
+  return '<button class="p" data-i="'+i+'"><div class="top">'+avh(p)+'<div><h3>'+esc(p.n)+'</h3><div class="tag">'+esc(p.t)+' · '+esc(p.g)+'</div></div></div>'
+  +'<div class="row"><span>Role</span><b>'+esc(p.r)+'</b></div><div class="row"><span>Level</span><b>'+esc(p.lv||'Pro')+'</b></div><div class="row"><span>Rating</span><b>'+rtx(p)+'</b></div><div class="row"><span>Win rate</span><b>'+wx(p)+'</b></div><div class="row"><span>Experience</span><b>'+yrs(p)+' years</b></div><div class="row"><span>Prize money</span><b>'+fm(p.e)+'</b></div>'
+  +'<span class="gold">'+esc(p.ach[0][1])+': '+esc(p.ach[0][0])+'</span></button>'}).join(""):'<p>No players found. Try changing the filters.</p>';
+}
+$("grid").addEventListener("click",function(e){var b=e.target.closest(".p");if(!b)return;
+ var p=P[+b.dataset.i];
+ $("m").innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="top">'+avh(p)+'<div><h3 style="font-size:22px">'+esc(p.n)+'</h3><div class="tag">'+esc(p.t)+' · '+esc(p.g)+' · '+esc(p.r)+'</div></div></div>'
+ +'<div class="row"><span>Followers</span><b id="fc">'+fol(P.indexOf(p))+'</b></div><div class="fr"><button class="btn fw'+(fl[P.indexOf(p)]?' on':'')+'" id="fb" aria-pressed="'+(fl[P.indexOf(p)]?'true':'false')+'" onclick="follow('+P.indexOf(p)+')">'+IC.f+'<span>'+(fl[P.indexOf(p)]?'Following':'Follow')+'</span></button><button class="btn alt mg" onclick="dm(\''+esc(p.n)+'\')">'+IC.g+'<span>Message</span></button></div><div class="ok" id="dmm" role="status"></div><div class="row"><span>City / State</span><b>'+esc(p.c)+(p.st?', '+esc(p.st):'')+'</b></div><div class="row"><span>Age</span><b>'+(p.a||'-')+'</b></div><div class="row"><span>Level</span><b>'+esc(p.lv||'Pro')+'</b></div>'+(p.fn&&U?'<div class="row"><span>Real name</span><b>'+esc(p.fn)+'</b></div>':'')+'<div class="row"><span>Gender</span><b>'+esc(p.gd||'-')+'</b></div><div class="row"><span>Game ID</span><b>'+esc(p.gid||p.n)+'</b></div>'+(p.ph?'<div class="row"><span>Phone / Gmail</span><b>'+(U?esc(p.ph)+' / '+esc(p.em):'Log in to view')+'</b></div>':'')+'<div class="row"><span>Rating</span><b>'+rtx(p)+'</b></div><div class="row"><span>Win rate</span><b>'+wx(p)+'</b></div><div class="row"><span>Key stat</span><b>'+esc(p.k)+'</b></div><div class="row"><span>Started playing</span><b>'+X(p).s+'</b></div><div class="row"><span>Playing for</span><b>'+yrs(p)+' years</b></div><div class="row"><span>Teams</span><b>'+esc(X(p).tm)+'</b></div><div class="row"><span>Sponsors</span><b>'+spn(p)+'</b></div><h4>Experience and knowledge</h4><p style="margin:0 0 8px;font-size:14px">'+esc(X(p).x)+'</p><div>'+X(p).sk.map(function(s){return '<span class="gold" style="margin:0 6px 6px 0">'+esc(s)+'</span>'}).join('')+'</div>'
+ +'<h4>Tournaments and achievements</h4><ul class="tl">'+p.ach.map(function(a){return '<li><b>'+esc(a[0])+'</b>'+esc(a[1])+' · '+esc(a[2])+'</li>'}).join("")+'</ul>'
+ +'<h4>Are you an organization?</h4><button class="btn" onclick="scout(\''+esc(p.n)+'\')">Send a trial request</button><div class="ok" id="sm" role="status"></div>';
+ $("d").showModal();});
+function scout(n){$("sm").textContent="Trial request sent to "+n+" (demo).";}
+window.d=$("d");window.scout=scout;
+$("d").addEventListener("click",function(e){if(e.target===$("d"))$("d").close()});
+["q","g","gf","s"].forEach(function(i){$(i).addEventListener("input",render)});
+$("f").addEventListener("submit",submitProfile);
+var F=[12400,8900,15200,7300,5100,3800],fl={};
+function fol(i){return (F[i]+(fl[i]?1:0)).toLocaleString('en-IN')}
+window.follow=function(i){fl[i]=!fl[i];$('fc').textContent=fol(i);var b=$('fb');b.querySelector('span').textContent=fl[i]?'Following':'Follow';b.classList.toggle('on',!!fl[i]);b.setAttribute('aria-pressed',fl[i]?'true':'false');b.classList.remove('fx');void b.offsetWidth;b.classList.add('fx');setTimeout(function(){b.classList.remove('fx')},700)};
+window.dm=function(n){$('dmm').textContent='Message sent to '+n+' (demo).'};
+var IC={c:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 7h11a4.5 4.5 0 0 1 4.4 3.6l.9 4.6a2.6 2.6 0 0 1-4.5 2.1L16.6 15H7.4l-1.7 2.3a2.6 2.6 0 0 1-4.5-2.1l.9-4.6A4.5 4.5 0 0 1 6.5 7z"/><path d="M7.5 9.5v3M6 11h3"/><circle cx="15.5" cy="10.3" r=".7"/><circle cx="17.6" cy="12" r=".7"/></svg>',p:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="13" height="10" rx="1.5"/><path d="M6 18h5M8.5 14v4"/><rect x="17.5" y="5" width="4.5" height="14" rx="1"/><circle cx="19.75" cy="8.5" r=".8"/><path d="M18.8 16h1.9"/></svg>',m:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="6"/><path d="M12 2.5V9M6 9.5h12"/><rect x="11" y="4.5" width="2" height="3" rx="1"/></svg>'};
+var POSTS=[{i:0,t:'Final circle of BGMI Pro Series. Champion! 🏆',l:1240,c:[['Vyra','GG, insane play']]},{i:1,t:'Ranked grind tonight: 5 aces.',l:860,c:[]},{i:2,t:'The Premier League trophy is coming home.',l:1530,c:[['Zoya','Legend!']]},{i:3,t:"Women's series MVP. Thanks team!",l:970,c:[]}];
+$('pf').innerHTML=POSTS.map(function(o,k){var p=P[o.i];return '<article class="post"><div class="ph"><div class="av" style="background:'+p.col+'">'+init(p.n)+'</div><div><b>'+esc(p.n)+'</b><div class="tag">'+esc(p.t)+' · '+esc(p.g)+'</div></div></div><div class="clip" style="background:linear-gradient(135deg,'+p.col+',#14161f)">▶ '+esc(p.ach[0][0])+'</div><div class="act"><button class="lk" data-k="'+k+'" aria-label="Like">'+IC.c+'<span>'+o.l+'</span></button><button class="cmt" data-k="'+k+'" aria-label="Comment">'+IC.p+'<span>'+o.c.length+'</span></button><button class="shr" data-k="'+k+'" aria-label="Share">'+IC.m+'<span>Share</span></button></div><div class="cm"><p><b>'+esc(p.n)+'</b> '+esc(o.t)+'</p>'+o.c.map(function(c){return '<p><b>'+esc(c[0])+'</b> '+esc(c[1])+'</p>'}).join('')+'</div><div class="ci"><input aria-label="Comment" placeholder="Write a comment"><button class="btn cb" data-k="'+k+'">Post</button></div></article>'}).join('');
+$('pf').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var o=POSTS[+b.dataset.k];if(b.classList.contains('lk')){o.on=!o.on;b.classList.toggle('liked',o.on);b.querySelector('span').textContent=o.l+(o.on?1:0)}else if(b.classList.contains('cmt')){b.closest('.post').querySelector('.ci input').focus()}else if(b.classList.contains('shr')){var t=b.querySelector('span'),u=location.href,rs2=function(m){t.textContent=m;setTimeout(function(){t.textContent='Share'},2000)};if(navigator.share){navigator.share({title:'Yke',url:u}).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){rs2('Link copied')},function(){rs2('Copy failed')})}else{rs2('Copy the page link')}}else if(b.classList.contains('cb')){var inp=b.previousElementSibling,v=inp.value.trim();if(!v)return;o.c.push(['You',v]);var pn=b.closest('.post');pn.querySelector('.cm').insertAdjacentHTML('beforeend','<p><b>You</b> '+esc(v)+'</p>');pn.querySelector('.cmt span').textContent=o.c.length;inp.value=''}});
+$('st').innerHTML=P.map(function(p,i){return '<button class="sb" data-i="'+i+'"><div class="ring"><div class="av" style="background:'+p.col+'">'+init(p.n)+'</div></div>'+esc(p.n)+'</button>'}).join('');
+$('st').addEventListener('click',function(e){var b=e.target.closest('.sb');if(!b)return;var p=P[+b.dataset.i];$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="clip" style="background:linear-gradient(135deg,'+p.col+',#14161f);border-radius:12px;height:260px">'+esc(p.n)+'<br>'+esc(p.ach[0][1])+': '+esc(p.ach[0][0])+'</div>';$('d').showModal()});
+$('gc').innerHTML=games.map(function(g){return '<button class="chip" data-g="'+esc(g)+'">'+esc(g)+'</button>'}).join('');
+$('gc').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;$('g').value=b.dataset.g;render();$('players').scrollIntoView()});
+games.forEach(function(g){var o=document.createElement('option');o.textContent=g;$('jg').appendChild(o)});
+var U=null;
+function au(){$('au').innerHTML=IC.s+'<span>'+(U?esc(U.role||'Player')+' · Logout':'Login')+'</span>'}
+function setU(u,closeDialog){u.role=u.role||ROLE||'Player';U=u;au();syncAchievementAccess(fbAuth&&fbAuth.currentUser);if(closeDialog!==false)d.close()}
+$('au').addEventListener('click',async function(){if(U){try{await fbSignOut()}catch(error){openLogin();$('lx').textContent='Sign out failed: '+firebaseErrorMessage(error)}}else openLogin()});
+function achievementDateLabel(value){
+    if(value&&typeof value.toDate==='function')return value.toDate().toLocaleDateString();
+    return value||'Date unavailable';
+}
+async function achievementEvidenceUrl(sdk,path){
+    if(achievementObjectUrls[path])return achievementObjectUrls[path];
+    try{
+        var blob=await sdk.storage.getBlob(sdk.storage.ref(sdk.storageInstance,path));
+        var url=URL.createObjectURL(blob);
+        achievementObjectUrls[path]=url;
+        return url;
+    }
+    catch(error){console.error('Could not load achievement evidence',error);return ''}
+}
+var achievementObjectUrls={};
+window.addEventListener('beforeunload',function(){Object.keys(achievementObjectUrls).forEach(function(path){URL.revokeObjectURL(achievementObjectUrls[path])})});
+async function refreshOwnAchievements(sdk,user){
+    var list=$('achievementList');
+    list.textContent='Loading your submissions...';
+    try{
+        var query=sdk.firestore.query(
+            sdk.firestore.collection(fbDB,'achievementSubmissions'),
+            sdk.firestore.where('ownerUid','==',user.uid)
+        );
+        var snapshot=await sdk.firestore.getDocs(query);
+        var submissions=snapshot.docs.map(function(item){return Object.assign({id:item.id},item.data())});
+        submissions.sort(function(a,b){return (b.createdAt&&b.createdAt.seconds||0)-(a.createdAt&&a.createdAt.seconds||0)});
+        if(!submissions.length){list.innerHTML='<p class="tag">No achievement submissions yet.</p>';return}
+        var cards=await Promise.all(submissions.map(async function(item){
+            var url=await achievementEvidenceUrl(sdk,item.evidencePath);
+            return '<article class="achievement-card"><span class="achievement-status '+esc(item.status)+'">'+esc(item.status)+'</span><h3>'+esc(item.tournamentName)+'</h3><p>'+esc(item.game)+' · '+esc(item.placement)+'</p><p>'+esc(achievementDateLabel(item.eventDate))+(item.organizer?' · '+esc(item.organizer):'')+'</p>'+(item.details?'<p>'+esc(item.details)+'</p>':'')+(item.reviewNote?'<p><b>Reviewer note:</b> '+esc(item.reviewNote)+'</p>':'')+(url?'<a class="achievement-evidence" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">View evidence image</a>':'<p class="tag">Evidence preview unavailable.</p>')+'</article>';
+        }));
+        list.innerHTML=cards.join('');
+    }catch(error){
+        console.error('Could not load achievement submissions',error);
+        list.textContent='Could not load submissions: '+firebaseErrorMessage(error);
+    }
+}
+async function refreshReviewerQueue(sdk){
+    var list=$('achievementReviewList');
+    list.textContent='Loading pending submissions...';
+    try{
+        var query=sdk.firestore.query(
+            sdk.firestore.collection(fbDB,'achievementSubmissions'),
+            sdk.firestore.where('status','==','pending'),
+            sdk.firestore.limit(50)
+        );
+        var snapshot=await sdk.firestore.getDocs(query);
+        var submissions=snapshot.docs.map(function(item){return Object.assign({id:item.id},item.data())});
+        submissions.sort(function(a,b){return (a.createdAt&&a.createdAt.seconds||0)-(b.createdAt&&b.createdAt.seconds||0)});
+        if(!submissions.length){list.innerHTML='<p class="tag">No pending submissions.</p>';return}
+        var cards=await Promise.all(submissions.map(async function(item){
+            var url=await achievementEvidenceUrl(sdk,item.evidencePath);
+            return '<article class="achievement-card" data-submission-id="'+esc(item.id)+'"><span class="achievement-status pending">pending</span><h3>'+esc(item.tournamentName)+'</h3><p>'+esc(item.game)+' · '+esc(item.placement)+'</p><p>Player: '+esc(item.ownerUid)+'</p><p>'+esc(achievementDateLabel(item.eventDate))+(item.organizer?' · '+esc(item.organizer):'')+'</p>'+(item.details?'<p>'+esc(item.details)+'</p>':'')+(url?'<a class="achievement-evidence" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Review evidence image</a>':'<p class="tag">Evidence image unavailable.</p>')+'<div class="review-controls"><textarea maxlength="1000" aria-label="Reviewer note" placeholder="Reviewer note (required when rejecting)"></textarea><div class="fr"><button class="btn" type="button" data-decision="verified">Verify</button><button class="btn alt" type="button" data-decision="rejected">Reject</button></div></div></article>';
+        }));
+        list.innerHTML=cards.join('');
+    }catch(error){
+        console.error('Could not load reviewer queue',error);
+        list.textContent='Could not load the reviewer queue: '+firebaseErrorMessage(error);
+    }
+}
+async function syncAchievementAccess(user){
+    var form=$('achievementForm'),hint=$('achievementLoginHint'),reviewer=$('achievementReviewer');
+    if(!user){
+        form.hidden=true;hint.hidden=false;reviewer.hidden=true;
+        $('achievementList').textContent='Log in to view your submissions.';
+        $('achievementReviewList').textContent='';
+        return;
+    }
+    form.hidden=false;hint.hidden=true;
+    try{
+        var sdk=await requireFirebase();
+        await refreshOwnAchievements(sdk,user);
+        var token=await sdk.auth.getIdTokenResult(user,true);
+        reviewer.hidden=token.claims.achievementReviewer!==true;
+        if(!reviewer.hidden)await refreshReviewerQueue(sdk);
+    }catch(error){
+        reviewer.hidden=true;
+        console.error('Could not load achievement permissions',error);
+        $('achievementMessage').textContent='Achievement access could not be loaded: '+firebaseErrorMessage(error);
+    }
+}
+async function validateAchievementEvidence(file){
+    var maxBytes=10*1024*1024,allowed=['image/jpeg','image/png','image/webp'];
+    if(!file||!allowed.includes(file.type)||file.size===0||file.size>maxBytes)throw new Error('Choose a non-empty JPEG, PNG, or WebP image no larger than 10 MB.');
+    if(typeof createImageBitmap!=='function')throw new Error('This browser cannot validate image files. Please use a current browser.');
+    var bitmap;
+    try{bitmap=await createImageBitmap(file)}
+    catch(error){throw new Error('The selected file is not a readable image.')}
+    try{
+        if(!bitmap.width||!bitmap.height||bitmap.width>12000||bitmap.height>12000||bitmap.width*bitmap.height>50000000)throw new Error('Image dimensions must be within 12,000 × 12,000 pixels and 50 megapixels.');
+    }finally{bitmap.close()}
+}
+function validateAchievementForm(){
+    var tournament=$('achievementTournament').value.trim(),game=$('achievementGame').value.trim(),placement=$('achievementPlacement').value.trim();
+    var organizer=$('achievementOrganizer').value.trim(),eventDate=$('achievementDate').value,details=$('achievementDetails').value.trim();
+    if(tournament.length<3||tournament.length>120)throw new Error('Tournament name must be between 3 and 120 characters.');
+    if(!game||game.length>60)throw new Error('Enter a game name of at most 60 characters.');
+    if(!placement||placement.length>80)throw new Error('Placement or award must be at most 80 characters.');
+    if(organizer.length>120||details.length>1200)throw new Error('Organizer or details exceed the allowed length.');
+    var dateValue=new Date(eventDate+'T00:00:00.000Z');
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(eventDate)||Number.isNaN(dateValue.getTime())||dateValue.toISOString().slice(0,10)!==eventDate||eventDate>new Date().toISOString().slice(0,10))throw new Error('Enter a valid tournament date that is not in the future.');
+    return {tournamentName:tournament,game:game,placement:placement,organizer:organizer,eventDate:eventDate,details:details};
+}
+async function submitAchievement(event){
+    event.preventDefault();
+    var message=$('achievementMessage'),button=$('achievementSubmit'),file=$('achievementEvidence').files[0],uploadedRef=null;
+    var sdk=null,user=null,submissionId=null;
+    message.textContent='';
+    if(!fbAuth||!fbAuth.currentUser){message.textContent='Log in before submitting achievement evidence.';return}
+    button.disabled=true;
+    try{
+        var details=validateAchievementForm();
+        await validateAchievementEvidence(file);
+        sdk=await requireFirebase();user=fbAuth.currentUser;
+        if(!user)throw new Error('Your session expired. Please log in again.');
+        submissionId=sdk.firestore.doc(sdk.firestore.collection(fbDB,'achievementSubmissions')).id;
+        var uploadPath='achievement-proof-uploads/'+user.uid+'/'+submissionId+'/evidence';
+        uploadedRef=sdk.storage.ref(sdk.storageInstance,uploadPath);
+        message.textContent='Uploading and validating evidence...';
+        await sdk.storage.uploadBytes(uploadedRef,file,{
+            contentType:file.type,
+            customMetadata:{ownerUid:user.uid,submissionId:submissionId}
+        });
+        var submitCall=sdk.functions.httpsCallable(sdk.functionsInstance,'submitAchievement');
+        await submitCall(Object.assign({},details,{submissionId:submissionId}));
+        message.textContent='Evidence submitted. Status: pending review.';
+        $('achievementForm').reset();
+        await refreshOwnAchievements(sdk,user);
+    }catch(error){
+        console.error('Achievement submission failed',error);
+        if(submissionId&&sdk&&fbAuth.currentUser){
+            try{
+                var saved=await sdk.firestore.getDoc(sdk.firestore.doc(fbDB,'achievementSubmissions',submissionId));
+                if(saved.exists()&&saved.data().ownerUid===fbAuth.currentUser.uid){
+                    message.textContent='Evidence submitted. Status: '+saved.data().status+'.';
+                    await refreshOwnAchievements(sdk,fbAuth.currentUser);
+                    return;
+                }
+            }catch(reconcileError){console.error('Could not confirm whether the achievement submission was saved',reconcileError)}
+        }
+        if(uploadedRef){
+            try{await (await requireFirebase()).storage.deleteObject(uploadedRef)}
+            catch(cleanupError){console.error('Could not clean up a failed achievement upload',cleanupError)}
+        }
+        message.textContent='Submission failed: '+firebaseErrorMessage(error);
+    }finally{button.disabled=false}
+}
+$('achievementLogin').addEventListener('click',openLogin);
+$('achievementForm').addEventListener('submit',submitAchievement);
+$('achievementReviewer').addEventListener('click',async function(event){
+    var button=event.target.closest('button[data-decision]');
+    if(!button)return;
+    var card=button.closest('[data-submission-id]'),decision=button.dataset.decision,note=card.querySelector('textarea').value.trim();
+    if(decision==='rejected'&&!note){card.querySelector('textarea').focus();$('achievementMessage').textContent='Add a reviewer note before rejecting a submission.';return}
+    card.querySelectorAll('button').forEach(function(item){item.disabled=true});
+    try{
+        var sdk=await requireFirebase();
+        await sdk.functions.httpsCallable(sdk.functionsInstance,'reviewAchievement')({submissionId:card.dataset.submissionId,decision:decision,reviewNote:note});
+        $('achievementMessage').textContent='Submission marked '+decision+'.';
+        await refreshOwnAchievements(sdk,fbAuth.currentUser);
+        await refreshReviewerQueue(sdk);
+    }catch(error){
+        console.error('Achievement review failed',error);
+        $('achievementMessage').textContent='Review failed: '+firebaseErrorMessage(error);
+        card.querySelectorAll('button').forEach(function(item){item.disabled=false});
+    }
+});
+function openLogin(){ROLE='Player';
+$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="lgi">'+IC.s+'</div><h3 style="margin:0 0 4px;font-size:22px">Log in to Yke</h3><p class="tag">Use your email and password to log in or create an account.</p><p class="tag" style="margin:14px 0 0">I am joining as</p><div class="roles" role="radiogroup" aria-label="Joining as"><button type="button" class="rl on" data-r="Player" role="radio" aria-checked="true">'+IC.c+'<span>Player</span></button><button type="button" class="rl" data-r="Teammate" role="radio" aria-checked="false">'+IC.q+'<span>Teammate</span></button><button type="button" class="rl" data-r="Sponsor" role="radio" aria-checked="false">'+IC.t+'<span>Sponsor</span></button><button type="button" class="rl" data-r="Organizer" role="radio" aria-checked="false">'+IC.o+'<span>Organizer</span></button></div><p class="tag">Google sign-in and phone OTP are unavailable and are not enabled.</p><h4>Email and password</h4><div class="lf2"><div class="ig">'+IC.em+'<input id="le" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></div><input id="lw" type="password" required minlength="6" autocomplete="current-password" placeholder="Password (at least 6 characters)" aria-label="Password"><div class="fr"><button class="btn" id="loginButton" type="button">Log in</button><button class="btn alt" id="createButton" type="button">Create account</button></div></div><div class="ok" id="lx" role="status"></div>';
+function msg(t){$('lx').textContent=t}
+firebaseReady.then(function(sdk){if(sdk)msg('Firebase is ready. Google sign-in and phone OTP are unavailable.');else msg('Firebase could not be initialized. Check the connection and Firebase setup, then reload.')});
+async function authenticate(createAccount){
+    var email=$('le').value.trim(), pw=$('lw').value;
+    if(!/^\S+@\S+\.\S+$/.test(email)){msg('Enter a valid email.');return}
+    if(pw.length<6){msg('Password must be at least 6 characters.');return}
+    var loginButton=$('loginButton'),createButton=$('createButton');
+    loginButton.disabled=true;createButton.disabled=true;msg('Connecting to Firebase...');
+    try{
+        if(createAccount){
+            var result=await fbCreateAccount(email,pw,ROLE);
+            msg(result.verificationSent?'Account created and profile saved. A verification email was sent.':'Account created and profile saved, but the verification email could not be sent.');
+        }else{
+            await fbSignIn(email,pw);
+            msg('Signed in successfully.');
+        }
+    }catch(error){
+        console.error(createAccount?'Firebase account creation failed':'Firebase sign-in failed',error);
+        msg(error.accountCreated?'Your account was created, but its Firestore profile could not be saved: '+firebaseErrorMessage(error):(createAccount?'Account creation failed: ':'Login failed: ')+firebaseErrorMessage(error));
+    }finally{loginButton.disabled=false;createButton.disabled=false}
+};
+loginButton.addEventListener('click',function(){authenticate(false)});
+createButton.addEventListener('click',function(){authenticate(true)});
+if(!d.open)d.showModal()}
+document.addEventListener('click',function(e){if(!U&&e.target.closest('.lk,.cb')){e.stopPropagation();e.preventDefault();openLogin()}},true);
+['follow','dm','scout'].forEach(function(n){var f=window[n];window[n]=function(){if(!U){openLogin();return}f.apply(null,arguments)}});
+var EXP=[{s:2019,tm:'Team Nova (2024-now), Rise Squad (2021-24)',x:'Aggressive entry fragger. Fast in close fights and zone rotations, with both scrim and LAN experience.',sk:['Entry fragging','Team calling','Clutch 1vN']},{s:2020,tm:'Solo (2023-now), Apex Five (2021-23)',x:'Duelist skilled at site entries and trade kills. Rose from open qualifiers to pro level.',sk:['Aim duels','Entry timing','Jett and Raze']},{s:2020,tm:'Alpha Esports (2024-now)',x:'Rush-style player. Won city and state tournaments, now at league level.',sk:['Rushing','Fast decisions','Squad coordination']},{s:2021,tm:'Team Nova (2025-now), Venom Queens (2022-25)',x:'Controller who gives the team map control with smokes. Women Series MVP.',sk:['Smoke utility','Map control','In-game leading']},{s:2017,tm:'Solo (2022-now), Delta CS (2019-22)',x:'AWP specialist. Long LAN experience; stays calm under crowd pressure.',sk:['AWP','Positioning','Economy reads']},{s:2022,tm:'Alpha Esports (2025-now)',x:'New and fast-rising sniper, moving from state level to the national scene.',sk:['Long range','Patience','Quick scoping']}];
+function X(p){return EXP[P.indexOf(p)]}
+function yrs(p){return new Date().getFullYear()-X(p).s}
+$('ft').innerHTML='<h3>Top rated players</h3>'+P.map(function(p,i){return{p:p,i:i}}).sort(function(a,b){return b.p.rt-a.p.rt}).slice(0,4).map(function(o,k){return '<button class="fi" data-i="'+o.i+'"><b class="rk">'+(k+1)+'</b><span class="av" style="background:'+o.p.col+'">'+init(o.p.n)+'</span><span class="fn"><b>'+esc(o.p.n)+'</b><small>'+esc(o.p.g)+' · '+esc(o.p.r)+'</small></span><span class="fs">'+o.p.rt+'</span></button>'}).join('')+'<p class="tag" style="margin:12px 0 0">Rating out of 100. Tap to open the full profile.</p>';
+$('ft').addEventListener('click',function(e){var b=e.target.closest('.fi');if(!b)return;$('g').value='';$('gf').value='';$('q').value='';render();var c=document.querySelector('#grid .p[data-i="'+b.dataset.i+'"]');if(c)c.click()});
+var SP=[{n:'Volt Gear',l:'VG',t:'Gaming peripherals',o:'Mouse, keyboard and headset sponsorship for players who compete regularly.',p:[0,1,4]},{n:'Rage Energy',l:'RE',t:'Energy drink',o:'Cash and product sponsorship during tournament season.',p:[0,2]},{n:'NexaPhone',l:'NX',t:'Smartphones',o:'High refresh rate phones for mobile eSports players.',p:[2,5]},{n:'Pixel Arena',l:'PA',t:'Gaming cafe',o:'Practice rooms and bootcamp facilities.',p:[1,3]},{n:'StreamPlus',l:'S+',t:'Streaming platform',o:'Streaming setup and channel growth support.',p:[3,5]}];
+function spn(p){var i=P.indexOf(p),r=SP.filter(function(s){return s.p.indexOf(i)>-1}).map(function(s){return s.n});return r.length?r.join(', '):'None yet'}
+$('sp').innerHTML=SP.map(function(s,k){return '<button class="sc" data-k="'+k+'"><div class="sl">'+esc(s.l)+'</div><b>'+esc(s.n)+'</b><small>'+esc(s.t)+' · '+s.p.length+' players</small></button>'}).join('');
+$('sp').addEventListener('click',function(e){var b=e.target.closest('.sc');if(!b)return;var s=SP[+b.dataset.k];$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="sl">'+esc(s.l)+'</div><h3 style="margin:0 0 4px;font-size:22px">'+esc(s.n)+'</h3><div class="tag">'+esc(s.t)+'</div><p style="font-size:14px">'+esc(s.o)+'</p><h4>Sponsored players</h4><p style="font-size:14px;margin:0">'+s.p.map(function(i){return esc(P[i].n)}).join(', ')+'</p>';$('d').showModal()});
+$('sf').addEventListener('submit',function(e){e.preventDefault();$('sk').textContent='Thank you! Our team will contact you soon (demo).';e.target.reset()});
+var SHL=[{t:'Last circle clutch 1v4',o:'NightFury',c:'#5a4ff3',v:'1.2M'},{t:'Ace on Ascent',o:'Vyra',c:'#a23cf0',v:'860K'},{t:'Winning with a rush',o:'Rudra',c:'#1f9bd7',v:'540K'},{t:'Taking the site with smokes',o:'Zoya',c:'#d946ef',v:'320K'},{t:'AWP 3k flick',o:'Kaal',c:'#0f766e',v:'410K'}];
+function rs(){$('sh').innerHTML=SHL.map(function(s,k){return '<button class="sv" data-k="'+k+'" style="background:linear-gradient(160deg,'+s.c+',#0e0f1f)">'+(s.u?'<video src="'+s.u+'" muted playsinline preload="metadata"></video>':'')+'<span class="pl">'+(s.u?'New':'▶ '+s.v)+'</span><span><b>'+esc(s.o)+'</b><br>'+esc(s.t)+'</span></button>'}).join('')}
+rs();
+$('sh').addEventListener('click',function(e){var b=e.target.closest('.sv');if(!b)return;var s=SHL[+b.dataset.k];$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><h3 style="margin:0 0 10px;font-size:20px">'+esc(s.t)+'</h3>'+(s.u?'<video class="vp" src="'+s.u+'" controls autoplay playsinline></video>':'<div class="clip" style="background:linear-gradient(160deg,'+s.c+',#0e0f1f);border-radius:12px;height:300px">'+esc(s.o)+'<br>'+esc(s.t)+'</div><p class="tag">This is a sample clip. Upload your own video to play a real short.</p>');$('d').showModal()});
+$('ul').addEventListener('click',function(e){if(!U){e.preventDefault();openLogin()}});
+$('uf').addEventListener('change',function(){var f=this.files[0];if(!f)return;SHL.unshift({t:f.name.replace(/\.[^.]+$/,''),o:'You',c:'#5a4ff3',u:URL.createObjectURL(f)});rs();$('um').textContent='Short added. It will disappear on refresh (demo).';this.value=''});
+var VD=[{t:'BGMI Pro Series 2026 Grand Final',o:'NightFury',d:'18:42',c:'#5a4ff3'},{t:'Valorant Challengers: Top 4 highlights',o:'Vyra',d:'09:15',c:'#a23cf0'},{t:'Free Fire Premier League: winning rush',o:'Rudra',d:'07:30',c:'#1f9bd7'},{t:'Womens Valorant MVP interview',o:'Zoya',d:'12:05',c:'#d946ef'},{t:'CS2 South Asia Open: AWP clutches',o:'Kaal',d:'10:48',c:'#0f766e'},{t:'Rising Stars Cup final circle',o:'Sniper_X',d:'06:20',c:'#3b4cca'}];
+$('vg').innerHTML=VD.map(function(v,k){return '<button class="vc" data-k="'+k+'"><div class="vt" style="background:linear-gradient(135deg,'+v.c+',#0e0f1f)">▶<em>'+v.d+'</em></div><b>'+esc(v.t)+'</b><small>'+esc(v.o)+'</small></button>'}).join('');
+$('vg').addEventListener('click',function(e){var b=e.target.closest('.vc');if(!b)return;var v=VD[+b.dataset.k];$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><h3 style="margin:0 0 10px;font-size:20px">'+esc(v.t)+'</h3><div class="clip" style="background:linear-gradient(135deg,'+v.c+',#0e0f1f);border-radius:12px;height:220px">▶ '+esc(v.o)+'</div><p class="tag">This is a sample video. Real videos need a backend and hosting.</p>';$('d').showModal()});
+$('d').addEventListener('close',function(){$('m').innerHTML=''});
+var IMG=null,STS=['Delhi','Maharashtra','Rajasthan','Maharashtra','Karnataka','Uttar Pradesh'],STL=['Andhra Pradesh','Assam','Bihar','Chhattisgarh','Delhi','Goa','Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Odisha','Punjab','Rajasthan','Tamil Nadu','Telangana','Uttar Pradesh','Uttarakhand','West Bengal','Jammu & Kashmir','Other'];
+var GD=['Male','Female','Male','Female','Male','Male'];P.forEach(function(p,i){p.st=STS[i];p.lv='Pro';p.gd=GD[i]});
+STL.forEach(function(s){var o=document.createElement('option');o.textContent=s;$('js').appendChild(o)});
+function rtx(p){return p.rt?p.rt+'/100<i class="pw"><u style="width:'+p.rt+'%"></u></i>':'New'}
+function wx(p){return p.rt?p.w+'%':'-'}
+function avh(p){return p.img?'<div class="av" style="background:url('+"'"+p.img+"'"+') center/cover"></div>':'<div class="av" style="background:'+p.col+'">'+init(p.n)+'</div>'}
+$('pf2').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement('canvas');c.width=c.height=160;var s=Math.min(im.width,im.height);c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,160,160);IMG=c.toDataURL('image/jpeg',.8);$('pv').style.background='url('+IMG+') center/cover';$('pv').textContent=''};im.src=r.result};r.readAsDataURL(f)});
+async function submitProfile(e){
+    e.preventDefault();
+    if(!U){openLogin();return}
+    $('ok').textContent='';
+    var v=function(i){return $(i).value.trim()};
+    if(!/^[A-Za-z0-9_.\- ]{2,20}$/.test(v('gtg'))){$('ok').textContent='Gamer tag: 2-20 characters, using letters, numbers, _ . or - only.';return}
+    var ag=+v('jag');if(!(ag>=16)){$('ok').textContent='Yke is for players aged 16 and above.';return}
+    if(!/^[6-9]\d{9}$/.test(v('jp'))){$('ok').textContent='Enter a valid 10-digit phone number.';return}
+    if(!/^\S+@\S+\.\S+$/.test(v('je'))){$('ok').textContent='Enter a valid Gmail address.';return}
+    var gt=v('gtg'),gid=v('fg');
+    var newProfile = {n:gt,gid:gid,fn:v('fn'),t:v('jt')||'Solo',g:v('jg'),r:v('jr')||'Player',lv:v('jl'),c:v('jc'),st:v('js'),a:ag,rt:0,w:0,e:0,col:'#5a4ff3',img:IMG,ph:v('jp'),em:v('je'),k:'New player',mine:true,gd:v('jgn'),nb:$('vis').checked,ach:[['Joined Yke','New','Pending verification']]};
+    try{
+        var sdk=await requireFirebase();
+        if(!fbAuth.currentUser){$('ok').textContent='Your session expired. Please log in again.';openLogin();return}
+        await sdk.firestore.setDoc(sdk.firestore.doc(fbDB,'users',fbAuth.currentUser.uid),Object.assign(profileForFirestore(newProfile),{
+            uid:fbAuth.currentUser.uid,
+            email:fbAuth.currentUser.email,
+            updatedAt:sdk.firestore.serverTimestamp()
+        }),{merge:true});
+    }catch(error){
+        console.error('Firestore profile save failed',error);
+        $('ok').textContent='Profile could not be saved: '+firebaseErrorMessage(error);
+        return;
+    }
+    $('ok').textContent='Profile saved to your Firebase account.';
+    P.push(newProfile);
+    EXP.push({s:+v('jy')||new Date().getFullYear(),tm:v('jt')||'Solo',x:v('jb')||'New profile.',sk:[]});
+    $('g').value='';$('gf').value='';$('q').value=gt;render();if(typeof rsel==='function')rsel();
+    if(!$('ok').textContent) $('ok').textContent='Profile created! See it under Players (sample display data resets on refresh).';
+    e.target.reset();IMG=null;$('pv').style.background='';$('pv').textContent='+';$('players').scrollIntoView()
+}
+['nbs','tfs'].forEach(function(i){STL.forEach(function(s){var o=document.createElement('option');o.textContent=s;$(i).appendChild(o)})});
+['nbg','tfg'].forEach(function(i){games.forEach(function(g){var o=document.createElement('option');o.textContent=g;$(i).appendChild(o)})});
+var T=[{n:'Team Nova',g:'BGMI',c:'Delhi',st:'Delhi',need:'Sniper, Support',slots:2},{n:'Alpha Esports',g:'Free Fire',c:'Jaipur',st:'Rajasthan',need:'Rusher',slots:1},{n:'Venom Queens',g:'Valorant',c:'Pune',st:'Maharashtra',need:'Controller, Initiator',slots:2},{n:'Delta CS',g:'CS2',c:'Bengaluru',st:'Karnataka',need:'AWPer, IGL',slots:2},{n:'Rise Squad',g:'BGMI',c:'Lucknow',st:'Uttar Pradesh',need:'Entry fragger',slots:1}];
+var ME=null,CC={'delhi':[28.61,77.21],'mumbai':[19.08,72.88],'jaipur':[26.91,75.79],'pune':[18.52,73.86],'bengaluru':[12.97,77.59],'lucknow':[26.85,80.95],'hyderabad':[17.39,78.49],'chennai':[13.08,80.27],'kolkata':[22.57,88.36],'ahmedabad':[23.02,72.57],'chandigarh':[30.73,76.78],'patna':[25.59,85.14],'indore':[22.72,75.86],'bhopal':[23.26,77.41],'surat':[21.17,72.83],'nagpur':[21.15,79.09],'kochi':[9.93,76.27],'guwahati':[26.14,91.74]};
+function dk(a,b){var r=Math.PI/180,x=(b[0]-a[0])*r,y=(b[1]-a[1])*r,h=Math.sin(x/2)*Math.sin(x/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(y/2)*Math.sin(y/2);return 12742*Math.asin(Math.sqrt(h))}
+function px(c,st){if(ME){var q=CC[(c||'').toLowerCase()];return q?dk(ME,q):1e6}var a=$('nbc').value.trim().toLowerCase(),b=$('nbs').value;if(a&&c&&c.toLowerCase()===a)return 0;if(b&&st===b)return 1;return 2}
+function pb(n){if(ME){return n>=1e6?'':'<span class="gold">'+(n<10?'Under 10 km away':n<50?'Under 50 km away':n<200?'Under 200 km away':'Over 200 km away')+'</span>'}return n===0?'<span class="gold">Same city</span>':n===1?'<span class="gold">Same state</span>':''}
+function rn(){var g=$('nbg').value,L=P.map(function(p,i){return{p:p,i:i,x:px(p.c,p.st)}}).filter(function(o){return (!g||o.p.g===g)&&o.p.nb!==false}).sort(function(a,b){return a.x-b.x||b.p.rt-a.p.rt});
+$('nb').innerHTML=L.length?L.map(function(o){var p=o.p;return '<div class="nc"><div class="top">'+avh(p)+'<div><b>'+esc(p.n)+'</b><div class="tag">'+esc(p.g)+' · '+esc(p.r)+'</div></div></div><div class="tag">'+esc(p.c)+(p.st?', '+esc(p.st):'')+'</div>'+pb(o.x)+'<div class="fr"><button class="btn alt vw" data-i="'+o.i+'">View profile</button><button class="btn alt msg mg" data-i="'+o.i+'">'+IC.g+'<span>Message</span></button><button class="btn inv" data-i="'+o.i+'">Invite</button></div></div>'}).join(''):'<p>No players found for this game.</p>';
+var TL=T.map(function(t,k){return{t:t,k:k,x:px(t.c,t.st)}}).filter(function(o){return !g||o.t.g===g}).sort(function(a,b){return a.x-b.x});
+$('tm').innerHTML=TL.length?TL.map(function(o){var t=o.t;return '<div class="nc"><b>'+esc(t.n)+'</b><div class="tag">'+esc(t.g)+' · '+esc(t.c)+', '+esc(t.st)+'</div><p style="margin:8px 0;font-size:14px">Needs: '+esc(t.need)+'</p><div class="tag">'+t.slots+' open slot'+(t.slots>1?'s':'')+'</div>'+pb(o.x)+'<div class="fr"><button class="btn jn" data-k="'+o.k+'">Request to join</button></div></div>'}).join(''):'<p>No teams for this game yet. Create one below.</p>'}
+['nbs','nbc','nbg'].forEach(function(i){$(i).addEventListener('input',rn)});
+$('nb').addEventListener('click',function(e){var v=e.target.closest('.vw'),n=e.target.closest('.inv'),m=e.target.closest('.msg');if(m){if(!U){openLogin();return}openChat(+m.dataset.i);return}if(v){$('g').value='';$('gf').value='';$('q').value='';render();var c=document.querySelector('#grid .p[data-i="'+v.dataset.i+'"]');if(c)c.click()}else if(n){if(!U){openLogin();return}$('nbm').textContent='Invite sent to '+P[+n.dataset.i].n+' (demo).'}});
+$('tm').addEventListener('click',function(e){var j=e.target.closest('.jn');if(!j)return;if(!U){openLogin();return}$('nbm').textContent='Request sent to '+T[+j.dataset.k].n+' (demo).'});
+$('tf').addEventListener('submit',function(e){e.preventDefault();if(!U){openLogin();return}var v=function(i){return $(i).value.trim()};T.unshift({n:v('tfn'),g:v('tfg'),st:v('tfs'),c:v('tfc'),need:v('tfr')||'Open to all roles',slots:1});rn();$('nbm').textContent='Team created! Players can now request to join (demo, resets on refresh).';e.target.reset()});
+var CH={};
+function openChat(i){var p=P[i];CH[i]=CH[i]||[];$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="top">'+avh(p)+'<div><h3 style="font-size:20px;margin:0">'+esc(p.n)+'</h3><div class="tag">'+esc(p.g)+' · '+esc(p.c)+'</div></div></div><div class="msgs" id="ms"></div><div class="ci" style="padding:0"><input id="mi" placeholder="Write a message" aria-label="Message"><button class="btn" id="mb">Send</button></div><p class="tag">Demo chat: messages stay on this device and are not delivered yet.</p>';function dr(){$('ms').innerHTML=CH[i].length?CH[i].map(function(t){return '<div class="bb">'+esc(t)+'</div>'}).join(''):'<p class="tag">Say hi and ask to team up.</p>';$('ms').scrollTop=1e5}dr();$('mb').onclick=function(){var v=$('mi').value.trim();if(!v)return;CH[i].push(v);$('mi').value='';dr()};$('mi').onkeydown=function(e){if(e.key==='Enter')$('mb').click()};$('d').showModal()}
+$('nbt').addEventListener('click',function(){var b=this;if(ME){ME=null;b.textContent='Turn on Nearby';$('nbl').textContent='Nearby is off.';rn();return}var fail=function(){$('nbl').textContent='Could not get your location. Allow location access in your browser, or choose your state and city below.'};if(!navigator.geolocation){fail();return}$('nbl').textContent='Getting your location...';navigator.geolocation.getCurrentPosition(function(pos){ME=[pos.coords.latitude,pos.coords.longitude];b.textContent='Turn off Nearby';$('nbl').textContent='Nearby is on. Players closest to you are shown first.'+($('vis').checked?' You are visible to nearby players.':'');rn()},fail,{timeout:10000})});
+(function(){var c=document.getElementById('bg'),x=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2),pts=[],light=window.matchMedia('(prefers-color-scheme: light)').matches,rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches,pal=['108,92,255','61,232,255','217,70,239','52,211,153'];
+function mk(){return{x:Math.random()*W,y:Math.random()*H,s:9+Math.random()*16,t:(Math.random()*4)|0,c:pal[(Math.random()*4)|0],v:.15+Math.random()*.35,r:Math.random()*6.28,w:(Math.random()-.5)*.012}}
+function size(){W=window.innerWidth;H=window.innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);var n=Math.max(16,Math.min(44,Math.round(W*H/48000)));pts=[];for(var i=0;i<n;i++)pts.push(mk())}
+function orb(cx,cy,r,col,a){var g=x.createRadialGradient(cx,cy,0,cx,cy,r);g.addColorStop(0,'rgba('+col+','+a+')');g.addColorStop(1,'rgba('+col+',0)');x.fillStyle=g;x.fillRect(cx-r,cy-r,r*2,r*2)}
+function shape(p){var s=p.s;x.beginPath();if(p.t===0){x.moveTo(0,-s);x.lineTo(s*.87,s*.5);x.lineTo(-s*.87,s*.5);x.closePath()}else if(p.t===1){x.arc(0,0,s*.8,0,6.283)}else if(p.t===2){x.moveTo(-s*.8,-s*.8);x.lineTo(s*.8,s*.8);x.moveTo(s*.8,-s*.8);x.lineTo(-s*.8,s*.8)}else{x.rect(-s*.7,-s*.7,s*1.4,s*1.4)}x.stroke()}
+function draw(t){x.clearRect(0,0,W,H);var a=light?.12:.2;orb(W*(.2+.6*(.5+.5*Math.sin(t*.00015))),H*(.25+.4*(.5+.5*Math.cos(t*.0002))),Math.max(W,H)*.45,'108,92,255',a);orb(W*(.8-.6*(.5+.5*Math.sin(t*.00012+1.5))),H*(.7-.4*(.5+.5*Math.cos(t*.00017+.8))),Math.max(W,H)*.4,'61,232,255',a*.6);
+x.lineWidth=1.6;for(var i=0;i<pts.length;i++){var p=pts[i];x.save();x.translate(p.x,p.y);x.rotate(p.r);x.strokeStyle='rgba('+p.c+','+(light?.28:.3)+')';shape(p);x.restore();if(!rm){p.y-=p.v;p.r+=p.w;if(p.y<-30){p.y=H+30;p.x=Math.random()*W}}}}
+function loop(t){draw(t);if(!rm)window.requestAnimationFrame(loop)}
+size();window.addEventListener('resize',function(){size();if(rm)draw(0)});loop(0)})();
+$('pf').addEventListener('click',function(e){var b=e.target.closest('.act button');if(!b)return;b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');setTimeout(function(){b.classList.remove('pop')},650);if(b.classList.contains('lk')&&b.classList.contains('liked')){var cl=['#3de8ff','#a23cf0','#d946ef','#5a4ff3'];for(var k=0;k<8;k++){var i=document.createElement('i'),a=k/8*6.283,dd=26+Math.random()*12;i.className='bp';i.style.setProperty('--dx',Math.cos(a)*dd+'px');i.style.setProperty('--dy',Math.sin(a)*dd+'px');i.style.background=cl[k%4];b.appendChild(i);(function(n){setTimeout(function(){n.remove()},650)})(i)}}else if(b.classList.contains('shr')){var r=document.createElement('i');r.className='rp';b.appendChild(r);setTimeout(function(){r.remove()},550)}});
+IC.f='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 1.5v5M12 17.5v5M1.5 12h5M17.5 12h5"/><path class="pl" d="M12 9.5v5M9.5 12h5"/><circle class="cd" cx="12" cy="12" r="2.8" fill="currentColor" stroke="none" opacity="0"/></svg>';
+IC.g='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6.5" rx="1.5"/><rect x="17.5" y="13" width="4" height="6.5" rx="1.5"/><path d="M19.5 19.5c0 1.6-1.4 2.5-3.5 2.5h-2"/><circle class="d1" cx="9" cy="11" r="1"/><circle class="d2" cx="12" cy="11" r="1"/><circle class="d3" cx="15" cy="11" r="1"/><circle class="on" cx="20.5" cy="4" r="2.2"/></svg>';
+document.addEventListener('click',function(e){var b=e.target.closest('.mg');if(!b)return;b.classList.remove('fx');void b.offsetWidth;b.classList.add('fx');setTimeout(function(){b.classList.remove('fx')},650)});
+var ROLE='Player';
+IC.s='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 4.6-3.2 8.2-8 9.8-4.8-1.6-8-5.2-8-9.8V5.5z"/><path class="pt" d="M10 8.8l5 3.2-5 3.2z" fill="currentColor"/></svg>';
+IC.t='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="1.5"/><circle cx="12" cy="12" r="2.8"/><path d="M12 10.8v2.4M5.5 9v.01M18.5 15v.01"/></svg>';
+IC.q='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3"/><path d="M8.2 8.5a3.8 3.8 0 0 1 7.6 0"/><rect x="6.9" y="8" width="1.8" height="3.2" rx=".9" fill="currentColor"/><rect x="15.3" y="8" width="1.8" height="3.2" rx=".9" fill="currentColor"/><path d="M6.8 20c0-3.2 2.3-5.2 5.2-5.2s5.2 2 5.2 5.2"/><circle cx="4.6" cy="11" r="2"/><path d="M1.5 19c0-2.3 1.4-3.8 3.1-3.8"/><circle cx="19.4" cy="11" r="2"/><path d="M22.5 19c0-2.3-1.4-3.8-3.1-3.8"/></svg>';
+$('m').addEventListener('click',function(e){var b=e.target.closest('.rl');if(!b)return;ROLE=b.dataset.r;document.querySelectorAll('.rl').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-checked',on?'true':'false')})});
+IC.ph='<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iph"/></svg>';IC.em='<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iem"/></svg>';
+var TB=[['home','Home','<path d="M3 11l9-8 9 8"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/>'],['discover','Discover','<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M10.5 7.5v1.5M10.5 12v1.5M7.5 10.5H9M12 10.5h1.5"/>'],['create','Create','<path d="M12 5v14M5 12h14"/>'],['esports','Esports','<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5v1.5A3 3 0 0 0 8 10.5M16 6h3v1.5a3 3 0 0 1-3 3"/><path d="M12 13v4M9 20h6M10 17h4v3h-4z"/>'],['profile','Profile','<circle cx="12" cy="8" r="3.3"/><path d="M7.7 8a4.3 4.3 0 0 1 8.6 0"/><path d="M5 20c0-3.5 3-5.8 7-5.8s7 2.3 7 5.8"/><rect x="6.6" y="7.6" width="1.6" height="3" rx=".8" fill="currentColor"/><rect x="15.8" y="7.6" width="1.6" height="3" rx=".8" fill="currentColor"/>']];
+function tsv(q){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+q+'</svg>'}
+$('tb').innerHTML=TB.map(function(t){var ic=tsv(t[2]);return '<button type="button" data-t="'+t[0]+'"'+(t[0]==='create'?' class="mk"':'')+'>'+(t[0]==='create'?'<i>'+ic+'</i>':ic)+'<span>'+t[1]+'</span></button>'}).join('');
+var AM=[['games','esports'],['shorts','esports'],['videos','esports'],['feed','home'],['players','discover'],['teammates','discover'],['sponsors','esports'],['orgs','esports'],['join','create']],tk=false;
+function act(){tk=false;var cur='home';if(window.scrollY>240){AM.forEach(function(a){var el=$(a[0]);if(el&&el.getBoundingClientRect().top<window.innerHeight*.4)cur=a[1]})}document.querySelectorAll('#tb button').forEach(function(b){var on=b.dataset.t===cur&&cur!=='create';b.classList.toggle('on',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')})}
+window.addEventListener('scroll',function(){if(!tk){tk=true;window.requestAnimationFrame(act)}},{passive:true});act();
+function go(id,f){d.close();$(id).scrollIntoView({behavior:'smooth'});if(f)setTimeout(function(){$(f).focus({preventScroll:true})},500)}
+var CI=[['pf',IC.c,'Player profile','Show your stats, level and experience'],['sh','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg>','Short','Upload a gameplay clip'],['tm',IC.f,'Team','Start a squad and find players'],['sp',IC.t,'Sponsor offer','Back players as a brand']];
+function openCreate(){$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><h3 style="margin:0;font-size:22px">Create</h3><p class="tag">What do you want to make?</p>'+CI.map(function(c){return '<button type="button" class="cs" data-k="'+c[0]+'">'+c[1]+'<span><b>'+c[2]+'</b><small>'+c[3]+'</small></span></button>'}).join('');$('d').showModal()}
+function openProfile(){if(!U){openLogin();return}var me=P.filter(function(p){return p.mine}).pop();$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="top"><div class="av" style="background:#5a4ff3">'+esc((U.role||'Player').slice(0,2))+'</div><div><h3 style="font-size:22px;margin:0">My profile</h3><div class="tag">'+esc(U.role||'Player')+' · logged in with '+esc(U.via)+'</div></div></div>'+(me?'<div class="row"><span>Gamer tag</span><b>'+esc(me.n)+'</b></div><div class="row"><span>Game</span><b>'+esc(me.g)+'</b></div><div class="fr"><button class="btn" id="mv">View my profile</button></div>':'<p class="tag" style="margin-top:14px">You have not created a player profile yet.</p><div class="fr"><button class="btn" id="mc">Create player profile</button></div>')+'<div class="fr"><button class="btn alt" id="mo">Log out</button></div>';
+if(me)$('mv').onclick=function(){d.close();$('g').value='';$('gf').value='';$('q').value=me.n;render();$('players').scrollIntoView({behavior:'smooth'})};else $('mc').onclick=function(){go('join','gtg')};
+$('mo').onclick=async function(){
+    try{await fbSignOut();d.close()}
+    catch(error){console.error('Firebase sign-out failed',error);openLogin();$('lx').textContent='Sign out failed: '+firebaseErrorMessage(error)}
+};
+$('d').showModal()}
+$('m').addEventListener('click',function(e){var b=e.target.closest('.cs');if(!b)return;var k=b.dataset.k;if(k==='pf')go('join','gtg');else if(k==='tm')go('tf','tfn');else if(k==='sp')go('sf',null);else if(k==='sh'){if(!U){openLogin();return}d.close();$('uf').click()}});
+$('tb').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=b.dataset.t;if(t==='home')window.scrollTo({top:0,behavior:'smooth'});else if(t==='discover'){$('players').scrollIntoView({behavior:'smooth'});setTimeout(function(){$('q').focus({preventScroll:true})},500)}else if(t==='esports')$('games').scrollIntoView({behavior:'smooth'});else if(t==='create')openCreate();else openProfile()});
+var SYS="You are the Yke AI Gaming Assistant on an eSports talent platform. Use only the data given. Do not invent stats, matches or results; if data is missing, say so. Ratings and stats may be sample data, so say that when it matters. Never rank or judge people by gender, age or personal background. Be practical, encouraging and concise: short headings that start with ## and bullet points. Reply in English.";
+function pd(p){var x=X(p);return{gamer_tag:p.n,game:p.g,role:p.r,level:p.lv||'Pro',rating_out_of_100:p.rt||'unrated',win_rate_percent:p.rt?p.w:'unknown',prize_money_inr:p.e,years_playing:yrs(p),team:p.t,city:p.c,state:p.st||'',key_stat:p.k,achievements:p.ach.map(function(a){return a[0]+' - '+a[1]}),skills:x.sk,experience_note:x.x,sponsors:spn(p)}}
+function pop(){return P.map(function(p,i){return '<option value="'+i+'">'+esc(p.n)+' \u00b7 '+esc(p.g)+'</option>'}).join('')}
+function gop(){return '<option value="">Any game</option>'+games.map(function(g){return '<option>'+esc(g)+'</option>'}).join('')}
+function rsel(){var e=$('aip');if(e){var v=e.value;e.innerHTML=pop();e.value=v}}
+var AIM=[['perf','Performance','<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'],['rec','Recruit','<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.5-5.5 6-5.5s6 2 6 5.5"/><path d="M18 7v6M15 10h6"/>'],['org','Organizer',TB[3][2]],['coa','Coach','<circle cx="12" cy="12" r="7.5"/><path d="M12 1.5v5M12 17.5v5M1.5 12h5M17.5 12h5"/>']];
+var AF={perf:function(){return '<select id="aip" aria-label="Player">'+pop()+'</select><textarea id="aix" rows="3" placeholder="Recent matches or notes (optional)" aria-label="Notes"></textarea><button class="btn" id="aigo">Analyze performance</button>'},
+rec:function(){return '<select id="aig" aria-label="Game">'+gop()+'</select><input id="air" placeholder="Roles you need (e.g. Sniper, IGL)" aria-label="Roles"><input id="ail" placeholder="Preferred location (city or state, optional)" aria-label="Location"><textarea id="ain" rows="3" placeholder="Team style, goals, schedule (optional)" aria-label="Notes"></textarea><button class="btn" id="aigo">Recommend players</button>'},
+org:function(){return '<input id="aon" placeholder="Tournament name" aria-label="Tournament name"><select id="aog" aria-label="Game">'+gop().replace('Any game','Choose game')+'</select><input id="aot" type="number" min="2" max="256" placeholder="Number of teams" aria-label="Teams"><select id="aof" aria-label="Format"><option>Single elimination</option><option>Double elimination</option><option>Round robin</option><option>Battle royale points</option></select><input id="aod" type="number" min="1" max="30" placeholder="Number of days" aria-label="Days"><textarea id="aox" rows="3" placeholder="Prize pool, online or venue, challenges (optional)" aria-label="Notes"></textarea><button class="btn" id="aigo">Create management plan</button>'},
+coa:function(){return '<select id="aip" aria-label="Player">'+pop()+'</select><textarea id="aix" rows="3" placeholder="Your goal (e.g. reach Semi-pro, join a team)" aria-label="Goal"></textarea><button class="btn" id="aigo">Get my improvement plan</button>'}};
+var AB={perf:function(){var p=P[+$('aip').value],pe=P.filter(function(q){return q!==p&&q.g===p.g}).map(pd);return SYS+"\n\nTask: Analyze this player's performance data. Sections: ## Summary, ## Strengths, ## Weak spots or risks, ## Compared with other "+p.g+" players on Yke, ## Next steps.\n\nPlayer: "+JSON.stringify(pd(p))+"\n\nPeers on Yke (same game): "+JSON.stringify(pe)+"\n\nNotes from the user: "+($('aix').value||'none')},
+rec:function(){var g=$('aig').value,c=P.filter(function(p){return(!g||p.g===g)&&p.nb!==false}).map(pd);if(!c.length)return '';return SYS+"\n\nTask: Recommend up to 3 players for a team, ranked. For each give a ## heading with the gamer tag, why they fit, possible risks, and 2 questions to ask in a trial. Only choose from the candidate list. If nobody fits, say so honestly.\n\nTeam needs: game="+(g||'any')+"; roles="+($('air').value||'any')+"; preferred location="+($('ail').value||'no preference')+"; notes="+($('ain').value||'none')+"\n\nCandidates: "+JSON.stringify(c)},
+org:function(){return SYS+"\n\nTask: Act as a management assistant for a tournament organizer. Sections: ## Overview, ## Suggested schedule (day by day), ## Format and match count (show the math), ## Registration and rules checklist, ## Staff and tech checklist, ## Risks and fixes, ## Communication plan for teams and players. State your assumptions. Players on Yke must be 16 or older.\n\nTournament: name="+$('aon').value+"; game="+$('aog').value+"; teams="+$('aot').value+"; format="+$('aof').value+"; days="+($('aod').value||'not set')+"; notes="+($('aox').value||'none')},
+coa:function(){var p=P[+$('aip').value];return SYS+"\n\nTask: Create a personalized improvement plan for this player. Sections: ## Where you are now, ## Top 3 priorities, ## 2-week practice plan, ## Healthy habits (sleep, breaks, eye and wrist care), ## How to show progress on Yke.\n\nPlayer: "+JSON.stringify(pd(p))+"\n\nGoal: "+($('aix').value||'get better and get noticed by teams')}};
+function md(t){var h='',inl=false;t.split('\n').forEach(function(l){var m;l=l.trim();var b=function(x){return esc(x).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')};if(!l){if(inl){h+='</ul>';inl=false}return}if(m=l.match(/^#{1,4}\s+(.*)/)){if(inl){h+='</ul>';inl=false}h+='<h4>'+b(m[1])+'</h4>'}else if(m=l.match(/^(?:[-*\u2022]|\d+[.)])\s+(.*)/)){if(!inl){h+='<ul>';inl=true}h+='<li>'+b(m[1])+'</li>'}else{if(inl){h+='</ul>';inl=false}h+='<p>'+b(l)+'</p>'}});if(inl)h+='</ul>';return h}
+var mode='perf',hist=[],base='',busy=false;
+function tell(m){$('ao').hidden=false;$('ao').innerHTML='<p class="tag">'+m+'</p>'}
+function setMode(m){mode=m;hist=[];base='';$('ao').hidden=true;$('afu').hidden=true;document.querySelectorAll('#aim .chip').forEach(function(c){var on=c.dataset.m===m;c.classList.toggle('on',on);c.setAttribute('aria-selected',on?'true':'false')});$('aif').innerHTML=AF[m]();$('aigo').onclick=start}
+function start(){if(mode==='org'&&(!$('aon').value.trim()||!$('aog').value||!$('aot').value)){tell('Please enter the tournament name, game and number of teams.');return}var pr=AB[mode]();if(!pr){tell('No players found for that game yet.');return}hist=[{role:'user',content:pr}];base='';run()}
+async function run(){if(busy)return;var o=$('ao'),sm=null;busy=true;o.hidden=false;o.innerHTML=base+'<p class="tag">Thinking\u2026</p>';try{sm=window.claude&&window.claude.use?await window.claude.use('sample'):null}catch(e){sm=null}
+if(!sm){busy=false;o.innerHTML='<p class="tag">The AI assistant works when this page is opened inside Claude. Please open the link from the Claude app or claude.ai.</p>';return}
+try{var r=await sm(hist,{cache:false,onText:function(t){o.innerHTML=base+md(t.text)}});hist.push({role:'assistant',content:r.text});base+=md(r.text)+(r.truncated?'<p class="tag">The answer was cut short. Ask a follow-up to continue.</p>':'');o.innerHTML=base;$('afu').hidden=false}catch(e){o.innerHTML=base+'<p class="tag">'+(e&&e.code==='not_granted'?'AI access was not allowed. Tap the button again and allow it.':e&&e.code==='rate_limited'?'Too many requests. Please wait a moment and try again.':'Something went wrong. Please try again.')+'</p>'}finally{busy=false}}
+$('aim').innerHTML=AIM.map(function(a){return '<button type="button" class="chip" role="tab" data-m="'+a[0]+'">'+tsv(a[2])+a[1]+'</button>'}).join('');
+$('aim').addEventListener('click',function(e){var b=e.target.closest('.chip');if(b)setMode(b.dataset.m)});
+$('afb').onclick=function(){var v=$('afi').value.trim();if(!v||busy)return;hist.push({role:'user',content:v});base+='<p class="q">You: '+esc(v)+'</p>';$('afi').value='';run()};
+$('afi').onkeydown=function(e){if(e.key==='Enter')$('afb').click()};
+AM.unshift(['ai','discover']);setMode('perf');
+IC.o=tsv(TB[3][2]);
+var TN=['Team Nova','Alpha Esports','Venom Queens','Delta CS','Rise Squad','Storm Unit','Night Owls','Iron Wolves','Apex Crew','Neon Five','Pixel Hunters','Red Dragons'],SL=['Registration open','Check-in open','Live','Completed'],SN=['Registration','Check-in','Live','Completed'],PT=[15,12,10,8,6,4,2,1];
+var TS=[{n:'Yke Open: BGMI Squad Cup',g:'BGMI',f:'Squad',k:'br',st:0,max:12,teams:TN.slice(0,11),reg:false,ci:false,ms:[],disp:[],proof:'',win:{}},
+{n:'Free Fire Duo Clash',g:'Free Fire',f:'Duo',k:'ko',st:1,max:8,teams:['Rudra + Kuhu','Blaze Duo','Ghost Pair','Sky Twins','Iron Duo','Vyra + Zoya','Neon Pair','Your Duo'],reg:true,me:'Your Duo',ci:false,ms:[],disp:[],proof:'',win:{}},
+{n:'Valorant Solo Knockout',g:'Valorant',f:'Solo',k:'ko',st:2,max:8,teams:['NightFury','Vyra','Rudra','Zoya','Kaal','Sniper_X','Blaze','Ghost'],reg:false,ci:false,ms:[],disp:[],proof:'',bt:['NightFury','Vyra','Rudra','Zoya','Kaal','Sniper_X','Blaze','Ghost'],win:{}}];
+function isO(){return !!U&&U.role==='Organizer'}
+function rnds(t){var R=[],cur=t.bt.slice(),r=0;while(cur.length>1){var ms=[];for(var i=0;i<cur.length;i+=2)ms.push({a:cur[i],b:cur[i+1],w:t.win[r+'-'+(i/2)]||null});R.push(ms);if(ms.every(function(m){return m.w})){cur=ms.map(function(m){return m.w});r++}else break}return R}
+function brk(t,i){var R=rnds(t);if(!R.length)return '<p class="tag">Not enough teams for a bracket.</p>';var h='<div class="br">';R.forEach(function(ms,r){h+='<div class="rd">'+ms.map(function(m,j){var o=isO()&&t.st===2&&!m.w;function b(x){return '<button type="button" class="'+(m.w===x?'w ':'')+(o?'cl':'')+'" '+(o?'data-ta="win" data-i="'+i+'" data-r="'+r+'" data-m="'+j+'" data-x="'+esc(x)+'"':'disabled')+'>'+esc(x)+'</button>'}return '<div class="mt">'+b(m.a)+b(m.b)+'</div>'}).join('')+'</div>'});h+='</div>';var l=R[R.length-1];if(l.length===1&&l[0].w)h+='<p class="ok">Champion: '+esc(l[0].w)+'</p>';else if(isO()&&t.st===2)h+='<p class="sm">Organizer: tap the winner of each match to advance them.</p>';return h}
+function sb(t){var a={};t.ms.forEach(function(m){m.forEach(function(r){var o=a[r.n]||(a[r.n]={n:r.n,k:0,pp:0,m:0});o.k+=r.k;o.pp+=(PT[r.p-1]||0);o.m++})});var rows=Object.keys(a).map(function(k){return a[k]}).sort(function(x,y){return(y.k+y.pp)-(x.k+x.pp)});if(!rows.length)return '<p class="tag">No matches played yet.</p>';return '<div style="overflow-x:auto"><table class="tb2"><thead><tr><th>Team</th><th>M</th><th>Kills</th><th>Place</th><th>Pts</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+esc(r.n)+'</td><td>'+r.m+'</td><td>'+r.k+'</td><td>'+r.pp+'</td><td>'+(r.k+r.pp)+'</td></tr>'}).join('')+'</tbody></table></div><p class="sm">Points: placement points (1st 15, 2nd 12, 3rd 10, 4th 8, 5th 6, 6th 4, 7th 2, 8th 1) plus 1 per kill.</p>'}
+function renderT(){$('tg').innerHTML=TS.map(function(t,i){return '<div class="nc"><b>'+esc(t.n)+'</b><div class="tag">'+esc(t.g)+' \u00b7 '+t.f+' \u00b7 '+(t.k==='br'?'Points system':'Knockout bracket')+'</div><div class="tag">'+t.teams.length+'/'+t.max+' '+(t.f==='Solo'?'players':'teams')+'</div><span class="gold">'+SL[t.st]+'</span><div class="fr"><button class="btn to" data-i="'+i+'">Open</button></div></div>'}).join('')}
+function openT(i){var t=TS[i],o=isO(),a='data-i="'+i+'"',full=t.teams.length>=t.max,h='<button class="x" aria-label="Close" onclick="d.close()">\u00d7</button><h3 style="font-size:22px;margin:0">'+esc(t.n)+'</h3><div class="tag">'+esc(t.g)+' \u00b7 '+t.f+' \u00b7 '+(t.k==='br'?'Points system':'Knockout bracket')+'</div><div class="stp">'+SN.map(function(n,k){return '<span class="'+(k<t.st?'done':k===t.st?'on':'')+'">'+n+'</span>'}).join('')+'</div>';
+if(t.st===0){h+='<p>Registration is open. '+t.teams.length+' of '+t.max+' slots filled.</p>'+(t.reg?'<p class="ok">You are registered as '+esc(t.me)+'.</p>':full?'<p class="tag">This tournament is full.</p>':(t.f!=='Solo'?'<input id="tnm" class="ti" placeholder="'+t.f+' team name" aria-label="Team name">':'')+'<button class="btn" data-ta="reg" '+a+'>Register</button>')}
+else if(t.st===1){h+='<p>Check-in is open. Registered teams that do not check in are removed when the tournament goes live.</p>'+(!t.reg?'<p class="tag">Registration is closed.</p>':t.ci?'<p class="ok">You are checked in.</p>':'<button class="btn" data-ta="ci" '+a+'>Check in now</button>')}
+else h+=(t.k==='br'?sb(t)+(o&&t.st===2?'<div class="fr"><button class="btn" data-ta="sim" '+a+'>Simulate next match</button></div>':''):(t.bt?brk(t,i):'<p class="tag">The bracket is not ready.</p>'));
+if(t.ci&&t.room&&t.st<3)h+='<h4>Room details</h4><div class="rm">Room ID: '+t.room.id+'<br>Password: '+t.room.pw+'</div><p class="sm">Do not share these details.</p>';
+h+='<details><summary>'+(t.f==='Solo'?'Players':'Teams')+' ('+t.teams.length+')</summary><p class="sm">'+t.teams.map(function(x){return esc(x)}).join(', ')+'</p></details>';
+if(t.st>=2){h+='<h4>Result proof and disputes</h4><label class="btn alt" id="tpl" style="margin:0;cursor:pointer">Attach result proof<input class="sr" id="tpf" type="file" accept="image/*,video/*" data-i="'+i+'"></label>'+(t.proof?'<p class="sm">Proof attached: '+esc(t.proof)+' (demo, not uploaded)</p>':'')+'<input id="tdx" class="ti" style="margin-top:10px" placeholder="Describe an issue with a result" aria-label="Dispute"><button class="btn" data-ta="dsp" '+a+'>Send dispute</button>'+t.disp.map(function(x,j){return '<p class="sm">'+esc(x.by)+': '+esc(x.text)+' \u00b7 <b>'+x.s+'</b>'+(o&&x.s==='Pending'?' <button class="btn alt" data-ta="rsv" '+a+' data-j="'+j+'">Resolve</button>':'')+'</p>'}).join('')}
+if(o)h+='<h4>Organizer controls</h4><div class="fr"><button class="btn alt" data-ta="adv" '+a+(t.st>=3?' disabled':'')+'>'+(t.st>=3?'Tournament completed':'Advance to '+SN[t.st+1])+'</button></div>';else h+='<p class="sm" style="margin-top:14px">Organizer tools: log in with the Organizer role to run this tournament.</p>';
+$('m').innerHTML=h;if(!d.open)d.showModal()}
+$('tg').addEventListener('click',function(e){var b=e.target.closest('.to');if(b)openT(+b.dataset.i)});
+$('m').addEventListener('click',function(e){var l=e.target.closest('#tpl');if(l&&!U){e.preventDefault();openLogin();return}var b=e.target.closest('[data-ta]');if(!b)return;var ac=b.dataset.ta,i=+b.dataset.i,t=TS[i];if(!t)return;
+if((ac==='reg'||ac==='ci'||ac==='dsp')&&!U){openLogin();return}
+if(ac==='reg'){if(t.reg||t.teams.length>=t.max)return;var nm=t.f==='Solo'?((P.filter(function(p){return p.mine}).pop()||{}).n||'You'):(($('tnm').value||'').trim()||'Your '+t.f);t.me=nm;t.teams.push(nm);t.reg=true}
+else if(ac==='ci'){t.ci=true;t.room={id:String(Math.floor(1e7+Math.random()*9e7)),pw:Math.random().toString(36).slice(2,8).toUpperCase()}}
+else if(ac==='adv'&&isO()&&t.st<3){if(t.st===1&&t.reg&&!t.ci){t.teams=t.teams.filter(function(x){return x!==t.me});t.reg=false}if(t.st===1&&t.k==='ko'){var n=1;while(n*2<=t.teams.length)n*=2;t.bt=t.teams.slice(0,n);t.win={}}t.st++}
+else if(ac==='sim'&&isO()&&t.k==='br'&&t.st===2){var q=t.teams.slice().sort(function(){return Math.random()-.5});t.ms.push(q.map(function(n,x){return{n:n,p:x+1,k:Math.max(0,Math.round(Math.random()*(9-x*.6)))}}))}
+else if(ac==='win'&&isO()&&t.st===2){t.win[b.dataset.r+'-'+b.dataset.m]=b.dataset.x}
+else if(ac==='dsp'){var v=($('tdx').value||'').trim();if(!v)return;t.disp.push({by:U.role||'Player',text:v,s:'Pending'})}
+else if(ac==='rsv'&&isO()){t.disp[+b.dataset.j].s='Resolved'}
+else return;
+openT(i);renderT()});
+$('m').addEventListener('change',function(e){var f=e.target;if(f.id!=='tpf'||!f.files[0])return;var t=TS[+f.dataset.i];t.proof=f.files[0].name;openT(+f.dataset.i)});
+AM.splice(7,0,['tournaments','esports']);renderT();
+rn();
+au();
+render();
+</script>
+</body>
+</html>

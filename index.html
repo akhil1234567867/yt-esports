@@ -15,6 +15,13 @@
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f4ff;--ink:#14163a;--mut:#575b86;--card:#fff;--line:#dcdef5;--blue:#4338ca;--yel:#0e7490;--on:#fff}}
 :root[data-theme="light"]{--bg:#f3f4ff;--ink:#14163a;--mut:#575b86;--card:#fff;--line:#dcdef5;--blue:#4338ca;--yel:#0e7490;--on:#fff}
 *{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+.hero-container{max-width:1200px;margin:0 auto;padding:40px 20px;box-sizing:border-box}
+/* Main Navigation Header Adjustment */
+header,.navbar,nav{display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 20px;box-sizing:border-box}
+/* Menu Links Container Fix */
+.nav-links,nav>div:last-child{display:flex;align-items:center;gap:15px;flex-wrap:wrap;overflow:hidden}
+/* Link Text Styling Fix */
+.nav-links a,nav>div:last-child a{font-size:14px;white-space:nowrap;text-transform:uppercase}
 /* Double Scrollbars Hatane Ke Liye */
 html,body{margin:0;padding:0;width:100%;overflow-x:hidden}
 /* Mobile Bottom Navigation Control */
@@ -91,15 +98,27 @@ nav .lm{width:34px;height:40px}
 h1{font-family:'Orbitron',sans-serif;font-weight:800;font-size:clamp(28px,5.2vw,58px);line-height:1.12;letter-spacing:.01em}h2{font-family:'Orbitron',sans-serif;font-weight:700;font-size:21px;letter-spacing:.07em}h2:before{height:22px}.stats b{font-family:'Orbitron',sans-serif;font-weight:800;font-size:26px}.stats span{font-family:'Rajdhani',sans-serif;font-size:13px}.fs{font-family:'Orbitron',sans-serif;font-size:19px}.btn{font-size:15px}nav a{font-size:14px}.chip{font-size:13px}.tk{font-size:13px}.p h3,.nc b,.fn b,dialog h3{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:21px}.row span{font-family:'Rajdhani',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--mut)}.row b{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:16px}.gold{font-family:'Rajdhani',sans-serif;font-size:13px}
 .fw{display:inline-flex;align-items:center;gap:8px}.fw svg{width:22px;height:22px;transition:filter .2s}.fw .cd,.fw .pl{transition:opacity .2s}.fr .btn.fw.on{color:var(--yel);border:2px solid var(--yel);background:rgba(61,232,255,.1)}.fw.on .cd{opacity:1}.fw.on .pl{opacity:0}.fw.on svg{filter:drop-shadow(0 0 6px var(--yel))}.fw.fx svg{animation:lock .7s cubic-bezier(.3,1.4,.5,1)}@keyframes lock{0%{transform:rotate(0) scale(1)}35%{transform:rotate(200deg) scale(1.7)}70%{transform:rotate(360deg) scale(.7)}100%{transform:rotate(360deg) scale(1)}}@media (prefers-reduced-motion:reduce){.fw.fx svg{animation:none}}
 .mg{display:inline-flex;align-items:center;gap:8px}.mg svg{width:24px;height:24px;overflow:visible}.mg .d1,.mg .d2,.mg .d3{fill:currentColor;stroke:none;animation:td 1.4s infinite}.mg .d2{animation-delay:.2s}.mg .d3{animation-delay:.4s}.mg .on{fill:#34d399;stroke:none;transform-box:fill-box;transform-origin:center;animation:ol 1.6s infinite}.mg.fx svg{animation:mp .6s cubic-bezier(.3,1.5,.5,1)}@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-2.5px);opacity:1}}@keyframes ol{50%{transform:scale(1.6);opacity:.55}}@keyframes mp{0%{transform:scale(1)}30%{transform:scale(1.45) rotate(-12deg) translateY(-3px)}60%{transform:scale(1.2) rotate(8deg)}100%{transform:scale(1)}}@media (prefers-reduced-motion:reduce){.mg .d1,.mg .d2,.mg .d3,.mg .on,.mg.fx svg{animation:none}.mg .d1,.mg .d2,.mg .d3{opacity:1}}
-.lg{display:inline-flex;align-items:center;gap:8px}.lg svg{width:22px;height:22px}.roles{display:flex;gap:8px;margin:8px 0 4px}.rl{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;background:var(--card);border:1px solid var(--line);color:var(--ink);cursor:pointer;font:700 14px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;border-radius:4px}.rl svg{width:26px;height:26px}.rl.on{border-color:var(--yel);color:var(--yel);background:rgba(61,232,255,.1)}.lgi{width:44px;height:44px;color:var(--yel);margin-bottom:6px;filter:drop-shadow(0 0 8px var(--yel))}.lgi svg{width:100%;height:100%}.lg .pt,.lgi .pt{animation:pst 1.6s steps(2,end) infinite}@keyframes pst{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.pt{animation:none!important}}
+.lg{display:inline-flex;align-items:center;gap:8px}.lg svg{width:22px;height:22px}.auth-loading{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:authSpin .7s linear infinite;vertical-align:-2px;margin-right:7px}@keyframes authSpin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.auth-loading{animation:none;border-top-color:var(--yel)}}#loginButton:disabled,#createButton:disabled{opacity:.65;cursor:wait;filter:saturate(.75)}
+#m{transition:opacity .16s ease,transform .16s ease}dialog[open] #m{opacity:1;transform:translateY(0)}dialog#d{overflow:hidden}dialog[data-auth-dialog="true"]{max-width:460px;width:min(460px,calc(100% - 24px))}dialog[data-auth-dialog="true"] #m{padding:28px}dialog[data-auth-dialog="true"] .lf2{gap:12px}dialog[data-auth-dialog="true"] input{min-height:46px}dialog[data-auth-dialog="true"] .fr{display:grid;grid-template-columns:1fr 1fr}dialog[data-auth-dialog="true"] .fr .btn{width:100%;margin:0}dialog[data-auth-dialog="true"] .roles{gap:8px}dialog[data-auth-dialog="true"] #lx{min-height:24px;margin-top:12px}dialog[data-auth-dialog="true"] h3{font-family:'Orbitron',sans-serif!important;text-transform:none!important}@media(max-width:520px){dialog[data-auth-dialog="true"]{width:calc(100% - 16px);max-height:calc(100dvh - 16px)}dialog[data-auth-dialog="true"] #m{padding:22px 18px}dialog[data-auth-dialog="true"] .roles{gap:5px}.rl{min-width:0;padding:9px 3px;font-size:12px!important}nav{padding:10px 12px}.w{padding-left:12px;padding-right:12px}.hero{padding-top:44px}nav>div:last-child{gap:8px;overflow:visible}.btn{min-height:44px}}.roles{display:flex;gap:8px;margin:8px 0 4px}.rl{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;background:var(--card);border:1px solid var(--line);color:var(--ink);cursor:pointer;font:700 14px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;border-radius:4px}.rl svg{width:26px;height:26px}.rl.on{border-color:var(--yel);color:var(--yel);background:rgba(61,232,255,.1)}.lgi{width:44px;height:44px;color:var(--yel);margin-bottom:6px;filter:drop-shadow(0 0 8px var(--yel))}.lgi svg{width:100%;height:100%}.lg .pt,.lgi .pt{animation:pst 1.6s steps(2,end) infinite}@keyframes pst{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.pt{animation:none!important}}
 .ig{position:relative;flex:1;min-width:0;display:flex}.ig svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;color:var(--yel);pointer-events:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:filter .2s}.ig input{padding-left:44px;width:100%}.ig:focus-within svg{filter:drop-shadow(0 0 6px var(--yel))}
 body{padding-bottom:104px}section{scroll-margin-top:84px}.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));width:min(560px,calc(100% - 20px));z-index:30;display:flex;align-items:flex-end;justify-content:space-around;padding:8px 6px 6px;background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-top:2px solid var(--blue);box-shadow:0 12px 40px rgba(0,0,0,.45);border-radius:6px}.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;color:var(--mut);cursor:pointer;font:700 12px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;padding:4px 2px;position:relative}.tabs svg{width:25px;height:25px;transition:transform .2s,filter .2s}.tabs button.on{color:var(--yel)}.tabs button.on svg{filter:drop-shadow(0 0 6px var(--yel))}.tabs button.on:after{content:"";position:absolute;top:-10px;left:25%;right:25%;height:3px;background:var(--yel);box-shadow:0 0 10px var(--yel)}.tabs button:active svg{transform:scale(.85)}.tabs button:focus-visible{outline:2px solid var(--yel);outline-offset:2px}.tabs .mk{flex:none;width:64px;margin-top:-28px;color:#fff;filter:drop-shadow(0 4px 12px rgba(90,79,243,.65))}.tabs .mk i{display:grid;place-items:center;width:54px;height:48px;background:linear-gradient(135deg,var(--blue),#7c3aed);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}.tabs .mk svg{width:28px;height:28px;stroke-width:2.2}.tabs .mk span{color:var(--mut)}.tabs .mk:hover i{filter:brightness(1.15)}.cs{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px;margin-top:10px;background:var(--card);border:1px solid var(--line);color:var(--ink);cursor:pointer;border-radius:4px;font-family:'Exo 2',sans-serif}.cs svg{width:30px;height:30px;color:var(--yel);flex:none}.cs b{display:block;font:700 18px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.06em}.cs small{color:var(--mut)}.cs:hover{border-color:var(--yel)}
 .chip svg{width:18px;height:18px;vertical-align:-4px;margin-right:6px}.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}.aif{display:grid;gap:10px;max-width:560px;margin-top:18px}.aif input,.aif select,.aif textarea,.up input{font:16px 'Exo 2',sans-serif;padding:11px 14px;border-radius:2px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-width:0}.up input{flex:1 1 220px}.ao{background:color-mix(in srgb,var(--card) 88%,transparent);border:1px solid var(--line);border-left:3px solid var(--yel);padding:16px 18px;margin-top:18px;font-size:15px;line-height:1.6;max-width:760px}.ao h4{font:700 17px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.07em;color:var(--yel);margin:16px 0 6px}.ao h4:first-child{margin-top:0}.ao p{margin:6px 0}.ao ul{margin:4px 0 8px 20px;padding:0}.ao li{margin:3px 0}.ao .q{color:var(--mut);border-top:1px solid var(--line);padding-top:12px;margin-top:16px}
 .stp{display:flex;gap:6px;margin:14px 0}.stp span{flex:1;padding:6px 2px;text-align:center;font:700 12px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.06em;border-top:3px solid var(--line);color:var(--mut)}.stp .on{border-color:var(--yel);color:var(--yel)}.stp .done{border-color:var(--blue);color:var(--ink)}.br{display:flex;gap:16px;overflow-x:auto;padding:8px 0}.rd{min-width:150px;display:flex;flex-direction:column;justify-content:space-around;gap:10px}.mt{border:1px solid var(--line);border-radius:4px;background:var(--card)}.mt button{display:block;width:100%;text-align:left;padding:8px 10px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:14px 'Exo 2',sans-serif;cursor:default}.mt button:disabled{color:var(--ink);opacity:1}.mt button:last-child{border-bottom:0}.mt .w{color:var(--yel);font-weight:700}.mt button.cl{cursor:pointer}.mt button.cl:hover{background:rgba(61,232,255,.12)}.tb2{width:100%;border-collapse:collapse;font-size:14px}.tb2 th,.tb2 td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line)}.tb2 th:first-child,.tb2 td:first-child{text-align:left}.tb2 th{font:700 12px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}.tb2 tbody tr:first-child td{color:var(--yel);font-weight:700}.rm{border:1px dashed var(--yel);padding:12px;margin:10px 0;font:600 18px 'Rajdhani',sans-serif;letter-spacing:.08em}.sm{font-size:14px;color:var(--mut);margin:6px 0}.ti{width:100%;margin-bottom:8px;font:16px 'Exo 2',sans-serif;padding:11px 14px;border-radius:2px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}details{margin:12px 0}summary{cursor:pointer;font:700 14px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em}dialog h4{font:700 15px 'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--yel);margin:18px 0 8px}
+/* Y&T esports product visual system */
+:root{--brand:#35d8ff;--brand-strong:#5a4ff3;--surface-1:#171a2b;--surface-2:#1d2035;--surface-3:#242842;--success:#40d99a;--danger:#ff6b7a}
+html{background:#0b0d18}body{background:#0b0d18!important;background-image:none!important;color:#f3f5ff!important}.w{max-width:1120px}section{margin-top:72px!important;scroll-margin-top:88px}
+nav{top:12px!important;margin-top:10px!important;padding:10px 14px!important;border-radius:8px!important;border:1px solid #30344f!important;border-left:3px solid var(--brand)!important;background:rgba(11,13,24,.94)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.18)!important}nav a{margin-left:14px!important;color:#b8bdd8!important;font-size:13px!important;letter-spacing:.04em!important}nav a:hover,nav a:focus-visible{color:#fff!important}.logo{filter:none!important}
+.hero{grid-template-columns:minmax(0,1fr) 340px!important;gap:56px!important;padding:64px 0 48px!important}.hero p{color:#b8bdd8!important;opacity:1!important}.feat{border-radius:8px!important;border:1px solid #30344f!important;border-top:3px solid var(--brand-strong)!important;background:var(--surface-1)!important;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none}.stats>div,.p,.nc,.sc,.feat,.post,.stats>div,.orgs div{border-radius:7px!important;background:var(--surface-1)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;clip-path:none!important}.stats>div{border-color:#30344f!important}.p:hover,.nc:hover,.sc:hover,.post:hover{border-color:#4c5278!important;transform:none!important}.btn{min-height:44px;border-radius:6px!important;background:var(--brand-strong)!important;clip-path:none!important;letter-spacing:.02em!important}.btn.alt{border-width:1px!important;background:transparent!important}.btn:hover{filter:brightness(1.08)!important;box-shadow:none!important}.chip{border-radius:6px!important;clip-path:none!important}.chip.on{background:var(--brand-strong)!important;border-color:var(--brand-strong)!important}
+.p,.nc,.sc,.post,.achievement-card,.stats>div{border-color:#30344f!important}.p h3,.nc b,.fn b,dialog h3{color:#f7f8ff!important}.sub,.tag,.row span,.stats span{color:#aeb4cf!important}.gold{border-radius:4px!important;clip-path:none!important;background:var(--brand)!important;color:#07131b!important}.tk{border-block:1px solid #252940!important;color:#aeb4cf!important;background:#101220!important}
+.bar input,.bar select,form input,form select,form textarea,.ci input,.ti,.aif input,.aif select,.aif textarea,.up input,.review-controls textarea{border-color:#343956!important;border-radius:6px!important;background:#121423!important;color:#f3f5ff!important}.lf2 input:focus,.bar input:focus,.bar select:focus,form input:focus,form select:focus,form textarea:focus{border-color:var(--brand)!important;outline:0!important;box-shadow:0 0 0 3px rgba(53,216,255,.12)!important}
+dialog{border:1px solid #343956!important;border-radius:8px!important;background:#171a2b!important;box-shadow:0 24px 80px rgba(0,0,0,.55)!important}dialog::backdrop{background:rgba(4,5,12,.78)!important}.x{color:#d9dcf0!important}.tabs{border-radius:8px!important;border:1px solid #30344f!important;background:rgba(16,18,32,.96)!important;box-shadow:0 12px 36px rgba(0,0,0,.4)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}.tabs button.on{color:var(--brand)!important}.tabs .mk i{border-radius:5px!important;background:var(--brand-strong)!important;clip-path:none!important}.tabs button.on:after{background:var(--brand)!important;box-shadow:none!important}
+footer{border-color:#30344f!important;color:#aeb4cf!important}
+@media(max-width:820px){.hero{grid-template-columns:1fr!important;gap:28px!important;padding:44px 0 36px!important}.hero .feat{display:none}.sec{margin-top:56px!important}.stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:520px){body{padding-bottom:92px!important}.w{padding-left:14px!important;padding-right:14px!important}nav{top:6px!important;margin-top:6px!important;padding:8px 10px!important}nav>div:last-child{gap:5px!important}nav a{display:none!important}.hero{padding-top:36px!important}h1{font-size:38px!important}.stats{gap:8px!important}.stats>div{padding:14px!important}.grid{grid-template-columns:1fr!important}.fr{display:grid!important;grid-template-columns:1fr!important}.fr .btn{margin:0!important;width:100%!important}.tabs{bottom:8px!important;width:calc(100% - 16px)!important}.tabs button{font-size:10px!important}.tabs .mk{width:52px!important}.tabs .mk i{width:46px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-<canvas id="bg" aria-hidden="true"></canvas>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ymark" viewBox="330 280 595 690"><path fill="currentColor" d="M335 285H468L627 428L786 285H919L670 507V598H583V507Z M368 595H886L800 670H454Z M583 667H670V891L627 963L583 891Z"/></symbol><symbol id="iph" viewBox="0 0 24 24"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M10.5 4.5h3M10.5 19.5h3"/><circle cx="12" cy="12" r="3"/><path d="M12 8v1.5M12 14.5V16M8 12h1.5M14.5 12H16"/></symbol><symbol id="iem" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M3 9l9 6.5L21 9"/><path d="M18.5 1.5l-2.2 3h2.2l-1.6 2.7"/></symbol></svg>
 <div class="w">
 <nav><div class="logo" role="img" aria-label="Yke"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div><a href="#games">Games</a><a href="#shorts">Shorts</a><a href="#feed">Feed</a><a href="#players">Players</a><a href="#teammates">Teams</a><a href="#tournaments">Tournaments</a><a href="#ai">AI</a><a href="#sponsors">Sponsors</a><a href="#orgs">Orgs</a><a href="#join">Join</a><a href="#achievementProof">Achievements</a><button class="btn lg" id="au">Login</button></div></nav>
@@ -200,7 +219,7 @@ const FIREBASE_CONFIG = {
     measurementId: "G-EDJ18CP3W8"
 };
 
-var fbAuth=null,fbDB=null,firebaseInitError=null;
+var fbAuth=null,fbDB=null,firebaseInitError=null,authStateListenerAttached=false,firebaseAuthBusy=false;
 var firebaseReady=(async function(){
     var sdk=await Promise.all([
         import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js'),
@@ -219,8 +238,11 @@ var firebaseReady=(async function(){
     var fbFunctions=functionsSdk.getFunctions(app,'us-central1');
     window.fbAuth=fbAuth;
     window.fbDB=fbDB;
+    if(!authStateListenerAttached){
+    authStateListenerAttached=true;
     authSdk.onAuthStateChanged(fbAuth,async function(user){
         if(!user){U=null;au();syncAchievementAccess(null);return}
+        var profileStarted=performance.now();
         try{
             var snapshot=await firestoreSdk.getDoc(firestoreSdk.doc(fbDB,'users',user.uid));
             var profile=snapshot.exists()?profileFromFirestore(snapshot.data()):{};
@@ -229,12 +251,14 @@ var firebaseReady=(async function(){
             profile.verified=user.emailVerified;
             ROLE=profile.role||ROLE||'Player';
             setU(Object.assign({},profile,{via:'Firebase'}),false);
+            console.info('[YT Firebase] profile load',Math.round(performance.now()-profileStarted)+'ms');
         }catch(error){
             console.error('Failed to load the Firebase user profile',error);
             setU({uid:user.uid,email:user.email,role:ROLE||'Player',via:'Firebase'},false);
             if($('lx'))$('lx').textContent='Signed in, but your Firestore profile could not be loaded: '+firebaseErrorMessage(error);
         }
     });
+    }
     return {auth:authSdk,firestore:firestoreSdk,storage:storageSdk,storageInstance:fbStorage,functions:functionsSdk,functionsInstance:fbFunctions};
 })().catch(function(error){
     firebaseInitError=error;
@@ -299,9 +323,16 @@ async function fbCreateAccount(email,password,role){
     catch(error){verificationSent=false;console.error('Account created, but verification email could not be sent',error)}
     return {user:credential.user,verificationSent:verificationSent};
 }
+function firebaseWithTimeout(promise,timeoutMs){
+    return Promise.race([promise,new Promise(function(resolve,reject){
+        setTimeout(function(){reject(Object.assign(new Error('Firebase request timed out. Check your connection and try again.'),{code:'auth/network-request-failed'}))},timeoutMs);
+    })]);
+}
 async function fbSignIn(email,password){
     var sdk=await requireFirebase();
-    var credential=await sdk.auth.signInWithEmailAndPassword(fbAuth,email,password);
+    var authStarted=performance.now();
+    var credential=await firebaseWithTimeout(sdk.auth.signInWithEmailAndPassword(fbAuth,email,password),15000);
+    console.info('[YT Firebase] authentication completion',Math.round(performance.now()-authStarted)+'ms');
     return credential.user;
 }
 async function fbSignOut(){
@@ -531,16 +562,19 @@ $('achievementReviewer').addEventListener('click',async function(event){
         card.querySelectorAll('button').forEach(function(item){item.disabled=false});
     }
 });
-function openLogin(){ROLE='Player';
+function openLogin(){ROLE='Player';d.setAttribute('data-auth-dialog','true');
 $('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="lgi">'+IC.s+'</div><h3 style="margin:0 0 4px;font-size:22px">Log in to Yke</h3><p class="tag">Use your email and password to log in or create an account.</p><p class="tag" style="margin:14px 0 0">I am joining as</p><div class="roles" role="radiogroup" aria-label="Joining as"><button type="button" class="rl on" data-r="Player" role="radio" aria-checked="true">'+IC.c+'<span>Player</span></button><button type="button" class="rl" data-r="Teammate" role="radio" aria-checked="false">'+IC.q+'<span>Teammate</span></button><button type="button" class="rl" data-r="Sponsor" role="radio" aria-checked="false">'+IC.t+'<span>Sponsor</span></button><button type="button" class="rl" data-r="Organizer" role="radio" aria-checked="false">'+IC.o+'<span>Organizer</span></button></div><p class="tag">Google sign-in and phone OTP are unavailable and are not enabled.</p><h4>Email and password</h4><div class="lf2"><div class="ig">'+IC.em+'<input id="le" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></div><input id="lw" type="password" required minlength="6" autocomplete="current-password" placeholder="Password (at least 6 characters)" aria-label="Password"><div class="fr"><button class="btn" id="loginButton" type="button">Log in</button><button class="btn alt" id="createButton" type="button">Create account</button></div></div><div class="ok" id="lx" role="status"></div>';
-function msg(t){$('lx').textContent=t}
+function msg(t){$('lx').innerHTML=t}
 firebaseReady.then(function(sdk){if(sdk)msg('Firebase is ready. Google sign-in and phone OTP are unavailable.');else msg('Firebase could not be initialized. Check the connection and Firebase setup, then reload.')});
 async function authenticate(createAccount){
     var email=$('le').value.trim(), pw=$('lw').value;
     if(!/^\S+@\S+\.\S+$/.test(email)){msg('Enter a valid email.');return}
     if(pw.length<6){msg('Password must be at least 6 characters.');return}
     var loginButton=$('loginButton'),createButton=$('createButton');
-    loginButton.disabled=true;createButton.disabled=true;msg('Connecting to Firebase...');
+    if(firebaseAuthBusy)return;
+    firebaseAuthBusy=true;
+    var submissionStarted=performance.now();
+    loginButton.disabled=true;createButton.disabled=true;msg('<span class="auth-loading" aria-hidden="true"></span>Connecting to Firebase...');
     try{
         if(createAccount){
             var result=await fbCreateAccount(email,pw,ROLE);
@@ -549,14 +583,16 @@ async function authenticate(createAccount){
             await fbSignIn(email,pw);
             msg('Signed in successfully.');
         }
+        console.info('[YT Firebase] login submission',Math.round(performance.now()-submissionStarted)+'ms');
     }catch(error){
         console.error(createAccount?'Firebase account creation failed':'Firebase sign-in failed',error);
         msg(error.accountCreated?'Your account was created, but its Firestore profile could not be saved: '+firebaseErrorMessage(error):(createAccount?'Account creation failed: ':'Login failed: ')+firebaseErrorMessage(error));
-    }finally{loginButton.disabled=false;createButton.disabled=false}
+    }finally{firebaseAuthBusy=false;loginButton.disabled=false;createButton.disabled=false}
 };
 loginButton.addEventListener('click',function(){authenticate(false)});
 createButton.addEventListener('click',function(){authenticate(true)});
 if(!d.open)d.showModal()}
+d.addEventListener('close',function(){d.removeAttribute('data-auth-dialog')});
 document.addEventListener('click',function(e){if(!U&&e.target.closest('.lk,.cb')){e.stopPropagation();e.preventDefault();openLogin()}},true);
 ['follow','dm','scout'].forEach(function(n){var f=window[n];window[n]=function(){if(!U){openLogin();return}f.apply(null,arguments)}});
 var EXP=[{s:2019,tm:'Team Nova (2024-now), Rise Squad (2021-24)',x:'Aggressive entry fragger. Fast in close fights and zone rotations, with both scrim and LAN experience.',sk:['Entry fragging','Team calling','Clutch 1vN']},{s:2020,tm:'Solo (2023-now), Apex Five (2021-23)',x:'Duelist skilled at site entries and trade kills. Rose from open qualifiers to pro level.',sk:['Aim duels','Entry timing','Jett and Raze']},{s:2020,tm:'Alpha Esports (2024-now)',x:'Rush-style player. Won city and state tournaments, now at league level.',sk:['Rushing','Fast decisions','Squad coordination']},{s:2021,tm:'Team Nova (2025-now), Venom Queens (2022-25)',x:'Controller who gives the team map control with smokes. Women Series MVP.',sk:['Smoke utility','Map control','In-game leading']},{s:2017,tm:'Solo (2022-now), Delta CS (2019-22)',x:'AWP specialist. Long LAN experience; stays calm under crowd pressure.',sk:['AWP','Positioning','Economy reads']},{s:2022,tm:'Alpha Esports (2025-now)',x:'New and fast-rising sniper, moving from state level to the national scene.',sk:['Long range','Patience','Quick scoping']}];
