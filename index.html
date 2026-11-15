@@ -697,6 +697,57 @@ main{min-width:0}
   .pulse-actions a,.pulse-actions a+a,.pulse-actions a:nth-child(3){padding:12px 0;border-left:0}
   .squad-filters{grid-template-columns:1fr}
 }
+.gamer-id-section{padding-top:26px;border-top:1px solid var(--line)}
+.gamer-dashboard{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px;align-items:start}
+.gamer-id-card,.gamer-panel,.gamer-review-panel{min-width:0;padding:20px;border:1px solid var(--line);background:var(--bg-soft)}
+.gamer-id-card{position:relative;overflow:hidden;border-top:2px solid var(--primary)}
+.gamer-card-head,.gamer-card-profile,.gamer-card-actions{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.gamer-card-head{color:var(--mut);font-size:10px;font-weight:700;letter-spacing:.13em}
+.verification-badge{padding:5px 8px;border:1px solid var(--line);color:var(--mut);font-size:10px;letter-spacing:.02em}
+.verification-badge.pending{border-color:var(--warning);color:var(--warning)}
+.verification-badge.verified{border-color:var(--success);color:var(--success)}
+.gamer-card-profile{justify-content:flex-start;margin:22px 0}
+.gamer-card-avatar{display:grid;place-items:center;flex:none;width:72px;height:72px;overflow:hidden;border:1px solid var(--line);background:var(--card);color:var(--cyan);font-size:22px;font-weight:700}
+.gamer-card-avatar img{width:100%;height:100%;object-fit:cover}
+.gamer-card-profile h3{margin:0;font-size:21px}
+.gamer-card-profile p{margin:4px 0;color:var(--mut);font-size:12px}
+.gamer-id-number{margin-top:8px;color:var(--cyan);font:700 15px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.04em}
+.gamer-card-meta{min-height:44px;padding:13px 0;border-top:1px solid var(--line);color:var(--mut);font-size:12px}
+.gamer-card-actions{justify-content:flex-start;flex-wrap:wrap;margin-top:12px}
+.gamer-qr-wrap{display:flex;align-items:center;gap:10px;margin-top:16px;color:var(--mut);font-size:11px}
+.gamer-qr-wrap img{width:78px;height:78px;padding:4px;background:#fff}
+.gamer-id-details{display:grid;gap:12px}
+.gamer-panel h3,.gamer-review-panel h3,.gamer-search h3{margin:0 0 7px;font-size:17px}
+.gamer-panel>p,.gamer-search>div>p{margin-top:0}
+.gamer-portfolio-list{display:grid;gap:8px}
+.gamer-achievement{padding:10px 0;border-top:1px solid var(--line)}
+.gamer-achievement b,.gamer-achievement span{display:block}
+.gamer-achievement span{margin-top:4px;color:var(--mut);font-size:12px}
+.verification-form label{display:grid;gap:6px;margin:12px 0;color:var(--mut);font-size:12px}
+.verification-form input,.verification-form textarea,.gamer-search-form input,.gamer-search-form select{width:100%;min-width:0;padding:11px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:14px 'DM Sans',system-ui,sans-serif}
+.verification-form textarea{resize:vertical}
+.gamer-form-status{min-height:18px;margin:10px 0 0;color:var(--mut);font-size:12px}
+.gamer-search{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.gamer-search-form{display:grid;grid-template-columns:minmax(220px,2fr) minmax(140px,1fr) minmax(140px,1fr) minmax(150px,1fr) auto;gap:8px}
+.gamer-search-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.gamer-search-result{display:flex;align-items:center;gap:12px;min-width:0;padding:12px;border:1px solid var(--line);background:var(--bg-soft);color:var(--ink);text-align:left;cursor:pointer}
+.gamer-search-result:hover,.gamer-search-result:focus-visible{border-color:var(--cyan)}
+.gamer-search-result .gamer-card-avatar{width:42px;height:42px;font-size:14px}
+.gamer-search-result-copy{min-width:0}
+.gamer-search-result-copy b,.gamer-search-result-copy span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gamer-search-result-copy span{margin-top:3px;color:var(--mut);font-size:11px}
+.gamer-review-panel{margin-top:22px}
+.gamer-review-card{padding:14px 0;border-top:1px solid var(--line)}
+.gamer-review-card textarea{display:block;width:100%;margin:10px 0;padding:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:14px 'DM Sans',system-ui,sans-serif}
+.public-gamer-profile{display:grid;gap:12px}
+.public-gamer-heading{display:flex;align-items:center;gap:14px}
+.public-gamer-heading h3{margin:0;font-size:22px}
+.public-gamer-heading p{margin:4px 0;color:var(--mut);font-size:12px}
+.public-gamer-id{color:var(--cyan);font:700 13px ui-monospace,SFMono-Regular,Consolas,monospace}
+.public-gamer-links{display:flex;flex-wrap:wrap;gap:12px}
+.public-gamer-links a{color:var(--cyan);font-size:12px}
+@media(max-width:900px){.gamer-dashboard{grid-template-columns:1fr}.gamer-search-form{grid-template-columns:repeat(2,minmax(0,1fr))}.gamer-search-form input:first-child{grid-column:1/-1}}
+@media(max-width:560px){.gamer-id-card,.gamer-panel,.gamer-review-panel{padding:15px}.gamer-search-form,.gamer-search-results{grid-template-columns:1fr}.gamer-search-form input:first-child{grid-column:auto}.gamer-card-profile{align-items:flex-start}.gamer-card-avatar{width:58px;height:58px}.gamer-card-profile h3{font-size:17px}.gamer-card-actions .btn{flex:1}.gamer-card-head{align-items:flex-start}.gamer-id-number{font-size:13px;overflow-wrap:anywhere}}
 </style>
 </head>
 <body>
@@ -704,7 +755,7 @@ main{min-width:0}
 <div class="brand-watermark" aria-hidden="true"><svg viewBox="330 280 595 690" focusable="false"><use href="#ymark"></use></svg></div>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <div class="w">
-<nav aria-label="Main navigation"><div class="logo" role="img" aria-label="YT Tech Hub"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div class="nav-menu"><span class="nav-label">Community</span><a href="#feed" data-app-link="home">Home</a><a href="#pulse" data-app-link="pulse">Gaming Pulse</a><a href="#players" data-app-link="discover">Explore</a><a href="#shorts" data-app-link="shorts">Shorts</a><a href="#games" data-app-link="communities">Communities</a><a href="#teammates" data-app-link="teams">Teams</a><a href="#messages" data-app-link="messages">Messages</a><a href="#notifications" data-app-link="notifications">Notifications</a><a href="#saved" data-app-link="saved">Saved</a><a href="#join" data-app-profile>Profile</a><span class="nav-label nav-label-more">More</span><a href="#tournaments">Tournaments</a><a href="#achievementProof">Achievements</a><button class="btn nav-create" id="navCreate" type="button">Create post</button><button class="btn lg" id="au">Login</button></div></nav>
+<nav aria-label="Main navigation"><div class="logo" role="img" aria-label="YT Tech Hub"><svg class="lm" aria-hidden="true"><use href="#ymark"/></svg></div><div class="nav-menu"><span class="nav-label">Community</span><a href="#feed" data-app-link="home">Home</a><a href="#pulse" data-app-link="pulse">Gaming Pulse</a><a href="#players" data-app-link="discover">Explore</a><a href="#shorts" data-app-link="shorts">Shorts</a><a href="#games" data-app-link="communities">Communities</a><a href="#teammates" data-app-link="teams">Teams</a><a href="#messages" data-app-link="messages">Messages</a><a href="#notifications" data-app-link="notifications">Notifications</a><a href="#saved" data-app-link="saved">Saved</a><a href="#gamerId" data-app-link="gamerid">Gamer ID</a><a href="#join" data-app-profile>Profile</a><span class="nav-label nav-label-more">More</span><a href="#tournaments">Tournaments</a><a href="#achievementProof">Achievements</a><button class="btn nav-create" id="navCreate" type="button">Create post</button><button class="btn lg" id="au">Login</button></div></nav>
 <main id="main-content">
 <header class="hero"><div>
 <h1>Your identity. Your game. <span class="hl">Your community.</span></h1>
@@ -713,6 +764,27 @@ main{min-width:0}
 </div><aside class="feat" id="ft"></aside></header>
 
 <p class="sample-note"><strong>Prototype preview</strong><span>Featured player profiles, posts, team listings, partner cards and competition records are sample data—not live community activity.</span></p>
+
+<section class="sec gamer-id-section" id="gamerId">
+  <div class="section-heading"><div><p class="eyebrow">YT TECH HUB / PLAYER IDENTITY</p><h2>YT Gamer ID</h2><p class="sub">A permanent player identity, with public details you choose to share.</p></div><button class="btn alt" id="editGamerProfile" type="button">Edit profile</button></div>
+  <div class="gamer-dashboard">
+    <article class="gamer-id-card">
+      <div class="gamer-card-head"><span>YT TECH HUB · GAMER ID</span><span id="gamerVerificationBadge" class="verification-badge">Unverified</span></div>
+      <div class="gamer-card-profile"><div class="gamer-card-avatar" id="gamerAvatar" aria-hidden="true">YT</div><div><h3 id="gamerTagDisplay">Your gamer identity</h3><p id="gamerSummary">Sign in to receive your permanent Gamer ID.</p><div class="gamer-id-number" id="gamerIdValue">Sign in required</div></div></div>
+      <div class="gamer-card-meta" id="gamerCardMeta">Your Gamer ID is assigned by YT Tech Hub and cannot be changed.</div>
+      <div class="gamer-card-actions"><button class="btn" type="button" id="downloadGamerCard" disabled>Download gamer card</button><button class="btn alt" type="button" id="copyGamerId" disabled>Copy Gamer ID</button></div>
+      <div id="gamerQrWrap" class="gamer-qr-wrap" hidden><img id="gamerQr" alt="QR code linking to this public Gamer ID profile"><span>Scan to open your public profile</span></div>
+      <p class="tag" id="gamerDashboardStatus" role="status">Sign in to view your Gamer ID and profile status.</p>
+    </article>
+    <div class="gamer-id-details">
+      <div class="gamer-panel"><h3>Gaming portfolio</h3><p class="tag">Verified tournament achievements appear here after an authorized reviewer approves the submitted proof.</p><div id="gamerPortfolio" class="gamer-portfolio-list"><p class="tag">No verified achievements yet.</p></div></div>
+      <form class="gamer-panel verification-form" id="playerVerificationForm" hidden><h3>Request player verification</h3><p class="tag">Reviewers check the information and evidence you submit. Verification is never automatic.</p><label>Why should this profile be verified?<textarea id="verificationDetails" rows="3" minlength="20" maxlength="1000" required placeholder="Add tournament or team context that a reviewer can check."></textarea></label><label>Evidence link (optional)<input id="verificationEvidence" type="url" placeholder="https://..."></label><button class="btn" type="submit">Submit for review</button><p class="gamer-form-status" id="verificationStatus" role="status"></p></form>
+      <div class="gamer-panel" id="playerVerificationState"><h3>Verification status</h3><p class="tag">Sign in to view the review status of your player identity.</p></div>
+    </div>
+  </div>
+  <div class="gamer-search"><div><h3>Find gamers</h3><p class="tag">Search public profiles by Gamer ID, username, game, country, or team.</p></div><form id="gamerSearchForm" class="gamer-search-form"><input id="gamerSearchTerm" type="search" maxlength="80" placeholder="Gamer ID or player, e.g. YT-IND-000001" aria-label="Gamer ID or player"><select id="gamerSearchGame" aria-label="Filter by game"><option value="">All games</option></select><input id="gamerSearchCountry" maxlength="80" placeholder="Country (optional)" aria-label="Filter by country"><input id="gamerSearchTeam" maxlength="80" placeholder="Team (optional)" aria-label="Filter by team"><button class="btn" type="submit">Search gamers</button></form><p class="gamer-form-status" id="gamerSearchStatus" role="status"></p><div id="gamerSearchResults" class="gamer-search-results"></div></div>
+  <section class="gamer-review-panel" id="playerVerifierPanel" hidden><h3>Player verification queue</h3><p class="tag">Only authorized player verifiers can approve or reject requests.</p><div id="playerVerifierQueue"></div><p id="playerVerifierMessage" class="gamer-form-status" role="status"></p></section>
+</section>
 
 <section class="sec" id="feed"><div class="feed-layout"><div class="feed-main"><div class="section-heading"><div><h2>Community feed</h2><p class="sub">Player updates and match moments from across the community.</p></div><div class="section-actions"><a class="section-link" href="#saved">Saved posts</a><button class="btn" type="button" data-open-create>Create post</button></div></div><div class="feed-notice">Sample posts are shown below. New posts, likes, comments, and saves stay in this browser session.</div><div class="st-heading"><b>Players to explore</b><a href="#players">View all players</a></div><div class="st" id="st"></div><div id="pf"></div></div><aside class="community-rail" aria-label="Community shortcuts"><div class="community-rail-item"><p class="eyebrow">DISCOVER</p><h3>Find your game</h3><p>Browse players by the games they play.</p><a href="#games">Explore game communities →</a></div><div class="community-rail-item"><p class="eyebrow">TEAM UP</p><h3>Find your squad</h3><p>Filter players by game, role, experience, and region.</p><a href="#teammates">Find teammates →</a></div><div class="community-rail-item"><p class="eyebrow">YOUR PROFILE</p><h3>Share your journey</h3><p>Build your gamer identity and submit achievement proof.</p><a href="#join">Create a profile →</a></div></aside></div></section>
 
@@ -769,9 +841,9 @@ main{min-width:0}
 <p class="sub">Document your achievements and let teams and organizations discover your talent.</p>
 <form id="f">
 <label class="ph2"><span id="pv" class="av pv">+</span><span>Choose your photo (face)</span><input class="sr" id="pf2" type="file" accept="image/*"></label><input required id="gtg" maxlength="20" autocapitalize="characters" placeholder="Gamer tag (your eSports name, e.g. AKHIL_X)" aria-label="Gamer tag"><input required id="fn" placeholder="Real name (e.g. Akhil Thakur)" aria-label="Real name"><input required id="fg" placeholder="Game ID (in-game)" aria-label="Game ID"><select required id="jgn" aria-label="Gender"><option value="">Choose gender</option><option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option></select><input type="number" required id="jag" min="16" max="60" placeholder="Age (16+ only)" aria-label="Age">
-<select required id="jg" aria-label="Game"><option value="">Choose game</option></select>
+<select required id="jg" aria-label="Primary game"><option value="">Choose primary game</option></select><select id="jpreferredGames" multiple size="4" aria-label="Additional preferred games (hold Ctrl or Command to select up to five total)"></select><select required id="jcountry" aria-label="Country"><option value="">Choose country</option></select><input id="jcountryOther" maxlength="80" placeholder="Enter your country or region" aria-label="Country or region" hidden>
 <select required id="jl" aria-label="Level"><option value="">Choose level</option><option>Beginner</option><option>Amateur</option><option>Semi-pro</option><option>Pro</option></select><input id="jr" placeholder="Role (e.g. Duelist, Sniper, IGL)" aria-label="Role"><div class="ig"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iph"/></svg><input type="tel" required id="jp" inputmode="numeric" maxlength="10" placeholder="Phone number (10 digits)" aria-label="Phone"></div><div class="ig"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iem"/></svg><input type="email" required id="je" placeholder="Gmail" aria-label="Gmail"></div><select required id="js" aria-label="State"><option value="">Choose state</option></select><input required id="jc" placeholder="City" aria-label="City"><input id="jt" placeholder="Team name (if any)" aria-label="Team">
-<select id="jpv" aria-label="Profile visibility"><option value="public">Public profile</option><option value="private">Private profile</option></select>
+<input id="jinstagram" type="url" placeholder="Instagram profile link (optional)" aria-label="Instagram profile link"><input id="jyoutube" type="url" placeholder="YouTube channel link (optional)" aria-label="YouTube channel link"><input id="jtwitch" type="url" placeholder="Twitch channel link (optional)" aria-label="Twitch channel link"><input id="jteamHistory" placeholder="Previous teams, separated by commas (optional)" aria-label="Team history"><input id="jhighlight" type="url" placeholder="Gaming highlight link (optional)" aria-label="Gaming highlight link"><select id="jpv" aria-label="Profile visibility"><option value="public">Public profile</option><option value="private">Private profile</option></select>
 <input type="number" min="2000" max="2026" placeholder="Which year did you start playing? (e.g. 2020)" id="jy" aria-label="Start year"><textarea rows="3" placeholder="Experience, skills, tournaments and achievements" id="jb" aria-label="Achievements"></textarea><button class="btn" type="submit">Submit profile</button>
 <p class="tag">Your permanent YT Gamer ID is generated from your account and remains consistent even if your gamer tag changes.</p><p class="tag">Public profiles contain only gaming identity and performance details. Phone numbers, email addresses, real names, and precise locations remain private.</p><p class="tag">You must be 16 or older to join YT Tech Hub. Phone and Gmail information are never made public.</p><div class="ok" id="ok" role="status"></div>
 </form>
@@ -838,20 +910,24 @@ var firebaseReady=(async function(){
     if(!authStateListenerAttached){
     authStateListenerAttached=true;
     authSdk.onAuthStateChanged(fbAuth,async function(user){
-        if(!user){U=null;au();applyAuthenticatedLayout(false);syncAchievementAccess(null);return}
+        if(!user){U=null;au();applyAuthenticatedLayout(false);syncAchievementAccess(null);refreshGamerDashboard(null);return}
         var profileStarted=performance.now();
         try{
+            var identityResult=await functionsSdk.httpsCallable(fbFunctions,'ensureGamerIdentity')({role:ROLE||'Player',countryCode:JOIN_COUNTRY||'IND'});
             var snapshot=await firestoreSdk.getDoc(firestoreSdk.doc(fbDB,'users',user.uid));
             var profile=snapshot.exists()?profileFromFirestore(snapshot.data()):{};
+            profile.gamerId=identityResult.data.gamerId||profile.gamerId||'';
             profile.uid=user.uid;
             profile.email=user.email;
             profile.verified=user.emailVerified;
-            ROLE=profile.role||ROLE||'Player';
+            ROLE=identityResult.data.role||profile.role||ROLE||'Player';
             setU(Object.assign({},profile,{via:'Firebase'}),false);
+            await refreshGamerDashboard({sdk:{firestore:firestoreSdk,functions:functionsSdk,functionsInstance:fbFunctions},user:user,profile:profile});
             console.info('[YT Firebase] profile load',Math.round(performance.now()-profileStarted)+'ms');
         }catch(error){
             console.error('Failed to load the Firebase user profile',error);
             setU({uid:user.uid,email:user.email,role:ROLE||'Player',via:'Firebase'},false);
+            await refreshGamerDashboard({error:error});
             if($('lx'))$('lx').textContent='Signed in, but your Firestore profile could not be loaded: '+firebaseErrorMessage(error);
         }
     });
@@ -881,16 +957,6 @@ function firebaseErrorMessage(error){
     };
     return messages[error&&error.code]||(error&&error.message)||'An unexpected Firebase error occurred.';
 }
-function profileForFirestore(profile){
-    var firestoreProfile=Object.assign({},profile);
-    if(Array.isArray(firestoreProfile.ach)){
-        firestoreProfile.ach=firestoreProfile.ach.map(function(achievement){
-            if(!Array.isArray(achievement))return achievement;
-            return {event:achievement[0],result:achievement[1],reward:achievement[2]};
-        });
-    }
-    return firestoreProfile;
-}
 function profileFromFirestore(profile){
     if(Array.isArray(profile.ach)){
         profile.ach=profile.ach.map(function(achievement){
@@ -900,16 +966,11 @@ function profileFromFirestore(profile){
     }
     return profile;
 }
-async function fbCreateAccount(email,password,role){
+async function fbCreateAccount(email,password,role,countryCode){
     var sdk=await requireFirebase();
     var credential=await sdk.auth.createUserWithEmailAndPassword(fbAuth,email,password);
     try{
-        await sdk.firestore.setDoc(sdk.firestore.doc(fbDB,'users',credential.user.uid),{
-            uid:credential.user.uid,
-            email:credential.user.email,
-            role:role,
-            createdAt:sdk.firestore.serverTimestamp()
-        });
+        await sdk.functions.httpsCallable(sdk.functionsInstance,'ensureGamerIdentity')({role:role,countryCode:countryCode||JOIN_COUNTRY||'IND'});
     }catch(error){
         var profileError=new Error(firebaseErrorMessage(error));
         profileError.code=error.code;
@@ -953,28 +1014,7 @@ async function fbDeleteAccount(password){
     if(typeof password!=='string'||password.length<6)throw new Error('Enter your current password to delete the account.');
     var credential=sdk.auth.EmailAuthProvider.credential(user.email,password);
     await sdk.auth.reauthenticateWithCredential(user,credential);
-    await sdk.firestore.deleteDoc(sdk.firestore.doc(fbDB,'users',user.uid));
     await sdk.auth.deleteUser(user);
-}
-function gamerIdForUid(uid){
-    return 'YT-'+uid.replace(/[^A-Za-z0-9]/g,'').slice(0,12).toUpperCase();
-}
-function publicProfileFor(profile){
-    return {
-        gamerId:profile.gamerId,
-        gamerTag:profile.n,
-        displayName:profile.n,
-        avatar:profile.img||'',
-        bio:profile.b||'',
-        game:profile.g,
-        role:profile.r,
-        level:profile.lv,
-        startedPlaying:profile.s||null,
-        state:profile.st||'',
-        city:profile.c||'',
-        profileVisibility:profile.profileVisibility||'public',
-        updatedAt:profile.updatedAt||null
-    };
 }
 
 var P=[
@@ -988,6 +1028,11 @@ var $=function(i){return document.getElementById(i)};
 function fm(n){return "₹"+n.toLocaleString("en-IN")}
 function init(a){return a.slice(0,2).toUpperCase()}
 var games=['BGMI','Free Fire','Valorant','CS2','Call of Duty Mobile','Call of Duty: Warzone','PUBG','Apex Legends','Fortnite','Rainbow Six Siege','Overwatch 2','Marvel Rivals','Halo','Dota 2','League of Legends','Wild Rift','Mobile Legends','Pokémon Unite','Clash Royale','Brawl Stars','Rocket League','EA FC','Street Fighter 6','Tekken 8','Chess'];
+var gamerCountries=[['IND','India'],['USA','United States'],['GBR','United Kingdom'],['CAN','Canada'],['AUS','Australia'],['BRA','Brazil'],['IDN','Indonesia'],['JPN','Japan'],['KOR','South Korea'],['PHL','Philippines'],['PAK','Pakistan'],['BGD','Bangladesh'],['DEU','Germany'],['FRA','France'],['MEX','Mexico'],['ZAF','South Africa'],['ARE','United Arab Emirates'],['NZL','New Zealand'],['SGP','Singapore'],['NPL','Nepal'],['LKA','Sri Lanka'],['TUR','Turkey'],['POL','Poland'],['ESP','Spain'],['ITA','Italy'],['OTH','Other / not listed']];
+gamerCountries.forEach(function(country){var option=document.createElement('option');option.value=country[0];option.textContent=country[1];$('jcountry').appendChild(option)});
+games.forEach(function(game){var option=document.createElement('option');option.value=game;option.textContent=game;$('gamerSearchGame').appendChild(option)});
+$('fn').required=false;$('fn').placeholder='Real name (optional)';
+$('jb').maxLength=240;$('jy').max=new Date().getFullYear();
 games.forEach(function(g){var o=document.createElement("option");o.textContent=g;$("g").appendChild(o)});
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function render(){
@@ -1079,7 +1124,7 @@ $('st').innerHTML=P.map(function(p,i){return '<button class="sb" data-i="'+i+'">
 $('st').addEventListener('click',function(e){var b=e.target.closest('.sb');if(!b)return;var p=P[+b.dataset.i];$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="clip" style="background:linear-gradient(135deg,'+p.col+',#14161f);border-radius:12px;height:260px">'+esc(p.n)+'<br>'+esc(p.ach[0][1])+': '+esc(p.ach[0][0])+'</div>';$('d').showModal()});
 $('gc').innerHTML=games.map(function(g){return '<button class="chip" data-g="'+esc(g)+'">'+esc(g)+'</button>'}).join('');
 $('gc').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;$('g').value=b.dataset.g;render();$('players').scrollIntoView()});
-games.forEach(function(g){var o=document.createElement('option');o.textContent=g;$('jg').appendChild(o)});
+games.forEach(function(g){var o=document.createElement('option');o.textContent=g;$('jg').appendChild(o);var additional=document.createElement('option');additional.value=g;additional.textContent=g;$('jpreferredGames').appendChild(additional)});
 var U=null;
 function au(){$('au').innerHTML=IC.s+'<span>'+(U?esc(U.role||'Player')+' · Logout':'Login')+'</span>'}
 function applyAuthenticatedLayout(signedIn){
@@ -1260,6 +1305,11 @@ $('achievementReviewer').addEventListener('click',async function(event){
 });
 function openLogin(){ROLE='Player';d.setAttribute('data-auth-dialog','true');
 $('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="lgi">'+IC.s+'</div><h3 style="margin:0 0 4px;font-size:22px">Log in to YT Tech Hub</h3><p class="tag">Use your email and password to log in or create an account.</p><p class="tag" style="margin:14px 0 0">I am joining as</p><div class="roles" role="radiogroup" aria-label="Joining as"><button type="button" class="rl on" data-r="Player" role="radio" aria-checked="true">'+IC.c+'<span>Player</span></button><button type="button" class="rl" data-r="Teammate" role="radio" aria-checked="false">'+IC.q+'<span>Teammate</span></button><button type="button" class="rl" data-r="Sponsor" role="radio" aria-checked="false">'+IC.t+'<span>Sponsor</span></button><button type="button" class="rl" data-r="Organizer" role="radio" aria-checked="false">'+IC.o+'<span>Organizer</span></button></div><p class="tag">Google sign-in and phone OTP are unavailable and are not enabled.</p><h4>Email and password</h4><div class="lf2"><div class="ig">'+IC.em+'<input id="le" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></div><input id="lw" type="password" required minlength="6" autocomplete="current-password" placeholder="Password (at least 6 characters)" aria-label="Password"><div class="fr"><button class="btn" id="loginButton" type="button">Log in</button><button class="btn alt" id="createButton" type="button">Create account</button></div><button class="btn alt" id="resetPasswordButton" type="button">Forgot password?</button></div><div class="ok" id="lx" role="status"></div>';
+var countryLabel=document.createElement('label');countryLabel.className='tag';countryLabel.textContent='Country for a new Gamer ID';
+var countrySelect=document.createElement('select');countrySelect.id='authCountry';countrySelect.setAttribute('aria-label','Country for new Gamer ID');countrySelect.style.width='100%';countrySelect.style.margin='8px 0 12px';
+gamerCountries.forEach(function(country){var option=document.createElement('option');option.value=country[0];option.textContent=country[1];countrySelect.appendChild(option)});
+countrySelect.value=JOIN_COUNTRY||'IND';countryLabel.appendChild(countrySelect);
+$('m').insertBefore(countryLabel,$('m').querySelector('.lf2'));
 function msg(t){$('lx').innerHTML=t}
 firebaseReady.then(function(sdk){if(sdk)msg('Firebase is ready. Google sign-in and phone OTP are unavailable.');else msg('Firebase could not be initialized. Check the connection and Firebase setup, then reload.')});
 async function authenticate(createAccount){
@@ -1273,7 +1323,8 @@ async function authenticate(createAccount){
     loginButton.disabled=true;createButton.disabled=true;msg('<span class="auth-loading" aria-hidden="true"></span>Connecting to Firebase...');
     try{
         if(createAccount){
-            var result=await fbCreateAccount(email,pw,ROLE);
+            JOIN_COUNTRY=$('authCountry').value||'IND';
+            var result=await fbCreateAccount(email,pw,ROLE,JOIN_COUNTRY);
             msg(result.verificationSent?'Account created and profile saved. A verification email was sent.':'Account created and profile saved, but the verification email could not be sent.');
         }else{
             await fbSignIn(email,pw);
@@ -1326,6 +1377,199 @@ function rtx(p){return p.rt?p.rt+'/100<i class="pw"><u style="width:'+p.rt+'%"><
 function wx(p){return p.rt?p.w+'%':'-'}
 function avh(p){return p.img?'<div class="av" style="background:url('+"'"+p.img+"'"+') center/cover"></div>':'<div class="av" style="background:'+p.col+'">'+init(p.n)+'</div>'}
 $('pf2').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement('canvas');c.width=c.height=160;var s=Math.min(im.width,im.height);c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,160,160);IMG=c.toDataURL('image/jpeg',.8);$('pv').style.background='url('+IMG+') center/cover';$('pv').textContent=''};im.src=r.result};r.readAsDataURL(f)});
+function populateGamerProfileEditor(profile){
+    if(!profile)return;
+    var gamer=profile.gamerProfile||{};
+    var values={gtg:profile.n,fn:profile.fn,fg:profile.gid,jgn:profile.gd,jag:profile.a,jg:profile.g,jl:profile.lv,jr:profile.r,jp:profile.ph,je:profile.em,js:profile.st,jc:profile.c,jt:profile.t,jy:profile.s,jb:profile.b,jpv:gamer.profileVisibility||profile.profileVisibility||'public'};
+    Object.keys(values).forEach(function(id){var field=$(id);if(field&&values[id]!==undefined&&values[id]!==null)field.value=values[id]});
+    $('jcountry').value=gamer.countryCode||'IND';
+    $('jcountryOther').value=gamer.countryCode==='OTH'?gamer.country||'':'';
+    $('jcountryOther').hidden=$('jcountry').value!=='OTH';
+    Array.from($('jpreferredGames').options).forEach(function(option){option.selected=Array.isArray(gamer.preferredGames)&&gamer.preferredGames.indexOf(option.value)!==-1});
+    $('jinstagram').value=(gamer.socialLinks&&gamer.socialLinks.instagram)||'';
+    $('jyoutube').value=(gamer.socialLinks&&gamer.socialLinks.youtube)||'';
+    $('jtwitch').value=(gamer.socialLinks&&gamer.socialLinks.twitch)||'';
+    $('jteamHistory').value=Array.isArray(gamer.teamHistory)?gamer.teamHistory.join(', '):'';
+    $('jhighlight').value=gamer.highlightUrl||'';
+    IMG=gamer.avatar||profile.img||null;
+    if(IMG){$('pv').style.background='url('+IMG+') center/cover';$('pv').textContent=''}
+}
+function gamerDate(value){
+    if(value&&typeof value.toDate==='function')return value.toDate().toLocaleDateString();
+    var seconds=value&&(value.seconds||value._seconds);
+    return seconds?new Date(seconds*1000).toLocaleDateString():'';
+}
+function gamerAvatarMarkup(profile,size){
+    var avatar=profile.avatar||'',tag=profile.gamerTag||'Gamer';
+    return '<span class="gamer-card-avatar"'+(size?' style="width:'+size+'px;height:'+size+'px"':'')+'>'+(avatar?'<img src="'+esc(avatar)+'" alt="">':esc(init(tag)))+'</span>';
+}
+function renderPublicGamerProfile(profile){
+    var achievements=Array.isArray(profile.verifiedAchievements)?profile.verifiedAchievements:[];
+    var links=profile.socialLinks||{};
+    var social=Object.keys(links).filter(function(key){return links[key]}).map(function(key){return '<a href="'+esc(links[key])+'" target="_blank" rel="noopener noreferrer">'+esc(key)+'</a>'}).join('');
+    var date=gamerDate(profile.joinedAt);
+    $('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="public-gamer-profile"><div class="public-gamer-heading">'+gamerAvatarMarkup(profile,64)+'<div><h3>'+esc(profile.gamerTag||'Gamer')+'</h3><p>'+esc(profile.country||'')+(profile.currentTeam?' · '+esc(profile.currentTeam):'')+'</p></div></div><div class="public-gamer-id">'+esc(profile.gamerId)+'</div><span class="verification-badge '+(profile.verificationStatus==='verified'?'verified':profile.verificationStatus==='pending'?'pending':'')+'">'+esc(profile.verificationStatus||'unverified')+'</span>'+(profile.bio?'<p>'+esc(profile.bio)+'</p>':'')+'<div class="row"><span>Games</span><b>'+esc((profile.preferredGames||[]).join(', ')||'Not listed')+'</b></div><div class="row"><span>Gaming ID</span><b>'+esc(profile.gameId||'Not listed')+'</b></div><div class="row"><span>Player role</span><b>'+esc(profile.playerRole||'Not listed')+'</b></div><div class="row"><span>Experience</span><b>'+(profile.experienceStartYear?esc(String(new Date().getFullYear()-profile.experienceStartYear))+' years':'Not listed')+'</b></div>'+(profile.currentTeam?'<div class="row"><span>Current team</span><b>'+esc(profile.currentTeam)+'</b></div>':'')+(Array.isArray(profile.teamHistory)&&profile.teamHistory.length?'<div class="row"><span>Previous teams</span><b>'+esc(profile.teamHistory.join(', '))+'</b></div>':'')+(date?'<div class="row"><span>Joined</span><b>'+esc(date)+'</b></div>':'')+(profile.highlightUrl?'<a href="'+esc(profile.highlightUrl)+'" target="_blank" rel="noopener noreferrer">Watch gaming highlight</a>':'')+(social?'<div class="public-gamer-links">'+social+'</div>':'')+'<div><h4>Verified achievements</h4>'+(achievements.length?achievements.map(function(item){return '<article class="gamer-achievement"><b>'+esc(item.tournamentName)+'</b><span>'+esc(item.game)+' · '+esc(item.placement)+' · '+esc(item.eventDate)+'</span></article>'}).join(''):'<p class="tag">No verified achievements listed.</p>')+'</div><p class="tag">Only information chosen for this public profile is shown. Private account details are not included.</p></div>';
+    $('d').showModal();
+}
+var gamerSearchMatches=[];
+var publicGamerRouteId='';
+async function showPublicGamerRoute(){
+    var match=window.location.hash.match(/^#gamer\/(YT-[A-Z]{3}-\d{6,})$/i);
+    if(!match)return;
+    var requestedId=match[1].toUpperCase();
+    if(publicGamerRouteId===requestedId)return;
+    publicGamerRouteId=requestedId;
+    try{
+        var sdk=await requireFirebase();
+        var result=await sdk.functions.httpsCallable(sdk.functionsInstance,'getPublicGamerProfile')({gamerId:requestedId});
+        if(window.location.hash.toUpperCase()==='#GAMER/'+requestedId)renderPublicGamerProfile(result.data.profile);
+    }catch(error){
+        if(publicGamerRouteId===requestedId)publicGamerRouteId='';
+        console.error('Public Gamer ID profile lookup failed',error);
+        $('gamerDashboardStatus').textContent='Could not load this public Gamer ID profile: '+firebaseErrorMessage(error);
+    }
+}
+async function refreshGamerDashboard(context){
+    $('gamerQrWrap').hidden=true;
+    $('gamerQr').removeAttribute('src');
+    $('downloadGamerCard').disabled=true;
+    $('copyGamerId').disabled=true;
+    $('playerVerificationForm').hidden=true;
+    $('playerVerifierPanel').hidden=true;
+    if(!context){
+        $('gamerTagDisplay').textContent='Your gamer identity';
+        $('gamerSummary').textContent='Sign in to receive your permanent Gamer ID.';
+        $('gamerIdValue').textContent='Sign in required';
+        $('gamerCardMeta').textContent='Your Gamer ID is assigned by YT Tech Hub and cannot be changed.';
+        $('gamerAvatar').textContent='YT';$('gamerAvatar').style.backgroundImage='';
+        $('gamerVerificationBadge').textContent='Unverified';$('gamerVerificationBadge').className='verification-badge';
+        $('gamerDashboardStatus').textContent='Sign in to view your Gamer ID and profile status.';
+        $('gamerPortfolio').innerHTML='<p class="tag">No verified achievements yet.</p>';
+        $('playerVerificationState').innerHTML='<h3>Verification status</h3><p class="tag">Sign in to view the review status of your player identity.</p>';
+        return;
+    }
+    if(context.error){$('gamerDashboardStatus').textContent='Gamer ID could not be loaded: '+firebaseErrorMessage(context.error);return}
+    try{
+        var sdk=context.sdk||await requireFirebase(),user=context.user||fbAuth.currentUser;
+        if(!user){$('gamerDashboardStatus').textContent='Sign in to view your Gamer ID.';return}
+        var profile=context.profile||U||{};
+        var result=await sdk.functions.httpsCallable(sdk.functionsInstance,'getMyGamerPortfolio')({});
+        var data=result.data,publicProfile=data.profile||null;
+        var gamerId=data.gamerId||profile.gamerId||'';
+        profile.gamerId=gamerId;
+        profile.verificationStatus=data.verificationStatus||'unverified';
+        populateGamerProfileEditor(profile);
+        $('gamerTagDisplay').textContent=(publicProfile&&publicProfile.gamerTag)||profile.n||'Complete your Gamer ID profile';
+        $('gamerSummary').textContent=publicProfile?[(publicProfile.preferredGames||[]).join(', '),publicProfile.country,publicProfile.currentTeam].filter(Boolean).join(' · '):'Your ID is ready. Add a public profile to be discoverable.';
+        $('gamerIdValue').textContent=gamerId||'Not available for this account role';
+        $('gamerCardMeta').textContent=publicProfile?'Permanent player identity · Joined '+(gamerDate(publicProfile.joinedAt)||'date unavailable'):profile.gamerProfile&&profile.gamerProfile.profileVisibility==='private'?'Your profile is private. Choose public visibility to create a scannable card.':'Complete your profile to publish your Gamer ID.';
+        $('gamerAvatar').innerHTML=publicProfile&&publicProfile.avatar?'<img src="'+esc(publicProfile.avatar)+'" alt="">':esc(init((publicProfile&&publicProfile.gamerTag)||profile.n||'YT'));
+        var verification=data.verificationStatus||'unverified';
+        $('gamerVerificationBadge').textContent=verification==='verified'?'Verified':verification==='pending'?'Verification pending':'Unverified';
+        $('gamerVerificationBadge').className='verification-badge '+(verification==='verified'?'verified':verification==='pending'?'pending':'');
+        $('gamerDashboardStatus').textContent=gamerId?'Gamer ID assigned and stored in your Firebase account. It cannot be edited.':(profile.role==='Sponsor'||profile.role==='Organizer'?'Gamer IDs are available to player and teammate accounts.':'A Gamer ID has not been assigned.');
+        $('copyGamerId').disabled=!gamerId;
+        $('playerVerificationForm').hidden=!gamerId||verification==='verified'||verification==='pending';
+        if(gamerId&&publicProfile){
+            var qr=await sdk.functions.httpsCallable(sdk.functionsInstance,'getGamerQr')({});
+            $('gamerQr').src=qr.data.qrDataUrl;$('gamerQrWrap').hidden=false;$('downloadGamerCard').disabled=false;
+        }else if(gamerId)$('downloadGamerCard').disabled=true;
+        var achievements=data.verifiedAchievements||[];
+        $('gamerPortfolio').innerHTML=achievements.length?achievements.map(function(item){return '<article class="gamer-achievement"><b>'+esc(item.tournamentName)+'</b><span>'+esc(item.game)+' · '+esc(item.placement)+' · '+esc(item.eventDate)+'</span></article>'}).join(''):'<p class="tag">No verified achievements yet. Approved results will appear here after reviewer verification.</p>';
+        var verificationResult=await sdk.functions.httpsCallable(sdk.functionsInstance,'getMyPlayerVerification')({});
+        var submissions=verificationResult.data.submissions||[];
+        $('playerVerificationState').innerHTML='<h3>Verification status</h3>'+(!gamerId?'<p class="tag">A Gamer ID is available to player and teammate accounts.</p>':submissions.length?submissions.map(function(item){return '<article class="gamer-achievement"><b>'+esc(item.status==='verified'?'Verified player':item.status==='pending'?'Request under review':'Request not approved')+'</b><span>'+esc(gamerDate(item.createdAt)||'Recently submitted')+'</span>'+(item.reviewNote?'<span>Reviewer note: '+esc(item.reviewNote)+'</span>':'')+'</article>'}).join(''):'<p class="tag">Unverified. Submit a request when your profile and evidence are ready.</p>');
+        if(fbAuth.currentUser&&fbAuth.currentUser.getIdTokenResult){
+            var token=await fbAuth.currentUser.getIdTokenResult();
+            if(token.claims.playerVerifier===true){$('playerVerifierPanel').hidden=false;await refreshPlayerVerifierQueue(sdk)}
+        }
+    }catch(error){
+        console.error('Could not load Gamer ID dashboard',error);
+        $('gamerDashboardStatus').textContent='Gamer ID could not be loaded: '+firebaseErrorMessage(error);
+    }
+}
+async function refreshPlayerVerifierQueue(sdk){
+    var queue=$('playerVerifierQueue');queue.textContent='Loading verification requests...';
+    try{
+        var result=await sdk.functions.httpsCallable(sdk.functionsInstance,'listPlayerVerificationRequests')({});
+        var requests=result.data.submissions||[];
+        queue.innerHTML=requests.length?requests.map(function(item){return '<article class="gamer-review-card" data-player-request="'+esc(item.requestId)+'"><b>'+esc(item.gamerId)+'</b><p>'+esc(item.details)+'</p>'+(item.evidenceUrl?'<a href="'+esc(item.evidenceUrl)+'" target="_blank" rel="noopener noreferrer">Review evidence link</a>':'')+'<textarea maxlength="1000" aria-label="Reviewer note" placeholder="Required when rejecting"></textarea><div class="fr"><button class="btn" type="button" data-player-decision="verified">Verify</button><button class="btn alt" type="button" data-player-decision="rejected">Reject</button></div></article>'}).join(''):'<p class="tag">No pending player verification requests.</p>';
+    }catch(error){console.error('Player verification queue load failed',error);queue.textContent='Could not load the verification queue: '+firebaseErrorMessage(error)}
+}
+$('playerVerificationForm').addEventListener('submit',async function(event){
+    event.preventDefault();
+    if(!U){openLogin();return}
+    var button=this.querySelector('button[type="submit"]');button.disabled=true;$('verificationStatus').textContent='Submitting for review...';
+    try{
+        var sdk=await requireFirebase();
+        await sdk.functions.httpsCallable(sdk.functionsInstance,'submitPlayerVerification')({details:$('verificationDetails').value.trim(),evidenceUrl:$('verificationEvidence').value.trim()});
+        $('verificationStatus').textContent='Request submitted. An authorized reviewer will check the details.';
+        $('verificationDetails').value='';$('verificationEvidence').value='';
+        await refreshGamerDashboard({sdk:sdk,user:fbAuth.currentUser,profile:U});
+    }catch(error){console.error('Player verification request failed',error);$('verificationStatus').textContent='Could not submit request: '+firebaseErrorMessage(error)}
+    finally{button.disabled=false}
+});
+$('playerVerifierQueue').addEventListener('click',async function(event){
+    var button=event.target.closest('[data-player-decision]');if(!button)return;
+    var card=button.closest('[data-player-request]'),decision=button.dataset.playerDecision,note=card.querySelector('textarea').value.trim();
+    if(decision==='rejected'&&!note){card.querySelector('textarea').focus();$('playerVerifierMessage').textContent='Add a reviewer note before rejecting.';return}
+    card.querySelectorAll('button').forEach(function(item){item.disabled=true});
+    try{
+        var sdk=await requireFirebase();
+        await sdk.functions.httpsCallable(sdk.functionsInstance,'reviewPlayerVerification')({requestId:card.dataset.playerRequest,decision:decision,reviewNote:note});
+        $('playerVerifierMessage').textContent='Player verification '+decision+'.';
+        await refreshPlayerVerifierQueue(sdk);
+    }catch(error){console.error('Player verification review failed',error);$('playerVerifierMessage').textContent='Review failed: '+firebaseErrorMessage(error);card.querySelectorAll('button').forEach(function(item){item.disabled=false})}
+});
+$('gamerSearchForm').addEventListener('submit',async function(event){
+    event.preventDefault();
+    var term=$('gamerSearchTerm').value.trim(),game=$('gamerSearchGame').value,country=$('gamerSearchCountry').value,team=$('gamerSearchTeam').value.trim();
+    $('gamerSearchResults').textContent='';$('gamerSearchStatus').textContent='Searching public profiles...';
+    try{
+        var sdk=await requireFirebase(),result=await sdk.functions.httpsCallable(sdk.functionsInstance,'searchGamers')({term:term,game:game,country:country,team:team});
+        gamerSearchMatches=result.data.profiles||[];
+        $('gamerSearchStatus').textContent=gamerSearchMatches.length?gamerSearchMatches.length+' public profile'+(gamerSearchMatches.length===1?'':'s')+' found.':'No public gamers matched those filters.';
+        $('gamerSearchResults').innerHTML=gamerSearchMatches.map(function(profile,index){return '<button class="gamer-search-result" type="button" data-gamer-result="'+index+'">'+gamerAvatarMarkup(profile,42)+'<span class="gamer-search-result-copy"><b>'+esc(profile.gamerTag)+'</b><span>'+esc(profile.gamerId)+' · '+esc((profile.preferredGames||[]).join(', '))+(profile.country?' · '+esc(profile.country):'')+'</span></span></button>'}).join('');
+    }catch(error){console.error('Gamer search failed',error);$('gamerSearchStatus').textContent='Search failed: '+firebaseErrorMessage(error)}
+});
+$('gamerSearchResults').addEventListener('click',function(event){var button=event.target.closest('[data-gamer-result]');if(!button)return;var profile=gamerSearchMatches[Number(button.dataset.gamerResult)];if(profile)renderPublicGamerProfile(profile)});
+$('jcountry').addEventListener('change',function(){$('jcountryOther').hidden=this.value!=='OTH';if(this.value==='OTH')$('jcountryOther').focus()});
+$('copyGamerId').addEventListener('click',async function(){
+    var gamerId=$('gamerIdValue').textContent;
+    if(!gamerId||gamerId.indexOf('YT-')!==0)return;
+    try{await navigator.clipboard.writeText(gamerId);$('gamerDashboardStatus').textContent='Gamer ID copied.'}
+    catch(error){console.error('Could not copy Gamer ID',error);$('gamerDashboardStatus').textContent='Copy failed. Select and copy the Gamer ID manually.'}
+});
+$('downloadGamerCard').addEventListener('click',async function(){
+    var gamerId=$('gamerIdValue').textContent,qr=$('gamerQr').src;
+    if(!gamerId||gamerId.indexOf('YT-')!==0||!qr)return;
+    this.disabled=true;
+    try{
+        var canvas=document.createElement('canvas');canvas.width=1280;canvas.height=720;
+        var context=canvas.getContext('2d');context.fillStyle='#10101B';context.fillRect(0,0,canvas.width,canvas.height);
+        context.fillStyle='#7657E8';context.fillRect(0,0,10,canvas.height);
+        context.fillStyle='#20D9E8';context.save();context.translate(72,32);context.scale(.06,.06);context.translate(-335,-285);
+        context.fill(new Path2D('M335 285H468L627 428L786 285H919L670 507V598H583V507Z M368 595H886L800 670H454Z M583 667H670V891L627 963L583 891Z'));context.restore();
+        context.fillStyle='#F5F3FF';context.font='700 28px Arial';context.fillText('YT TECH HUB',118,61);
+        context.fillStyle='#A5A1B5';context.font='16px Arial';context.fillText('YOUR IDENTITY. YOUR GAME. YOUR COMMUNITY.',118,91);
+        context.fillStyle='#7657E8';context.fillRect(72,138,760,2);
+        var avatarUrl=U&&U.gamerProfile&&U.gamerProfile.avatar||U&&U.img||'',avatarImage=null;
+        if(avatarUrl){avatarImage=new Image();avatarImage.src=avatarUrl;await avatarImage.decode();context.drawImage(avatarImage,72,194,190,190)}
+        else{context.fillStyle='#211B35';context.fillRect(72,194,190,190);context.fillStyle='#20D9E8';context.font='700 52px Arial';context.textAlign='center';context.fillText(init($('gamerTagDisplay').textContent),167,310);context.textAlign='left'}
+        context.fillStyle='#F5F3FF';context.font='700 42px Arial';context.fillText($('gamerTagDisplay').textContent.slice(0,30),292,246);
+        context.fillStyle='#20D9E8';context.font='700 26px monospace';context.fillText(gamerId,292,300);
+        context.fillStyle='#A5A1B5';context.font='20px Arial';context.fillText($('gamerSummary').textContent.slice(0,66),292,346);
+        var qrImage=new Image();qrImage.src=qr;await qrImage.decode();context.fillStyle='#fff';context.fillRect(890,172,278,278);context.drawImage(qrImage,899,181,260,260);
+        context.fillStyle='#A5A1B5';context.font='16px Arial';context.fillText('SCAN TO VIEW PUBLIC PROFILE',900,480);
+        context.fillStyle='#34304A';context.fillRect(72,584,1096,1);
+        context.fillStyle='#A5A1B5';context.font='16px Arial';context.fillText('A player identity from YT Tech Hub',72,626);
+        var link=document.createElement('a');link.download=gamerId+'.png';link.href=canvas.toDataURL('image/png');link.click();
+    }catch(error){console.error('Gamer card download failed',error);$('gamerDashboardStatus').textContent='Could not create the gamer card: '+firebaseErrorMessage(error)}
+    finally{this.disabled=false}
+});
+$('editGamerProfile').addEventListener('click',function(){$('join').scrollIntoView({behavior:'smooth'});setTimeout(function(){$('gtg').focus({preventScroll:true})},500)});
+window.addEventListener('hashchange',showPublicGamerRoute);
+firebaseReady.then(function(sdk){if(sdk)showPublicGamerRoute()});
 async function submitProfile(e){
     e.preventDefault();
     if(!U){openLogin();return}
@@ -1335,31 +1579,40 @@ async function submitProfile(e){
     var ag=+v('jag');if(!(ag>=16)){$('ok').textContent='YT Tech Hub is for players aged 16 and above.';return}
     if(!/^[6-9]\d{9}$/.test(v('jp'))){$('ok').textContent='Enter a valid 10-digit phone number.';return}
     if(!/^\S+@\S+\.\S+$/.test(v('je'))){$('ok').textContent='Enter a valid Gmail address.';return}
-    var gt=v('gtg'),gid=v('fg');
-    var gamerId=gamerIdForUid(fbAuth.currentUser.uid);
-    var startedPlaying=+v('jy')||new Date().getFullYear(),journey=v('jb');
-    var newProfile = {n:gt,gamerId:gamerId,gid:gid,fn:v('fn'),t:v('jt')||'Solo',g:v('jg'),r:v('jr')||'Player',lv:v('jl'),c:v('jc'),st:v('js'),s:startedPlaying,b:journey,a:ag,rt:0,w:0,e:0,col:'var(--blue)',img:IMG,ph:v('jp'),em:v('je'),k:'New player',mine:true,gd:v('jgn'),nb:$('vis').checked,profileVisibility:$('jpv').value,ach:[['Joined YT Tech Hub','New','Pending verification']]};
+    var gt=v('gtg'),startedPlaying=+v('jy')||new Date().getFullYear();
+    var countryOption=$('jcountry').selectedOptions[0],countryName=$('jcountry').value==='OTH'?v('jcountryOther'):countryOption&&countryOption.textContent;
+    if(!countryOption||!countryOption.value){$('ok').textContent='Choose your country to create your public Gamer ID profile.';return}
+    if(!countryName){$('ok').textContent='Enter your country or region.';$('jcountryOther').focus();return}
+    var teamHistory=v('jteamHistory').split(',').map(function(team){return team.trim()}).filter(Boolean);
+    if(teamHistory.length>8){$('ok').textContent='Add no more than eight previous teams.';$('jteamHistory').focus();return}
+    var preferredGames=Array.from($('jpreferredGames').selectedOptions).map(function(option){return option.value});
+    if(preferredGames.indexOf(v('jg'))===-1)preferredGames.unshift(v('jg'));
+    if(preferredGames.length>5){$('ok').textContent='Choose no more than five preferred games.';$('jpreferredGames').focus();return}
+    var gamerProfile={
+        gamerTag:gt,gameId:v('fg'),avatar:IMG||U.img||'',country:countryName,countryCode:countryOption.value,
+        preferredGames:preferredGames,currentTeam:v('jt'),experienceStartYear:startedPlaying,
+        playerRole:v('jr'),bio:v('jb'),socialLinks:{instagram:v('jinstagram'),youtube:v('jyoutube'),twitch:v('jtwitch')},
+        teamHistory:teamHistory,highlightUrl:v('jhighlight'),profileVisibility:$('jpv').value
+    };
+    var privateProfile={
+        gamerTag:gt,gameId:v('fg'),realName:v('fn'),team:v('jt'),game:v('jg'),
+        role:v('jr'),level:v('jl'),city:v('jc'),state:v('js'),startYear:startedPlaying,
+        introduction:v('jb'),age:ag,phone:v('jp'),email:v('je'),gender:v('jgn'),avatar:IMG||U.img||''
+    };
     try{
         var sdk=await requireFirebase();
         if(!fbAuth.currentUser){$('ok').textContent='Your session expired. Please log in again.';openLogin();return}
-        var firestoreProfile=Object.assign(profileForFirestore(newProfile),{
-            uid:fbAuth.currentUser.uid,
-            email:fbAuth.currentUser.email,
-            updatedAt:sdk.firestore.serverTimestamp()
-        });
-        firestoreProfile.publicProfile=publicProfileFor(newProfile);
-        await sdk.firestore.setDoc(sdk.firestore.doc(fbDB,'users',fbAuth.currentUser.uid),firestoreProfile,{merge:true});
+        await sdk.functions.httpsCallable(sdk.functionsInstance,'saveGamerProfile')({gamerProfile:gamerProfile,privateProfile:privateProfile});
     }catch(error){
         console.error('Firestore profile save failed',error);
         $('ok').textContent='Profile could not be saved: '+firebaseErrorMessage(error);
         return;
     }
-    $('ok').textContent='Profile saved to your Firebase account.';
-    P.push(newProfile);refreshSquadRoles();
-    EXP.push({s:startedPlaying,tm:v('jt')||'Solo',x:journey||'New profile.',sk:[]});
-    $('g').value='';$('gf').value='';$('q').value=gt;render();if(typeof rsel==='function')rsel();
-    if(!$('ok').textContent) $('ok').textContent='Profile created! See it under Players (sample display data resets on refresh).';
-    e.target.reset();IMG=null;$('pv').style.background='';$('pv').textContent='+';$('players').scrollIntoView()
+    var updatedProfile=Object.assign({},U,privateProfile,{gamerProfile:gamerProfile});
+    setU(updatedProfile,false);
+    await refreshGamerDashboard({sdk:sdk,user:fbAuth.currentUser,profile:updatedProfile});
+    $('ok').textContent='Gamer ID profile saved. Your real name, age, city, phone, and contact email remain private.';
+    $('gamerId').scrollIntoView({behavior:'smooth'});
 }
 ['nbs','tfs'].forEach(function(i){STL.forEach(function(s){var o=document.createElement('option');o.textContent=s;$(i).appendChild(o)})});
 ['nbg','tfg'].forEach(function(i){games.forEach(function(g){var o=document.createElement('option');o.textContent=g;$(i).appendChild(o)})});
@@ -1399,16 +1652,16 @@ $('pf').addEventListener('click',function(e){var b=e.target.closest('.act button
 IC.f='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 1.5v5M12 17.5v5M1.5 12h5M17.5 12h5"/><path class="pl" d="M12 9.5v5M9.5 12h5"/><circle class="cd" cx="12" cy="12" r="2.8" fill="currentColor" stroke="none" opacity="0"/></svg>';
 IC.g='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6.5" rx="1.5"/><rect x="17.5" y="13" width="4" height="6.5" rx="1.5"/><path d="M19.5 19.5c0 1.6-1.4 2.5-3.5 2.5h-2"/><circle class="d1" cx="9" cy="11" r="1"/><circle class="d2" cx="12" cy="11" r="1"/><circle class="d3" cx="15" cy="11" r="1"/><circle class="on" cx="20.5" cy="4" r="2.2"/></svg>';
 document.addEventListener('click',function(e){var b=e.target.closest('.mg');if(!b)return;b.classList.remove('fx');void b.offsetWidth;b.classList.add('fx');setTimeout(function(){b.classList.remove('fx')},650)});
-var ROLE='Player';
+var ROLE='Player',JOIN_COUNTRY='IND';
 IC.s='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 4.6-3.2 8.2-8 9.8-4.8-1.6-8-5.2-8-9.8V5.5z"/><path class="pt" d="M10 8.8l5 3.2-5 3.2z" fill="currentColor"/></svg>';
 IC.t='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="1.5"/><circle cx="12" cy="12" r="2.8"/><path d="M12 10.8v2.4M5.5 9v.01M18.5 15v.01"/></svg>';
 IC.q='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3"/><path d="M8.2 8.5a3.8 3.8 0 0 1 7.6 0"/><rect x="6.9" y="8" width="1.8" height="3.2" rx=".9" fill="currentColor"/><rect x="15.3" y="8" width="1.8" height="3.2" rx=".9" fill="currentColor"/><path d="M6.8 20c0-3.2 2.3-5.2 5.2-5.2s5.2 2 5.2 5.2"/><circle cx="4.6" cy="11" r="2"/><path d="M1.5 19c0-2.3 1.4-3.8 3.1-3.8"/><circle cx="19.4" cy="11" r="2"/><path d="M22.5 19c0-2.3-1.4-3.8-3.1-3.8"/></svg>';
 $('m').addEventListener('click',function(e){var b=e.target.closest('.rl');if(!b)return;ROLE=b.dataset.r;document.querySelectorAll('.rl').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-checked',on?'true':'false')})});
 IC.ph='<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iph"/></svg>';IC.em='<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#iem"/></svg>';
-var TB=[['home','Home','<path d="M3 11l9-8 9 8"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/>'],['discover','Explore','<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/>'],['create','Create','<path d="M12 5v14M5 12h14"/>'],['messages','Messages','<path d="M4 5.5h16v11H9l-5 3z"/><path d="M8 9h8M8 13h5"/>'],['profile','Profile','<circle cx="12" cy="8" r="3.3"/><path d="M5 20c0-3.5 3-5.8 7-5.8s7 2.3 7 5.8"/>']];
+var TB=[['home','Home','<path d="M3 11l9-8 9 8"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/>'],['discover','Explore','<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/>'],['gamerid','Gamer ID','<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v2M14 20h2M19 19h2v2h-2z"/>'],['create','Create','<path d="M12 5v14M5 12h14"/>'],['messages','Messages','<path d="M4 5.5h16v11H9l-5 3z"/><path d="M8 9h8M8 13h5"/>'],['profile','Profile','<circle cx="12" cy="8" r="3.3"/><path d="M5 20c0-3.5 3-5.8 7-5.8s7 2.3 7 5.8"/>']];
 function tsv(q){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+q+'</svg>'}
 $('tb').innerHTML=TB.map(function(t){var ic=tsv(t[2]);return '<button type="button" data-t="'+t[0]+'"'+(t[0]==='create'?' class="mk"':'')+'>'+(t[0]==='create'?'<i>'+ic+'</i>':ic)+'<span>'+t[1]+'</span></button>'}).join('');
-var AM=[['feed','home'],['pulse','pulse'],['shorts','shorts'],['games','communities'],['players','discover'],['teammates','teams'],['messages','messages'],['notifications','notifications'],['saved','saved'],['tournaments','teams'],['achievementProof','profile'],['join','profile']],tk=false;
+var AM=[['feed','home'],['pulse','pulse'],['shorts','shorts'],['games','communities'],['players','discover'],['teammates','teams'],['messages','messages'],['notifications','notifications'],['saved','saved'],['tournaments','teams'],['achievementProof','profile'],['gamerId','gamerid'],['join','profile']],tk=false;
 function act(){tk=false;var cur='home';if(window.scrollY>240){AM.forEach(function(a){var el=$(a[0]);if(el&&el.getBoundingClientRect().top<window.innerHeight*.4)cur=a[1]})}document.querySelectorAll('#tb button').forEach(function(b){var on=b.dataset.t===cur&&cur!=='create';b.classList.toggle('on',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});document.querySelectorAll('[data-app-link]').forEach(function(link){var on=link.dataset.appLink===cur; if(on)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')})}
 window.addEventListener('scroll',function(){if(!tk){tk=true;window.requestAnimationFrame(act)}},{passive:true});act();
 function go(id,f){d.close();$(id).scrollIntoView({behavior:'smooth'});if(f)setTimeout(function(){$(f).focus({preventScroll:true})},500)}
@@ -1441,8 +1694,8 @@ function openPostComposer(){
  });
  $('d').showModal();
 }
-function openProfile(){if(!U){openLogin();return}var me=P.filter(function(p){return p.mine}).pop();$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="top"><div class="av" style="background:var(--blue)">'+esc((U.role||'Player').slice(0,2))+'</div><div><h3 style="font-size:22px;margin:0">My profile</h3><div class="tag">'+esc(U.role||'Player')+' · logged in with '+esc(U.via)+'</div></div></div>'+(me?'<div class="row"><span>YT Gamer ID</span><b>'+esc(me.gamerId||gamerIdForUid(U.uid))+'</b></div><div class="row"><span>Gamer tag</span><b>'+esc(me.n)+'</b></div><div class="row"><span>Game</span><b>'+esc(me.g)+'</b></div><div class="fr"><button class="btn" id="mv">View my profile</button></div>':'<p class="tag" style="margin-top:14px">You have not created a player profile yet.</p><div class="fr"><button class="btn" id="mc">Create player profile</button></div>')+'<div class="fr"><button class="btn alt" id="verifyEmail" type="button">'+(fbAuth&&fbAuth.currentUser&&fbAuth.currentUser.emailVerified?'Email verified':'Resend verification email')+'</button><button class="btn alt" id="mo">Log out</button></div><div class="fr"><button class="btn alt" id="deleteAccount" type="button">Delete account</button></div><div class="ok" id="profileMessage" role="status"></div>';
-if(me)$('mv').onclick=function(){d.close();$('g').value='';$('gf').value='';$('q').value=me.n;render();$('players').scrollIntoView({behavior:'smooth'})};else $('mc').onclick=function(){go('join','gtg')};
+function openProfile(){if(!U){openLogin();return}var hasProfile=!!(U.gamerProfile&&U.gamerProfile.gamerTag);$('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="top"><div class="av" style="background:var(--blue)">'+esc((U.role||'Player').slice(0,2))+'</div><div><h3 style="font-size:22px;margin:0">My profile</h3><div class="tag">'+esc(U.role||'Player')+' · logged in with '+esc(U.via||'Firebase')+'</div></div></div><div class="row"><span>YT Gamer ID</span><b>'+esc(U.gamerId||'Assigned during account setup')+'</b></div>'+(hasProfile?'<div class="row"><span>Gamer tag</span><b>'+esc(U.gamerProfile.gamerTag)+'</b></div><div class="row"><span>Game</span><b>'+esc((U.gamerProfile.preferredGames||[]).join(', '))+'</b></div><div class="row"><span>Verification</span><b>'+esc(U.verificationStatus||'unverified')+'</b></div>':'<p class="tag" style="margin-top:14px">Your Gamer ID is ready. Complete your player profile to be discoverable.</p>')+'<div class="fr"><button class="btn" id="mv">View Gamer ID</button><button class="btn alt" id="mc">Edit profile</button></div><div class="fr"><button class="btn alt" id="verifyEmail" type="button">'+(fbAuth&&fbAuth.currentUser&&fbAuth.currentUser.emailVerified?'Email verified':'Resend verification email')+'</button><button class="btn alt" id="mo">Log out</button></div><div class="fr"><button class="btn alt" id="deleteAccount" type="button">Delete account</button></div><div class="ok" id="profileMessage" role="status"></div>';
+$('mv').onclick=function(){d.close();$('gamerId').scrollIntoView({behavior:'smooth'})};$('mc').onclick=function(){d.close();go('join','gtg')};
 $('mo').onclick=async function(){
     try{await fbSignOut();d.close()}
     catch(error){console.error('Firebase sign-out failed',error);openLogin();$('lx').textContent='Sign out failed: '+firebaseErrorMessage(error)}
@@ -1460,7 +1713,7 @@ $('deleteAccount').onclick=async function(){
 };
 $('d').showModal()}
 $('m').addEventListener('click',function(e){var b=e.target.closest('.cs');if(!b)return;var k=b.dataset.k;if(k==='post')openPostComposer();else if(k==='pf')go('join','gtg');else if(k==='tm')go('tf','tfn');else if(k==='sp')go('sf',null);else if(k==='sh'){if(!U){openLogin();return}d.close();$('uf').click()}});
-$('tb').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=b.dataset.t;if(t==='home')$('feed').scrollIntoView({behavior:'smooth'});else if(t==='discover'){$('players').scrollIntoView({behavior:'smooth'});setTimeout(function(){$('q').focus({preventScroll:true})},500)}else if(t==='create')openCreate();else if(t==='messages')$('messages').scrollIntoView({behavior:'smooth'});else openProfile()});
+$('tb').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=b.dataset.t;if(t==='home')$('feed').scrollIntoView({behavior:'smooth'});else if(t==='discover'){$('players').scrollIntoView({behavior:'smooth'});setTimeout(function(){$('q').focus({preventScroll:true})},500)}else if(t==='gamerid')$('gamerId').scrollIntoView({behavior:'smooth'});else if(t==='create')openCreate();else if(t==='messages')$('messages').scrollIntoView({behavior:'smooth'});else openProfile()});
 document.querySelector('.nav-menu').addEventListener('click',function(e){
  var profile=e.target.closest('[data-app-profile]'),create=e.target.closest('#navCreate'),link=e.target.closest('[data-app-link]');
  if(profile){e.preventDefault();openProfile()}

@@ -9,13 +9,37 @@ service cloud.firestore {
       return signedIn() && request.auth.token.achievementReviewer == true;
     }
 
+    function isPlayerVerifier() {
+      return signedIn() && request.auth.token.playerVerifier == true;
+    }
+
     match /users/{userId} {
-      allow read, write: if signedIn() && request.auth.uid == userId;
+      allow read: if signedIn() && request.auth.uid == userId;
+      allow write: if false;
+    }
+
+    match /publicProfiles/{userId} {
+      allow read: if resource.data.profileVisibility == "public";
+      allow write: if false;
+    }
+
+    match /gamerIdIndex/{gamerId} {
+      allow read, write: if false;
+    }
+
+    match /gamerIdCounters/{countryCode} {
+      allow read, write: if false;
     }
 
     match /achievementSubmissions/{submissionId} {
       allow read: if signedIn() &&
         (resource.data.ownerUid == request.auth.uid || isAchievementReviewer());
+      allow create, update, delete: if false;
+    }
+
+    match /playerVerificationSubmissions/{requestId} {
+      allow read: if signedIn() &&
+        (resource.data.ownerUid == request.auth.uid || isPlayerVerifier());
       allow create, update, delete: if false;
     }
 
