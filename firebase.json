@@ -1,4 +1,20 @@
 {
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "**/functions/**",
+      "README.md",
+      "FEATURES.md",
+      "FIREBASE_ACHIEVEMENTS.md",
+      "firestore.rules",
+      "storage.rules",
+      "storage.cors.json",
+      "index.html.backup-ui-firebase.bak"
+    ]
+  },
   "functions": [
     {
       "source": "functions",
