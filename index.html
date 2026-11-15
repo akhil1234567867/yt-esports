@@ -746,6 +746,12 @@ main{min-width:0}
 .public-gamer-id{color:var(--cyan);font:700 13px ui-monospace,SFMono-Regular,Consolas,monospace}
 .public-gamer-links{display:flex;flex-wrap:wrap;gap:12px}
 .public-gamer-links a{color:var(--cyan);font-size:12px}
+.gamer-scan-tools{display:grid;gap:12px}
+.gamer-scan-video{display:block;width:min(100%,520px);max-height:58vh;aspect-ratio:4/3;object-fit:cover;background:#080810;border:1px solid var(--line)}
+.gamer-scan-status{min-height:20px;margin:0;color:var(--mut);font-size:13px}
+.gamer-scan-actions{display:flex;flex-wrap:wrap;gap:8px}
+.gamer-scan-file{display:inline-flex!important;align-items:center;justify-content:center;cursor:pointer}
+.gamer-card-actions .btn{min-height:42px}
 @media(max-width:900px){.gamer-dashboard{grid-template-columns:1fr}.gamer-search-form{grid-template-columns:repeat(2,minmax(0,1fr))}.gamer-search-form input:first-child{grid-column:1/-1}}
 @media(max-width:560px){.gamer-id-card,.gamer-panel,.gamer-review-panel{padding:15px}.gamer-search-form,.gamer-search-results{grid-template-columns:1fr}.gamer-search-form input:first-child{grid-column:auto}.gamer-card-profile{align-items:flex-start}.gamer-card-avatar{width:58px;height:58px}.gamer-card-profile h3{font-size:17px}.gamer-card-actions .btn{flex:1}.gamer-card-head{align-items:flex-start}.gamer-id-number{font-size:13px;overflow-wrap:anywhere}}
 </style>
@@ -772,7 +778,7 @@ main{min-width:0}
       <div class="gamer-card-head"><span>YT TECH HUB · GAMER ID</span><span id="gamerVerificationBadge" class="verification-badge">Unverified</span></div>
       <div class="gamer-card-profile"><div class="gamer-card-avatar" id="gamerAvatar" aria-hidden="true">YT</div><div><h3 id="gamerTagDisplay">Your gamer identity</h3><p id="gamerSummary">Sign in to receive your permanent Gamer ID.</p><div class="gamer-id-number" id="gamerIdValue">Sign in required</div></div></div>
       <div class="gamer-card-meta" id="gamerCardMeta">Your Gamer ID is assigned by YT Tech Hub and cannot be changed.</div>
-      <div class="gamer-card-actions"><button class="btn" type="button" id="downloadGamerCard" disabled>Download gamer card</button><button class="btn alt" type="button" id="copyGamerId" disabled>Copy Gamer ID</button></div>
+      <div class="gamer-card-actions"><button class="btn" type="button" id="downloadGamerCard" disabled>Download gamer card</button><button class="btn alt" type="button" id="copyGamerId" disabled>Copy Gamer ID</button><button class="btn alt" type="button" id="scanGamerId">Scan Gamer QR</button></div>
       <div id="gamerQrWrap" class="gamer-qr-wrap" hidden><img id="gamerQr" alt="QR code linking to this public Gamer ID profile"><span>Scan to open your public profile</span></div>
       <p class="tag" id="gamerDashboardStatus" role="status">Sign in to view your Gamer ID and profile status.</p>
     </article>
@@ -1411,23 +1417,120 @@ function renderPublicGamerProfile(profile){
     $('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><div class="public-gamer-profile"><div class="public-gamer-heading">'+gamerAvatarMarkup(profile,64)+'<div><h3>'+esc(profile.gamerTag||'Gamer')+'</h3><p>'+esc(profile.country||'')+(profile.currentTeam?' · '+esc(profile.currentTeam):'')+'</p></div></div><div class="public-gamer-id">'+esc(profile.gamerId)+'</div><span class="verification-badge '+(profile.verificationStatus==='verified'?'verified':profile.verificationStatus==='pending'?'pending':'')+'">'+esc(profile.verificationStatus||'unverified')+'</span>'+(profile.bio?'<p>'+esc(profile.bio)+'</p>':'')+'<div class="row"><span>Games</span><b>'+esc((profile.preferredGames||[]).join(', ')||'Not listed')+'</b></div><div class="row"><span>Gaming ID</span><b>'+esc(profile.gameId||'Not listed')+'</b></div><div class="row"><span>Player role</span><b>'+esc(profile.playerRole||'Not listed')+'</b></div><div class="row"><span>Experience</span><b>'+(profile.experienceStartYear?esc(String(new Date().getFullYear()-profile.experienceStartYear))+' years':'Not listed')+'</b></div>'+(profile.currentTeam?'<div class="row"><span>Current team</span><b>'+esc(profile.currentTeam)+'</b></div>':'')+(Array.isArray(profile.teamHistory)&&profile.teamHistory.length?'<div class="row"><span>Previous teams</span><b>'+esc(profile.teamHistory.join(', '))+'</b></div>':'')+(date?'<div class="row"><span>Joined</span><b>'+esc(date)+'</b></div>':'')+(profile.highlightUrl?'<a href="'+esc(profile.highlightUrl)+'" target="_blank" rel="noopener noreferrer">Watch gaming highlight</a>':'')+(social?'<div class="public-gamer-links">'+social+'</div>':'')+'<div><h4>Verified achievements</h4>'+(achievements.length?achievements.map(function(item){return '<article class="gamer-achievement"><b>'+esc(item.tournamentName)+'</b><span>'+esc(item.game)+' · '+esc(item.placement)+' · '+esc(item.eventDate)+'</span></article>'}).join(''):'<p class="tag">No verified achievements listed.</p>')+'</div><p class="tag">Only information chosen for this public profile is shown. Private account details are not included.</p></div>';
     $('d').showModal();
 }
-var gamerSearchMatches=[];
+var gamerSearchMatches=[],gamerScannerStream=null,gamerScannerFrame=0,gamerScannerBusy=false,gamerQrDecoderPromise=null;
+function stopGamerScanner(){
+    if(gamerScannerFrame)cancelAnimationFrame(gamerScannerFrame);
+    gamerScannerFrame=0;gamerScannerBusy=false;
+    if(gamerScannerStream)gamerScannerStream.getTracks().forEach(function(track){track.stop()});
+    gamerScannerStream=null;
+    var video=$('gamerScanVideo');if(video){video.pause();video.srcObject=null}
+}
+function loadQrDecoder(){
+    if(window.jsQR)return Promise.resolve(window.jsQR);
+    if(gamerQrDecoderPromise)return gamerQrDecoderPromise;
+    gamerQrDecoderPromise=new Promise(function(resolve,reject){
+        var script=document.createElement('script');script.src=new URL('/vendor/jsQR.js',window.location.origin).href;script.async=true;script.dataset.qrDecoder='true';
+        script.onload=function(){window.jsQR?resolve(window.jsQR):reject(new Error('QR scanner library did not initialize.'))};
+        script.onerror=function(){reject(new Error('QR scanner library could not be loaded.'))};
+        document.head.appendChild(script);
+    }).catch(function(error){gamerQrDecoderPromise=null;throw error});
+    return gamerQrDecoderPromise;
+}
+function gamerIdFromQrValue(value){
+    var id=String(value||'').trim().match(/^YT-[A-Z]{3}-\d{6,}$/i);
+    if(id)return id[0].toUpperCase();
+    try{
+        var url=new URL(String(value||'').trim());
+        var acceptedOrigins=['https://yt-esports-ad314.web.app','https://yt-esports-ad314.firebaseapp.com',window.location.origin];
+        if(url.protocol!=='https:'&&url.protocol!=='http:')return '';
+        if(acceptedOrigins.indexOf(url.origin)===-1)return '';
+        var match=url.hash.match(/^#gamer\/(YT-[A-Z]{3}-\d{6,})$/i);
+        return match?match[1].toUpperCase():'';
+    }catch(error){return ''}
+}
+function openGamerScanner(){
+    stopGamerScanner();
+    $('m').innerHTML='<button class="x" aria-label="Close" onclick="d.close()">×</button><h3 style="margin:0 0 4px">Scan a Gamer ID QR</h3><p class="tag">Use your camera or choose a saved QR image. Camera access is used only while this scanner is open.</p><div class="gamer-scan-tools"><video id="gamerScanVideo" class="gamer-scan-video" autoplay muted playsinline aria-label="Camera preview for scanning a Gamer ID QR"></video><canvas id="gamerScanCanvas" hidden></canvas><p id="gamerScanStatus" class="gamer-scan-status" role="status">Choose an option to scan a Gamer ID.</p><div class="gamer-scan-actions"><button class="btn" type="button" id="startGamerCamera">Start camera</button><label class="btn alt gamer-scan-file">Choose QR image<input id="gamerQrFile" type="file" accept="image/*" hidden></label></div></div>';
+    $('d').showModal();
+    $('startGamerCamera').addEventListener('click',startGamerCamera);
+    $('gamerQrFile').addEventListener('change',scanGamerImageFile);
+}
+async function handleGamerQrValue(value){
+    var gamerId=gamerIdFromQrValue(value);
+    if(!gamerId){$('gamerScanStatus').textContent='That QR does not contain a valid YT Tech Hub Gamer ID.';return false}
+    stopGamerScanner();
+    $('d').close();
+    if(window.location.hash.toUpperCase()==='#GAMER/'+gamerId)await openPublicGamerId(gamerId);
+    else window.location.hash='gamer/'+gamerId;
+    return true;
+}
+async function startGamerCamera(){
+    var button=$('startGamerCamera'),status=$('gamerScanStatus'),video=$('gamerScanVideo');
+    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){status.textContent='Camera scanning is unavailable in this browser. Choose a QR image instead.';return}
+    button.disabled=true;status.textContent='Requesting camera access...';
+    try{
+        gamerScannerStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+        var decode=await loadQrDecoder();
+        video.srcObject=gamerScannerStream;await video.play();status.textContent='Point the camera at a YT Gamer ID QR code.';
+        var canvas=$('gamerScanCanvas'),context=canvas.getContext('2d',{willReadFrequently:true}),lastFrame=0;
+        function scanFrame(time){
+            if(!gamerScannerStream||gamerScannerBusy)return;
+            gamerScannerFrame=requestAnimationFrame(scanFrame);
+            if(time-lastFrame<100||video.readyState<2||!video.videoWidth)return;
+            lastFrame=time;
+            var scale=Math.min(1,1000/video.videoWidth);canvas.width=Math.round(video.videoWidth*scale);canvas.height=Math.round(video.videoHeight*scale);
+            context.drawImage(video,0,0,canvas.width,canvas.height);
+            var result=decode(context.getImageData(0,0,canvas.width,canvas.height).data,canvas.width,canvas.height,{inversionAttempts:'attemptBoth'});
+            if(result){gamerScannerBusy=true;handleGamerQrValue(result.data).then(function(scanned){if(!scanned){gamerScannerBusy=false}}).catch(function(error){console.error('Gamer QR lookup failed',error);status.textContent='Could not open this Gamer ID: '+firebaseErrorMessage(error);gamerScannerBusy=false})}
+        }
+        gamerScannerFrame=requestAnimationFrame(scanFrame);
+    }catch(error){
+        stopGamerScanner();
+        console.error('Gamer QR camera scanner failed',error);
+        status.textContent=error&&error.name==='NotAllowedError'?'Camera access was denied. Allow camera access or choose a QR image.':'Camera could not start. Choose a QR image instead.';
+        button.disabled=false;
+    }
+}
+async function scanGamerImageFile(){
+    var file=this.files&&this.files[0],status=$('gamerScanStatus');
+    if(!file)return;
+    if(!file.type||file.type.indexOf('image/')!==0||file.size>15*1024*1024){status.textContent='Choose an image file smaller than 15 MB.';this.value='';return}
+    status.textContent='Checking the QR image...';
+    try{
+        var decode=await loadQrDecoder(),url=URL.createObjectURL(file),image=new Image();
+        try{
+            image.src=url;await image.decode();
+            var scale=Math.min(1,1600/image.naturalWidth),canvas=document.createElement('canvas');
+            canvas.width=Math.round(image.naturalWidth*scale);canvas.height=Math.round(image.naturalHeight*scale);
+            var context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(image,0,0,canvas.width,canvas.height);
+            var result=decode(context.getImageData(0,0,canvas.width,canvas.height).data,canvas.width,canvas.height,{inversionAttempts:'attemptBoth'});
+            if(!result){status.textContent='No readable QR code found. Try a clearer, uncropped Gamer ID QR image.';return}
+            await handleGamerQrValue(result.data);
+        }finally{URL.revokeObjectURL(url);this.value=''}
+    }catch(error){console.error('Could not scan Gamer ID QR image',error);status.textContent='QR image could not be read: '+firebaseErrorMessage(error)}
+}
+document.addEventListener('click',function(event){if(event.target.closest('#scanGamerId'))openGamerScanner()});
+document.querySelector('#d').addEventListener('close',stopGamerScanner);
 var publicGamerRouteId='';
+async function openPublicGamerId(gamerId){
+    try{
+        var sdk=await requireFirebase();
+        var result=await sdk.functions.httpsCallable(sdk.functionsInstance,'getPublicGamerProfile')({gamerId:gamerId});
+        publicGamerRouteId=gamerId;
+        renderPublicGamerProfile(result.data.profile);
+    }catch(error){
+        console.error('Public Gamer ID profile lookup failed',error);
+        $('gamerDashboardStatus').textContent='Could not load this public Gamer ID profile: '+firebaseErrorMessage(error);
+    }
+}
 async function showPublicGamerRoute(){
     var match=window.location.hash.match(/^#gamer\/(YT-[A-Z]{3}-\d{6,})$/i);
     if(!match)return;
     var requestedId=match[1].toUpperCase();
     if(publicGamerRouteId===requestedId)return;
     publicGamerRouteId=requestedId;
-    try{
-        var sdk=await requireFirebase();
-        var result=await sdk.functions.httpsCallable(sdk.functionsInstance,'getPublicGamerProfile')({gamerId:requestedId});
-        if(window.location.hash.toUpperCase()==='#GAMER/'+requestedId)renderPublicGamerProfile(result.data.profile);
-    }catch(error){
-        if(publicGamerRouteId===requestedId)publicGamerRouteId='';
-        console.error('Public Gamer ID profile lookup failed',error);
-        $('gamerDashboardStatus').textContent='Could not load this public Gamer ID profile: '+firebaseErrorMessage(error);
-    }
+    await openPublicGamerId(requestedId);
+    if(window.location.hash.toUpperCase()!=='#GAMER/'+requestedId&&publicGamerRouteId===requestedId)publicGamerRouteId='';
 }
 async function refreshGamerDashboard(context){
     $('gamerQrWrap').hidden=true;
@@ -1563,7 +1666,10 @@ $('downloadGamerCard').addEventListener('click',async function(){
         context.fillStyle='#A5A1B5';context.font='16px Arial';context.fillText('SCAN TO VIEW PUBLIC PROFILE',900,480);
         context.fillStyle='#34304A';context.fillRect(72,584,1096,1);
         context.fillStyle='#A5A1B5';context.font='16px Arial';context.fillText('A player identity from YT Tech Hub',72,626);
-        var link=document.createElement('a');link.download=gamerId+'.png';link.href=canvas.toDataURL('image/png');link.click();
+        var cardBlob=await new Promise(function(resolve){canvas.toBlob(resolve,'image/png')});
+        if(!cardBlob)throw new Error('The browser could not export the gamer card image.');
+        var cardUrl=URL.createObjectURL(cardBlob),link=document.createElement('a');link.download=gamerId+'.png';link.href=cardUrl;document.body.appendChild(link);link.click();link.remove();setTimeout(function(){URL.revokeObjectURL(cardUrl)},1000);
+        $('gamerDashboardStatus').textContent='Gamer card downloaded as '+gamerId+'.png.';
     }catch(error){console.error('Gamer card download failed',error);$('gamerDashboardStatus').textContent='Could not create the gamer card: '+firebaseErrorMessage(error)}
     finally{this.disabled=false}
 });

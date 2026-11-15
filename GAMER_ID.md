@@ -25,6 +25,8 @@ The public profile search and player-verification history use the indexes declar
 
 The QR card points to `https://yt-esports-ad314.web.app/#gamer/<GAMER_ID>`. Deploy Hosting to that Firebase Hosting site (or change the canonical URL in `getGamerQr` if using a custom domain).
 
+The scanner can read QR codes from a live camera or an image file. Camera access requires HTTPS (or localhost) and the user's permission. The browser decoder is hosted locally at `vendor/jsQR.js`, so scanning does not depend on a third-party runtime CDN; its Apache-2.0 license is included beside the bundle.
+
 ## Reviewer access
 
 Use the existing Admin SDK reviewer utility from the `functions` directory. It requires Application Default Credentials with permission to manage Firebase Authentication custom claims:
