@@ -3,7 +3,7 @@
 function publicProfileData(userData, verificationStatus, serverTimestamp) {
   const profile = userData.gamerProfile || {};
   const values = [
-    profile.gamerTag, profile.currentTeam, profile.country,
+    profile.gamerTag, profile.currentTeam, profile.country, profile.playerRole,
     ...(Array.isArray(profile.preferredGames) ? profile.preferredGames : [])
   ].filter((value) => typeof value === "string");
   const searchTokens = new Set();

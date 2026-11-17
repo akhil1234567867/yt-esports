@@ -15,6 +15,20 @@
       ]
     },
     {
+      "collectionGroup": "publicProfiles",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "profileVisibility",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "playerRole",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "playerVerificationSubmissions",
       "queryScope": "COLLECTION",
       "fields": [

@@ -189,6 +189,7 @@ test("projects only approved identity and achievement fields to the public profi
       country: "India",
       countryCode: "IND",
       preferredGames: ["BGMI"],
+      playerRole: "Duelist",
       currentTeam: "North Stars",
       experienceStartYear: 2020,
       profileVisibility: "public"
@@ -199,6 +200,7 @@ test("projects only approved identity and achievement fields to the public profi
   assert.equal(profile.joinedAt, timestamp);
   assert.equal(profile.updatedAt, timestamp);
   assert.ok(profile.searchTokens.includes("pixel"));
+  assert.ok(profile.searchTokens.includes("du"));
   for (const privateField of ["email", "ph", "fn", "a", "c"]) {
     assert.equal(Object.hasOwn(profile, privateField), false);
   }

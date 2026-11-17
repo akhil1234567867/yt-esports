@@ -343,10 +343,11 @@ exports.saveGamerProfile = onCall({ region: "us-central1", maxInstances: 20 }, a
 exports.searchGamers = onCall({ region: "us-central1", maxInstances: 20 }, async (request) => {
   const term = typeof request.data?.term === "string" ? request.data.term.trim().slice(0, 80) : "";
   const game = typeof request.data?.game === "string" ? request.data.game.trim().slice(0, 40) : "";
+  const role = typeof request.data?.role === "string" ? request.data.role.trim().slice(0, 60) : "";
   const country = typeof request.data?.country === "string" ? request.data.country.trim().slice(0, 80) : "";
   const team = typeof request.data?.team === "string" ? request.data.team.trim().slice(0, 80) : "";
-  if (!term && !game && !country && !team) {
-    throw new HttpsError("invalid-argument", "Enter a Gamer ID, username, game, country, or team.");
+  if (!term && !game && !role && !country && !team) {
+    throw new HttpsError("invalid-argument", "Enter a Gamer ID, username, game, role, country, or team.");
   }
   const normalizedTerm = term.toLowerCase();
   try {
@@ -357,8 +358,14 @@ exports.searchGamers = onCall({ region: "us-central1", maxInstances: 20 }, async
         const profile = await db.collection("publicProfiles").doc(index.data().ownerUid).get();
         if (profile.exists && profile.data().profileVisibility === "public") candidates = [profile.data()];
       }
+    } else if (role && !term && !game && !country && !team) {
+      const snapshot = await db.collection("publicProfiles")
+        .where("profileVisibility", "==", "public")
+        .where("playerRole", "==", role)
+        .limit(100).get();
+      candidates = snapshot.docs.map((item) => item.data());
     } else {
-      const searchable = (term || game || country || team).toLowerCase().normalize("NFKC");
+      const searchable = (term || game || country || team || role).toLowerCase().normalize("NFKC");
       const token = searchable.split(/[^\p{L}\p{N}]+/u).filter(Boolean)[0]?.slice(0, 24);
       if (!token || token.length < 2) throw new HttpsError("invalid-argument", "Enter at least two searchable characters.");
       const snapshot = await db.collection("publicProfiles")
@@ -369,11 +376,12 @@ exports.searchGamers = onCall({ region: "us-central1", maxInstances: 20 }, async
     }
     const tokens = normalizedTerm.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
     const filtered = candidates.filter((profile) => {
-      const fields = [profile.gamerTag, profile.gamerId, profile.country, profile.currentTeam,
+      const fields = [profile.gamerTag, profile.gamerId, profile.country, profile.currentTeam, profile.playerRole,
         ...(profile.preferredGames || [])].map((value) => String(value || "").toLowerCase());
       const termMatches = !tokens.length || tokens.every((part) => fields.some((value) => value.includes(part)));
       return termMatches &&
         (!game || (profile.preferredGames || []).some((value) => value.toLowerCase() === game.toLowerCase())) &&
+        (!role || String(profile.playerRole || "").toLowerCase().includes(role.toLowerCase())) &&
         (!country || String(profile.country || "").toLowerCase() === country.toLowerCase()) &&
         (!team || String(profile.currentTeam || "").toLowerCase().includes(team.toLowerCase()));
     });
